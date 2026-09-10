@@ -1,14 +1,11 @@
+
 import mongoose from "mongoose";
 
 const userPackage=new mongoose.Schema({
-name:{
+session:{
     type:String,
     required:true
 },
-price:{
-    type:Number,
-    required:true   },
-
 eventdate:{
     type:Date,
     required:true,
@@ -17,12 +14,23 @@ bookeddate:{
     type:Date,
     required:true,
 },
-
-description:{
+fullname:{
+   type:String,
+   required:true
+},
+WhatsappNumber:{
     type:String,
-    required:true},
-
-    user:{
+    required:true
+},
+Location:{
+    type:String,
+    required:true
+},
+Description:{
+    type:String,
+    required:true
+},
+user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true,

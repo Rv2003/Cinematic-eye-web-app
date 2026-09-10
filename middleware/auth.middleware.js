@@ -6,25 +6,18 @@ const authorize=async(req,res,next)=>{
     try{
 
 let token;
-if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
+if(req.headers.authorization && req.headers.authorization.startsWith("Bearer ")){
     token=req.headers.authorization.split(" ")[1]
 }
-
+if(!token){
+            console.log("No token extracted, header value was:", req.headers.authorization);
+            return res.status(401).json({success:false,message:"Not authorized to access this route"})
+        }
 if(!token){
     return res.status(401).json({success:false,message:"Not authorized to access this route"})
 
 }
 
-const refresh=async(req,res,next)=>{
-const token=req.cookies.token
-if (!token) return res.status(401).json({ message: 'Not authenticated' });
-
-const decoded = jwt.verify(token, process.env.JWT_SECRET);
-req.userId = decoded.id;
-
-
-
-}
 
 const decoded=jwt.verify(token,JWT_SECRET)
 const user=await User.findById(decoded.userId)
@@ -37,10 +30,9 @@ if(!user){
 req.user=user
 next()
     }catch(error){
-
-        res.status(401).json({success:false,message:"Not authorized to access this route"})
-
-    }
+    console.error("Auth middleware error:", error.message);
+    res.status(401).json({success:false,message:"Not authorized to access this route"})
+}
     }
 
 const refresh=async(req,res)=>{

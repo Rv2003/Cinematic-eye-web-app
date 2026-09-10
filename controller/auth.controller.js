@@ -51,12 +51,18 @@ export const signin = async (req, res, next) => {
       error.statusCode = 401;
       throw error;
     }
+        if (!user.password) {
+  const error = new Error("This account uses Google sign-in. Please log in with Google.");
+  error.statusCode = 400;
+  throw error;
+}
     const isPasswordValid = await bcryptjs.compare(password, user.password);
     if (!isPasswordValid) {
       const error = new Error("Password is incorrect");
       error.statusCode = 401;
       throw error;
     }
+
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
       expiresIn: JWT_EXPIRES_IN,
     });
