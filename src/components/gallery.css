@@ -4,45 +4,51 @@
 
 .gallery-section {
   background-color: var(--bg-primary);
-  padding: 140px 0;
+  padding: 72px 0;
   position: relative;
   width: 100%;
 }
 
+/* Full-bleed inner wrapper — padding only, no max-width cap */
+.gallery-inner {
+  width: 100%;
+  padding: 0 4vw;
+}
+
 /* Header Styling */
 .gallery-header {
-  margin-bottom: 72px;
-  max-width: 620px;
+  margin-bottom: 36px;
+  max-width: 480px;
   text-align: left;
 }
 
 .gallery-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.28em;
   color: var(--accent);
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 
 .gallery-title {
   font-family: var(--font-heading);
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(18px, 2.4vw, 28px);
   font-weight: 300;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   color: var(--text-primary);
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   line-height: 1.2;
 }
 
 .gallery-subtitle {
   font-family: var(--font-body);
-  font-size: clamp(14px, 1.6vw, 15px);
-  line-height: 1.85;
+  font-size: clamp(11px, 1.1vw, 13px);
+  line-height: 1.7;
   color: var(--text-secondary);
   font-weight: 300;
 }
@@ -54,7 +60,7 @@
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 32px;
+  gap: 12px;
   width: 100%;
 }
 
@@ -75,17 +81,17 @@
 /* Editorial Dimensions */
 .grid-item-tall {
   grid-column: span 5;
-  aspect-ratio: 3 / 4.1; /* Elegant tall card */
+  aspect-ratio: 3 / 3.4;
 }
 
 .grid-item-wide {
   grid-column: span 7;
-  aspect-ratio: 16 / 11; /* Wide horizontal card adjacent to tall */
+  aspect-ratio: 16 / 9.5;
 }
 
 .grid-item-normal {
   grid-column: span 12;
-  aspect-ratio: 16 / 6.2; /* Large cinematic panoramic card on bottom */
+  aspect-ratio: 21 / 6;
 }
 
 /* Image zoom & grayscale */
@@ -173,9 +179,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 36px;
+  padding: 20px;
   z-index: 3;
-  transform: translateY(12px);
+  transform: translateY(8px);
   opacity: 0;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
               opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);

@@ -45,7 +45,7 @@ function App() {
      
      
      <Route  element={<ProtectedRoutes user={user} authLoading={authLoading}/>}>
-     <Route  path='/profile' element={<Profile token={token} setAuthloading={setAuthLoading} authLoading={authLoading}/>}/>
+     <Route  path='/profile' element={<Profile token={token} setAuthloading={setAuthLoading} authLoading={authLoading}  setUser={setUser} setToken={setToken}/>}/>
      </Route>
 
 

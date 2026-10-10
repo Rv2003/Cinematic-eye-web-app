@@ -47,7 +47,7 @@ export function Gallery() {
 
   return (
     <section id="work" className="gallery-section">
-      <div className="container">
+      <div className="gallery-inner">
         
         {/* Section Header Title */}
         <div className="gallery-header">

@@ -1,0 +1,429 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./members.css";
+import project3 from '../assets/DSC05561.jpg';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Replace with your real team. Put photos in /public/team/ and reference them as "/team/name.jpg".
+// Leave `photo` empty and the card shows the member's initials instead.
+const TEAM = [
+  { id: 1, name: "Rusiru",      role: "Founder & Lead Photographer", photo: project3, instagram: "https://instagram.com/" },
+  { id: 2, name: "Team Member", role: "Cinematographer",             photo: "", instagram: "" },
+  { id: 3, name: "Team Member", role: "Editor & Colourist",          photo: "", instagram: "" },
+  { id: 4, name: "Team Member", role: "Studio Coordinator",          photo: "", instagram: "" },
+];
+
+const initials = (name) =>
+  name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+
+/** Replaces element text with individual <span> per character for GSAP stagger */
+function splitToChars(el) {
+  const text = el.textContent;
+  el.innerHTML = text
+    .split("")
+    .map((c) =>
+      c === " "
+        ? `<span style="display:inline-block;white-space:pre"> </span>`
+        : `<span class="team__char" style="display:inline-block;overflow:hidden">${c}</span>`
+    )
+    .join("");
+  return Array.from(el.querySelectorAll(".team__char"));
+}
+
+export function TeamSection({ members = TEAM }) {
+  const sectionRef    = useRef(null);
+  const spotlightRef  = useRef(null);
+  const scanLineRef   = useRef(null);
+  const lbTopRef      = useRef(null);
+  const lbBottomRef   = useRef(null);
+  const titleThinRef  = useRef(null);
+  const titleBoldRef  = useRef(null);
+  const dividerRef    = useRef(null);
+  const eyebrowRef    = useRef(null);
+  const gridRef       = useRef(null);
+  const cardsRef      = useRef([]);
+
+  useEffect(() => {
+    const section   = sectionRef.current;
+    const evCleans  = []; // event-listener cleanup queue
+
+    /* ─────────────────────────────────────────────────────────────────
+       GSAP context  →  auto-reverts ScrollTriggers + tweens on unmount
+    ───────────────────────────────────────────────────────────────── */
+    const ctx = gsap.context(() => {
+
+      // ── 1. Letterbox bars retract (cinematic reveal) ─────────────────
+      gsap.set(lbTopRef.current,    { transformOrigin: "top center",    scaleY: 1 });
+      gsap.set(lbBottomRef.current, { transformOrigin: "bottom center", scaleY: 1 });
+
+      gsap.to([lbTopRef.current, lbBottomRef.current], {
+        scrollTrigger: { trigger: section, start: "top 82%", toggleActions: "play none none none" },
+        scaleY: 0,
+        duration: 1.6,
+        ease: "expo.inOut",
+        stagger: 0.05,
+      });
+
+      // ── 2. Horizontal scan line sweeps down ──────────────────────────
+      gsap.fromTo(
+        scanLineRef.current,
+        { y: 0, opacity: 1 },
+        {
+          scrollTrigger: { trigger: section, start: "top 78%", toggleActions: "play none none none" },
+          y: section.offsetHeight,
+          opacity: 0,
+          duration: 1.6,
+          ease: "power2.inOut",
+        }
+      );
+
+      // ── 3. Eyebrow fade-slide ────────────────────────────────────────
+      gsap.from(eyebrowRef.current, {
+        scrollTrigger: { trigger: section, start: "top 70%", toggleActions: "play none none none" },
+        opacity: 0,
+        y: 14,
+        letterSpacing: "0.5em",
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.2,
+      });
+
+      // ── 4. Character-by-character title reveal ───────────────────────
+      const thinChars = splitToChars(titleThinRef.current);
+      const boldChars = splitToChars(titleBoldRef.current);
+
+      const titleTl = gsap.timeline({
+        scrollTrigger: { trigger: section, start: "top 68%", toggleActions: "play none none none" },
+      });
+
+      titleTl
+        .from(thinChars, {
+          y: "110%",
+          opacity: 0,
+          rotateX: -90,
+          transformOrigin: "50% 100%",
+          duration: 0.65,
+          ease: "back.out(1.6)",
+          stagger: 0.04,
+        })
+        .from(boldChars, {
+          y: "110%",
+          opacity: 0,
+          rotateX: -90,
+          transformOrigin: "50% 100%",
+          duration: 0.65,
+          ease: "back.out(1.6)",
+          stagger: 0.04,
+        }, "-=0.45")
+        .from(dividerRef.current, {
+          scaleX: 0,
+          transformOrigin: "left center",
+          duration: 1,
+          ease: "expo.out",
+        }, "-=0.3");
+
+      // ── 5. Cards cinematic stagger entrance ──────────────────────────
+      gsap.from(cardsRef.current, {
+        scrollTrigger: { trigger: gridRef.current, start: "top 84%", toggleActions: "play none none none" },
+        y: 110,
+        opacity: 0,
+        rotateX: 28,
+        transformPerspective: 1200,
+        transformOrigin: "top center",
+        clipPath: "inset(100% 0% 0% 0%)",
+        duration: 1.3,
+        ease: "expo.out",
+        stagger: { amount: 0.7, from: "start" },
+        onComplete: () => {
+          // clear clip-path so CSS hover can use box-shadow freely
+          gsap.set(cardsRef.current, { clipPath: "none" });
+        },
+      });
+
+      // ── 6. Scroll-scrub – title wrapper slow parallax ────────────────
+      gsap.to(".team__title-wrapper", {
+        scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 1.8 },
+        y: -55,
+        ease: "none",
+      });
+
+      // ── 7. Scroll-scrub – per-card photo inner parallax ─────────────
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        gsap.to(card.querySelector(".team__photo"), {
+          scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: 2 },
+          y: -35,
+          ease: "none",
+        });
+      });
+
+    }, sectionRef);
+
+    /* ─────────────────────────────────────────────────────────────────
+       Section-level cursor spotlight  (outside ctx – event listener)
+    ───────────────────────────────────────────────────────────────── */
+    const onSectionMove = (e) => {
+      const { left, top } = section.getBoundingClientRect();
+      gsap.to(spotlightRef.current, {
+        x: e.clientX - left,
+        y: e.clientY - top,
+        opacity: 1,
+        duration: 0.55,
+        ease: "power2.out",
+      });
+    };
+    const onSectionLeave = () => {
+      gsap.to(spotlightRef.current, { opacity: 0, duration: 0.7, ease: "power2.in" });
+    };
+    section.addEventListener("mousemove", onSectionMove);
+    section.addEventListener("mouseleave", onSectionLeave);
+    evCleans.push(() => {
+      section.removeEventListener("mousemove", onSectionMove);
+      section.removeEventListener("mouseleave", onSectionLeave);
+    });
+
+    /* ─────────────────────────────────────────────────────────────────
+       Per-card hover interactions
+    ───────────────────────────────────────────────────────────────── */
+    cardsRef.current.forEach((card, i) => {
+      if (!card) return;
+
+      const photo   = card.querySelector(".team__photo");
+      const img     = card.querySelector(".team__photo img");
+      const nameEl  = card.querySelector(".team__name");
+      const roleEl  = card.querySelector(".team__role");
+      const overlay = card.querySelector(".team__photo-overlay");
+      const numEl   = card.querySelector(".team__card-num");
+
+      /* — mouseenter: spotlight this card, dim siblings — */
+      const onEnter = () => {
+        // Dim + blur all sibling cards
+        cardsRef.current.forEach((c, j) => {
+          if (c && j !== i) {
+            gsap.to(c, {
+              opacity: 0.18,
+              scale: 0.96,
+              filter: "blur(2px) brightness(0.5)",
+              duration: 0.55,
+              ease: "power3.out",
+            });
+          }
+        });
+
+        // Photo: zoom + golden glow
+        gsap.to(photo, {
+          scale: 1.04,
+          boxShadow: "0 28px 80px rgba(212,175,55,0.38), 0 0 0 1px rgba(212,175,55,0.25)",
+          duration: 0.6,
+          ease: "power2.out",
+        });
+
+        // Image: colour grade – shift from B&W to full colour
+        if (img) {
+          gsap.to(img, {
+            filter: "grayscale(0) contrast(1.12) brightness(1.06)",
+            scale: 1.08,
+            duration: 0.9,
+            ease: "power2.out",
+          });
+        }
+
+        // Name: expand letter-spacing + brighten
+        gsap.to(nameEl, {
+          letterSpacing: "0.09em",
+          color: "#fff",
+          duration: 0.45,
+          ease: "power2.out",
+        });
+
+        // Role: slide up + accent colour + wider tracking
+        gsap.to(roleEl, {
+          y: -7,
+          color: "var(--accent, #d4af37)",
+          letterSpacing: "0.24em",
+          duration: 0.45,
+          ease: "power2.out",
+        });
+
+        // Card number: brighten
+        if (numEl) {
+          gsap.to(numEl, {
+            opacity: 0.9,
+            color: "var(--accent, #d4af37)",
+            duration: 0.35,
+            ease: "power2.out",
+          });
+        }
+
+        // Vignette overlay: lighten (photo already punchy)
+        gsap.to(overlay, { opacity: 0.2, duration: 0.5 });
+      };
+
+      /* — mouseleave: restore everything — */
+      const onLeave = () => {
+        cardsRef.current.forEach((c) => {
+          if (c) {
+            gsap.to(c, {
+              opacity: 1,
+              scale: 1,
+              filter: "blur(0px) brightness(1)",
+              duration: 0.55,
+              ease: "power3.out",
+            });
+          }
+        });
+
+        gsap.to(photo, {
+          scale: 1,
+          boxShadow: "none",
+          duration: 0.6,
+          ease: "power2.out",
+        });
+
+        if (img) {
+          gsap.to(img, {
+            filter: "grayscale(1) contrast(1.05) brightness(1)",
+            scale: 1,
+            duration: 0.9,
+            ease: "power2.out",
+          });
+        }
+
+        gsap.to(nameEl, {
+          letterSpacing: "normal",
+          color: "var(--text-primary, #fff)",
+          duration: 0.45,
+          ease: "power2.out",
+        });
+
+        gsap.to(roleEl, {
+          y: 0,
+          color: "var(--text-secondary, #9a9a9a)",
+          letterSpacing: "0.14em",
+          duration: 0.45,
+          ease: "power2.out",
+        });
+
+        if (numEl) {
+          gsap.to(numEl, {
+            opacity: 0.15,
+            color: "var(--text-secondary, #9a9a9a)",
+            duration: 0.35,
+            ease: "power2.out",
+          });
+        }
+
+        gsap.to(overlay, { opacity: 1, duration: 0.5 });
+
+        // Snap tilt back with elastic spring
+        gsap.to(card, {
+          rotateX: 0,
+          rotateY: 0,
+          duration: 0.9,
+          ease: "elastic.out(1, 0.45)",
+        });
+      };
+
+      /* — mousemove: 3-D magnetic tilt — */
+      const onMove = (e) => {
+        const { left, top, width, height } = card.getBoundingClientRect();
+        const nx = (e.clientX - left) / width  - 0.5; // –0.5 … 0.5
+        const ny = (e.clientY - top)  / height - 0.5;
+        gsap.to(card, {
+          rotateY:             nx * 16,
+          rotateX:            -ny * 12,
+          transformPerspective: 900,
+          duration: 0.35,
+          ease: "power2.out",
+        });
+      };
+
+      card.addEventListener("mouseenter", onEnter);
+      card.addEventListener("mouseleave", onLeave);
+      card.addEventListener("mousemove",  onMove);
+      evCleans.push(() => {
+        card.removeEventListener("mouseenter", onEnter);
+        card.removeEventListener("mouseleave", onLeave);
+        card.removeEventListener("mousemove",  onMove);
+      });
+    });
+
+    /* ── cleanup ── */
+    return () => {
+      ctx.revert();
+      evCleans.forEach((fn) => fn());
+    };
+  }, []);
+
+  /* ─── JSX ──────────────────────────────────────────────────────── */
+  return (
+    <section ref={sectionRef} className="team" aria-labelledby="team-title">
+
+      {/* Cinematic letterbox bars */}
+      <div ref={lbTopRef}    className="team__letterbox team__letterbox--top"    aria-hidden="true" />
+      <div ref={lbBottomRef} className="team__letterbox team__letterbox--bottom" aria-hidden="true" />
+
+      {/* Cursor-tracking spotlight */}
+      <div ref={spotlightRef} className="team__spotlight" aria-hidden="true" />
+
+      {/* Gold scan line */}
+      <div ref={scanLineRef} className="team__scanline" aria-hidden="true" />
+
+      <div className="team__title-wrapper">
+        <p ref={eyebrowRef} className="team__eyebrow" aria-hidden="true">
+          — our crew
+        </p>
+
+        <h2 id="team-title" className="team__title">
+          <span ref={titleThinRef} className="team__title-thin">The people</span>
+          <span ref={titleBoldRef} className="team__title-bold">behind the lens</span>
+        </h2>
+
+        <div ref={dividerRef} className="team__divider" aria-hidden="true" />
+      </div>
+
+      <ul ref={gridRef} className="team__grid">
+        {members.map((m, i) => (
+          <li
+            key={m.id}
+            className="team__card"
+            ref={(el) => (cardsRef.current[i] = el)}
+          >
+            {/* Sequence number */}
+            <span className="team__card-num" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+
+            <div className="team__photo">
+              {m.photo ? (
+                <img src={m.photo} alt={m.name} loading="lazy" />
+              ) : (
+                <span className="team__initials" aria-hidden="true">
+                  {initials(m.name)}
+                </span>
+              )}
+              <div className="team__photo-overlay" aria-hidden="true" />
+            </div>
+
+            <h3 className="team__name">{m.name}</h3>
+            <p className="team__role">{m.role}</p>
+
+            {m.instagram && (
+              <a
+                className="team__link"
+                href={m.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${m.name} on Instagram`}
+              >
+                Instagram
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

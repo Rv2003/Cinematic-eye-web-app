@@ -30,7 +30,7 @@ import {
   AlertCircle
 } from "lucide-react";
 
-export function Profile({ token }) {
+export function Profile({ token,setToken,setUser }) {
   const containerRef = useRef(null);
   const refreshIconRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -78,9 +78,16 @@ export function Profile({ token }) {
         setBookings([]);
       }
     } catch (err) {
-      console.error("Failed to fetch bookings:", err);
-      setError("Unable to retrieve booking records. Please try again.");
-    } finally {
+  console.error("Failed to fetch bookings:", err);
+
+  if (err.response?.status === 401) {
+    setToken(null);
+    setUser(null);
+    setBookings([]);
+  } else {
+    setError("Unable to retrieve booking records. Please try again.");
+  }
+} finally {
       setIsLoading(false);
       setIsRefreshing(false);
       if (refreshIconRef.current) {

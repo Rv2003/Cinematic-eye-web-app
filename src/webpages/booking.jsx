@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // ADDED
 import { LoadingScreen } from "../components/loading";
 import "./booking.css";
 import axios from "axios";
@@ -26,8 +27,10 @@ export  function Booking({token,user,authLoading}) {
    const config = {
     headers: { Authorization: `Bearer ${token}` }
 };
+  const navigate = useNavigate(); // ADDED
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState("idle"); 
+  const [errorMsg, setErrorMsg] = useState(""); // ADDED
 
   const displayName = form.name || user?.username || "";
 
@@ -47,6 +50,7 @@ export  function Booking({token,user,authLoading}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
+    setErrorMsg(""); // ADDED
 console.log(config)
 console.log(form)
     try {
@@ -58,15 +62,24 @@ console.log(form)
       username:user.username,
       WhatsappNumber:form.phone,
       Location:form.location,
-      Description:form.notes
-
+      Description:form.notes,
+      headers: {
+            Authorization: `Bearer ${token}`,
+          },
 
 
       },config);
       await new Promise((resolve) => setTimeout(resolve, 600));
       setStatus("submitted");
+      setTimeout(() => navigate("/"), 1500); // ADDED: go home after success
     } catch (err) {
       console.error(err);
+      // ADDED: show an error message
+      if (err.response?.status === 401) {
+        setErrorMsg("Your session has expired. Please sign in again.");
+      } else {
+        setErrorMsg("Something went wrong. Please try again.");
+      }
       setStatus("idle");
     }
   };
@@ -236,6 +249,16 @@ if (authLoading) {
               />
             </div>
           </fieldset>
+
+          {/* ADDED: error message */}
+          {errorMsg && (
+            <p style={{ color: "#d4af37" }}>
+              {errorMsg}
+              {errorMsg.includes("expired") && (
+                <> <Link to="/sign-in">Sign in</Link></>
+              )}
+            </p>
+          )}
 
           <div className="booking-submit-row">
             <button
