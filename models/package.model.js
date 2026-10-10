@@ -1,6 +1,5 @@
 
 import mongoose from "mongoose";
-
 const userPackage=new mongoose.Schema({
 session:{
     type:String,
@@ -14,19 +13,11 @@ bookeddate:{
     type:Date,
     required:true,
 },
-fullname:{
+username:{
    type:String,
    required:true
 },
 WhatsappNumber:{
-    type:String,
-    required:true
-},
-Location:{
-    type:String,
-    required:true
-},
-Description:{
     type:String,
     required:true
 },

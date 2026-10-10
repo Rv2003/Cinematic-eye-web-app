@@ -1,44 +1,58 @@
+
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 import { JWT_SECRET } from "../config/env.js";
 
-const authorize=async(req,res,next)=>{
-    try{
+const authorize = async (req, res, next) => {
+  console.log("Authorization middleware reached:", req.method, req.originalUrl);
 
-let token;
-if(req.headers.authorization && req.headers.authorization.startsWith("Bearer ")){
-    token=req.headers.authorization.split(" ")[1]
-}
-if(!token){
-            console.log("No token extracted, header value was:", req.headers.authorization);
-            return res.status(401).json({success:false,message:"Not authorized to access this route"})
-        }
-if(!token){
-    return res.status(401).json({success:false,message:"Not authorized to access this route"})
+  try {
+    const authHeader = req.headers.authorization;
+    let token;
 
-}
-
-
-const decoded=jwt.verify(token,JWT_SECRET)
-const user=await User.findById(decoded.userId)
-if(!user){
-    return res.status(401).json({success:false,message:"Not authorized to access this route"})
-}
-//if(user.role!=="admin"){
-//    return res.status(403).json({success:false,message:"You do not have permission to access this route"})
-//}
-req.user=user
-next()
-    }catch(error){
-    console.error("Auth middleware error:", error.message);
-    res.status(401).json({success:false,message:"Not authorized to access this route"})
-}
+    if (authHeader?.startsWith("Bearer ")) {
+      token = authHeader.split(" ")[1];
     }
 
-const refresh=async(req,res)=>{
-  const user = await User.findById(req.userId).select('-password');
-  res.json({ user });
-}
+    if (!token) {
+      console.log("No access token received");
+
+      return res.status(401).json({
+        success: false,
+        message: "No access token provided",
+      });
+    }
 
 
-    export default authorize
+    const decoded = jwt.verify(token, JWT_SECRET);
+    console.log("Checking JWT expiration...");
+console.log("Token issued at:", new Date(decoded.iat * 1000));
+console.log("Token expires at:", new Date(decoded.exp * 1000));
+console.log("Current time:", new Date());
+
+    console.log("Token is valid");
+
+    const user = await User.findById(decoded.userId);
+
+    if (!user) {
+      console.log("User not found");
+
+      return res.status(401).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    req.user = user;
+    next();
+  } catch (error) {
+    console.error("Authorization error:", error.name, error.message);
+
+    return res.status(401).json({
+      success: false,
+      message: "Not authorized to access this route",
+    });
+  }
+};
+
+export default authorize;
