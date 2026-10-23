@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import './navbar.css';
 import axios from 'axios';
-import { User, LogOut, Sparkles, ChevronRight } from 'lucide-react';
+import { User, LogOut, Sparkles, ChevronRight, Shield } from 'lucide-react';
 
 export function Navbar({ user, setUser, token, setToken }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -96,6 +96,13 @@ export function Navbar({ user, setUser, token, setToken }) {
   const displayName = rawName.includes('@') ? rawName.split('@')[0] : rawName;
   const initial = displayName.charAt(0).toUpperCase() || 'C';
 
+  const isAdmin =
+    user === 'admin' ||
+    user?.role === 'admin' ||
+    user?.role === 'Admin' ||
+    user?.isAdmin === true ||
+    user?.email?.toLowerCase().includes('admin');
+
   return (
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-active' : ''}`}>
@@ -162,16 +169,16 @@ export function Navbar({ user, setUser, token, setToken }) {
                   </a>
                 </li>
                 <li style={{ '--index': 3 }}>
-                  <a
-                    href="#about"
+                  <Link
+                    to="/about"
                     className="nav-link"
-                    onClick={(e) => handleNavClick(e, '#about')}
+                    onClick={closeMenu}
                   >
                     <span className="nav-link-inner">
                       <span className="nav-link-text">About</span>
                       <span className="nav-link-text hover-text">About</span>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li style={{ '--index': 4 }}>
                   <a
@@ -186,7 +193,18 @@ export function Navbar({ user, setUser, token, setToken }) {
                   </a>
                 </li>
                 
-                <li style={{ '--index': 5 }}>
+                {isAdmin && (
+                  <li style={{ '--index': 5 }}>
+                    <Link to="/admin" className="nav-link" onClick={closeMenu}>
+                      <span className="nav-link-inner">
+                        <span className="nav-link-text" style={{ color: '#d4af37' }}>Admin</span>
+                        <span className="nav-link-text hover-text" style={{ color: '#d4af37' }}>Admin</span>
+                      </span>
+                    </Link>
+                  </li>
+                )}
+
+                <li style={{ '--index': isAdmin ? 6 : 5 }}>
                   <Link to={user ? '/booking' : '/login'} className="nav-link" onClick={closeMenu}>
                     <span className="nav-link-inner">
                       <span className="nav-link-text" style={{ color: 'var(--accent)' }}>Book Session</span>
@@ -212,6 +230,33 @@ export function Navbar({ user, setUser, token, setToken }) {
             <div className="nav-right">
               {user ? (
                 <div className="nav-auth-group">
+                  {isAdmin && (
+                    <Link
+                      to="/admin"
+                      className="nav-profile-pill"
+                      style={{
+                        borderColor: 'rgba(212, 175, 55, 0.4)',
+                        background: 'rgba(212, 175, 55, 0.08)',
+                        gap: '6px',
+                        padding: '6px 12px',
+                      }}
+                      title="Open Studio Admin Panel"
+                    >
+                      <Shield size={13} color="#d4af37" />
+                      <span
+                        style={{
+                          fontSize: '11px',
+                          letterSpacing: '0.12em',
+                          textTransform: 'uppercase',
+                          color: '#d4af37',
+                          fontWeight: 600,
+                        }}
+                      >
+                        Admin
+                      </span>
+                    </Link>
+                  )}
+
                   {/* Designer Luxury Profile Button */}
                   <Link to="/profile" className="nav-profile-pill" title="View Client Profile & Sessions">
                     <div className="nav-profile-avatar">

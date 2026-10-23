@@ -249,7 +249,9 @@ export function Footer() {
             </button>
           </div>
         </div>
+
       </div>
+      
     </footer>
   );
 }

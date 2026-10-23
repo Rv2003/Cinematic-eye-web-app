@@ -1,0 +1,68 @@
+.fb-feed {
+  background: var(--bg-primary);
+  padding: 6rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.fb-feed__label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.fb-feed__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+}
+.fb-feed__title .thin { font-weight: 300; }
+.fb-feed__title .bold { font-weight: 700; color: var(--accent); }
+
+/* Widget overrides (!important is needed to beat the widget's own styles) */
+.fb-feed__widget .sk-ww-facebook-page-posts,
+.fb-feed__widget .sk-ww-facebook-page-posts * {
+  font-family: var(--font-body) !important;
+  color: var(--text-primary) !important;
+}
+
+.fb-feed__widget .sk-ww-facebook-page-posts {
+  background: transparent !important;
+}
+
+/* Post cards */
+.fb-feed__widget [class*="post"],
+.fb-feed__widget [class*="card"] {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  transition: var(--transition);
+}
+.fb-feed__widget [class*="post"]:hover,
+.fb-feed__widget [class*="card"]:hover {
+  border-color: var(--accent) !important;
+}
+
+/* Links and buttons */
+.fb-feed__widget a {
+  color: var(--accent) !important;
+}
+.fb-feed__widget button {
+  border-radius: 999px !important;
+  border: 1px solid var(--accent) !important;
+  background: transparent !important;
+  color: var(--accent) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: var(--transition);
+}
+.fb-feed__widget button:hover {
+  background: var(--accent) !important;
+  color: var(--bg-primary) !important;
+}

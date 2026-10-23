@@ -534,3 +534,223 @@
   .booking-submit-row { flex-direction: column; align-items: flex-start; gap: 12px; }
   .booking-btn-primary { width: 100%; justify-content: center; }
 }
+
+
+/* ==========================================================================
+   OTP Verification — inline email verification panel
+   ========================================================================== */
+
+/* Email row: input + send-OTP button side by side */
+.otp-email-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.otp-email-row input {
+  flex: 1;
+}
+
+.otp-email-verified {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Verified badge next to the locked email field */
+.otp-badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bp-accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Send OTP / Resend button */
+.otp-send-btn {
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  background: transparent;
+  color: var(--bp-accent);
+  font-family: var(--bp-font-body);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.3s, border-color 0.3s, opacity 0.3s;
+}
+
+.otp-send-btn:hover:not(:disabled) {
+  background-color: rgba(212, 175, 55, 0.1);
+  border-color: var(--bp-accent);
+}
+
+.otp-send-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* OTP digit panel */
+.otp-panel {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 14px;
+  background: rgba(212, 175, 55, 0.03);
+  animation: otpPanelIn 0.35s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@keyframes otpPanelIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.otp-instruction {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--bp-text-secondary);
+  margin: 0 0 20px;
+}
+
+.otp-instruction strong {
+  color: var(--bp-text);
+  font-weight: 500;
+}
+
+/* 6 digit boxes */
+.otp-digits {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.otp-digit {
+  width: 44px !important;
+  height: 52px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: var(--bp-font-heading);
+  color: var(--bp-text);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-bottom: none !important;
+  border-radius: 8px;
+  padding: 0 !important;
+  caret-color: var(--bp-accent);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.otp-digit:focus {
+  outline: none;
+  border-color: var(--bp-accent) !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+.otp-digit-error {
+  border-color: rgba(220, 80, 80, 0.7) !important;
+}
+
+/* OTP error message */
+.otp-error-msg {
+  font-size: 12px;
+  font-weight: 300;
+  color: #e07070;
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+}
+
+/* Verify button */
+.otp-verify-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 26px;
+  border-radius: 100px;
+  border: 1px solid var(--bp-accent);
+  background: transparent;
+  color: var(--bp-accent);
+  font-family: var(--bp-font-body);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.otp-verify-btn:hover:not(:disabled) {
+  background-color: rgba(212, 175, 55, 0.1);
+}
+
+.otp-verify-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Hint shown near the submit button */
+.otp-hint-submit {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--bp-text-muted);
+  margin: 0 0 12px;
+  letter-spacing: 0.03em;
+}
+
+/* OTP status badge in summary panel */
+.summary-otp-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.summary-otp-status .k {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bp-text-muted);
+}
+
+.otp-status-badge {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.otp-status-badge.verified {
+  color: var(--bp-accent);
+}
+
+.otp-status-badge.pending {
+  color: var(--bp-text-muted);
+}
+
+/* Mobile: stack digit boxes nicely */
+@media (max-width: 560px) {
+  .otp-digits {
+    gap: 7px;
+  }
+  .otp-digit {
+    width: 38px !important;
+    height: 46px;
+    font-size: 18px;
+  }
+  .otp-email-row {
+    flex-wrap: wrap;
+  }
+  .otp-send-btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+}
