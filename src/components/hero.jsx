@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import './hero.css';
 import slide1 from '../assets/DSC_0056.jpg';
 import slide2 from '../assets/DSC_7866.png';
-import slide3 from '../assets/DSC00153.jpg';
-import slide4 from '../assets/DSC00144.jpg';
+import slide3 from '../assets/DSC02878.jpg';
+import slide4 from '../assets/DSC05561.jpg';
 
 // Define slides data mapping user's assets
 const slidesData = [

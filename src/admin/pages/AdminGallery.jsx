@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+
+import { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
 import {
   Upload,
   Trash2,
@@ -10,204 +11,312 @@ import {
   Plus,
   X,
   ArrowUpDown,
-  Sparkles
-} from 'lucide-react'
+  Pencil,
+} from 'lucide-react';
 
-const CATEGORIES = ['All', 'Portrait', 'Graduation', 'Event', 'Film']
+const API_URL = 'http://localhost:5500/api/v1/gallery';
+
+const DEFAULT_CATEGORIES = [
+  'Portrait',
+  'Graduation',
+  'Events',
+  'Film',
+];
+
+const getPhotoId = (photo) => photo._id;
+
+const getPhotoUrl = (photo) =>
+  photo.url || photo.src || photo.imageUrl || photo.image || '';
+
+const formatCategory = (value = '') =>
+  value.charAt(0).toUpperCase() + value.slice(1);
 
 export function AdminGallery({ token }) {
-  const [galleryItems, setGalleryItems] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [selectedCategory, setSelectedCategory] = useState('All')
-  const [sortBy, setSortBy] = useState('newest') // Auto-sort newest first
+  const [galleryItems, setGalleryItems] = useState([]);
+  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Upload Form State
-  const [showUploadModal, setShowUploadModal] = useState(false)
-  const [title, setTitle] = useState('')
-  const [subtitle, setSubtitle] = useState('')
-  const [category, setCategory] = useState('Portrait')
-  const [file, setFile] = useState(null)
-  const [previewUrl, setPreviewUrl] = useState('')
-  const [isUploading, setIsUploading] = useState(false)
-  const [uploadError, setUploadError] = useState(null)
-  const [successMessage, setSuccessMessage] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [sortBy, setSortBy] = useState('newest');
 
-  function loadCustomItems() {
-    try {
-      const stored = localStorage.getItem('ce_gallery_custom_items')
-      return stored ? JSON.parse(stored) : []
-    } catch {
-      return []
-    }
-  }
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [files, setFiles] = useState([]);
+  const [previewUrls, setPreviewUrls] = useState([]);
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('Events');
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
 
-  function saveCustomItems(items) {
-    try {
-      localStorage.setItem('ce_gallery_custom_items', JSON.stringify(items))
-      window.dispatchEvent(new CustomEvent('cinematic_gallery_updated'))
-    } catch {
-      // storage quota or fallback
-    }
-  }
+  const [editingPhoto, setEditingPhoto] = useState(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editCategory, setEditCategory] = useState('Events');
+  const [isSaving, setIsSaving] = useState(false);
 
-  async function fetchGallery() {
-    setLoading(true)
-    setError(null)
-    const localItems = loadCustomItems()
+  const [successMessage, setSuccessMessage] = useState(null);
 
-    try {
-      const res = await axios.get('http://localhost:5500/api/v1/gallery/', { timeout: 2500 })
-      const data = res.data?.data?.items ?? res.data?.data ?? res.data ?? []
-      const apiItems = Array.isArray(data) ? data : []
-      
-      const merged = [...localItems, ...apiItems]
-      setGalleryItems(sortItems(merged, sortBy))
-    } catch (err) {
-      // Fallback to local stored items
-      setGalleryItems(sortItems(localItems, sortBy))
-    } finally {
-      setLoading(false)
-    }
-  }
+  const authConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-  function sortItems(list, method) {
-    return [...list].sort((a, b) => {
+  const sortItems = useCallback((items, method) => {
+    return [...items].sort((a, b) => {
       if (method === 'newest') {
-        const timeA = new Date(a.createdAt || a.id || 0).getTime()
-        const timeB = new Date(b.createdAt || b.id || 0).getTime()
-        return timeB - timeA
+        return (
+          new Date(b.createdAt || 0).getTime() -
+          new Date(a.createdAt || 0).getTime()
+        );
       }
+
       if (method === 'oldest') {
-        const timeA = new Date(a.createdAt || a.id || 0).getTime()
-        const timeB = new Date(b.createdAt || b.id || 0).getTime()
-        return timeA - timeB
+        return (
+          new Date(a.createdAt || 0).getTime() -
+          new Date(b.createdAt || 0).getTime()
+        );
       }
+
       if (method === 'title') {
-        return (a.title || '').localeCompare(b.title || '')
+        return (a.title || '').localeCompare(b.title || '');
       }
-      return 0
-    })
-  }
 
-  useEffect(() => {
-    fetchGallery()
-  }, [])
+      return 0;
+    });
+  }, []);
 
-  useEffect(() => {
-    setGalleryItems((prev) => sortItems(prev, sortBy))
-  }, [sortBy])
+  const fetchGallery = useCallback(async () => {
+    setLoading(true);
+    setError(null);
 
-  function handleFileSelect(e) {
-    const selectedFile = e.target.files?.[0]
-    if (selectedFile) {
-      setFile(selectedFile)
-      // Read as base64 so it can be previewed and stored persistently
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result)
-      }
-      reader.readAsDataURL(selectedFile)
-    }
-  }
-
-  async function handleUpload(e) {
-    e.preventDefault()
-    if (!file && !previewUrl) {
-      setUploadError('Please select a photographic image file.')
-      return
-    }
-
-    setIsUploading(true)
-    setUploadError(null)
-
-    const now = new Date().toISOString()
-    const newItem = {
-      id: `custom-${Date.now()}`,
-      title: title.trim() || 'Cinematic Still',
-      subtitle: subtitle.trim() || `${category} Campaign`,
-      category,
-      focal: '50mm f/1.4',
-      cam: 'Cinematic Camera',
-      location: 'Cinematic Eye Studio',
-      createdAt: now,
-      src: previewUrl,
-      imageUrl: previewUrl,
-      url: previewUrl,
-      featured: true,
-    }
-
-    // Try sending to backend
     try {
-      const formData = new FormData()
-      formData.append('image', file)
-      formData.append('title', newItem.title)
-      formData.append('category', category)
-      formData.append('subtitle', newItem.subtitle)
+      const response = await axios.get(API_URL, {
+        timeout: 10000,
+      });
 
-      await axios.post('http://localhost:5500/api/v1/gallery/upload', formData, {
+      const data = response.data;
+
+      // API response: { photos, categories, page, pages, total }
+      const photos = Array.isArray(data.photos)
+        ? data.photos
+        : Array.isArray(data.data?.photos)
+          ? data.data.photos
+          : [];
+
+      setGalleryItems(sortItems(photos, sortBy));
+
+      if (Array.isArray(data.categories)) {
+        setCategories((previous) => [
+          ...new Set([...DEFAULT_CATEGORIES, ...data.categories]),
+        ]);
+      }
+    } catch (err) {
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          'Unable to load gallery.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, [sortBy, sortItems]);
+
+  useEffect(() => {
+    fetchGallery();
+  }, [fetchGallery]);
+
+  useEffect(() => {
+    setGalleryItems((previous) => sortItems(previous, sortBy));
+  }, [sortBy, sortItems]);
+
+  function showSuccess(message) {
+    setSuccessMessage(message);
+    window.setTimeout(() => setSuccessMessage(null), 3500);
+  }
+
+  function resetUploadForm() {
+    setFiles([]);
+    setPreviewUrls([]);
+    setTitle('');
+    setCategory('Events');
+    setUploadError(null);
+  }
+
+  function closeUploadModal() {
+    setShowUploadModal(false);
+    resetUploadForm();
+  }
+
+  function handleFileSelect(event) {
+    const selectedFiles = Array.from(event.target.files || []);
+
+    if (selectedFiles.length > 20) {
+      setUploadError('You can upload a maximum of 20 images at once.');
+      event.target.value = '';
+      return;
+    }
+
+    const invalidFile = selectedFiles.find(
+      (file) => !file.type.startsWith('image/')
+    );
+
+    if (invalidFile) {
+      setUploadError('Please select image files only.');
+      event.target.value = '';
+      return;
+    }
+
+    setUploadError(null);
+    setFiles(selectedFiles);
+
+    setPreviewUrls(
+      selectedFiles.map((file) => URL.createObjectURL(file))
+    );
+  }
+
+  async function handleUpload(event) {
+    event.preventDefault();
+
+    if (!token) {
+      setUploadError('Please log in with an admin account.');
+      return;
+    }
+
+    if (files.length === 0) {
+      setUploadError('Please select at least one image.');
+      return;
+    }
+
+    if (!category.trim()) {
+      setUploadError('Category is required.');
+      return;
+    }
+
+    setIsUploading(true);
+    setUploadError(null);
+
+    try {
+      const formData = new FormData();
+
+      // Must match upload.array("images", 20)
+      files.forEach((file) => {
+        formData.append('images', file);
+      });
+
+      formData.append('category', category.trim());
+
+      if (title.trim()) {
+        formData.append('title', title.trim());
+      }
+
+      await axios.post(API_URL, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
-        timeout: 3000,
-      })
+        timeout: 120000,
+      });
+
+      closeUploadModal();
+      await fetchGallery();
+
+      showSuccess(
+        `${files.length} image${files.length > 1 ? 's' : ''} uploaded successfully.`
+      );
     } catch (err) {
-      // API may be offline; save locally
+      setUploadError(
+        err.response?.data?.message ||
+          err.message ||
+          'Upload failed.'
+      );
+    } finally {
+      setIsUploading(false);
     }
-
-    // Save locally to persist & auto-sync across app
-    const existing = loadCustomItems()
-    const updated = [newItem, ...existing]
-    saveCustomItems(updated)
-
-    // Auto-sort list immediately with new item at the top
-    setGalleryItems((prev) => sortItems([newItem, ...prev], sortBy))
-    setShowUploadModal(false)
-    resetForm()
-    showSuccess('Photograph uploaded & auto-sorted to top of gallery!')
-    setIsUploading(false)
   }
 
-  function resetForm() {
-    setTitle('')
-    setSubtitle('')
-    setCategory('Portrait')
-    setFile(null)
-    setPreviewUrl('')
-    setUploadError(null)
+  function openEditModal(photo) {
+    setEditingPhoto(photo);
+    setEditTitle(photo.title || '');
+    setEditCategory(photo.category || 'Events');
   }
 
-  async function handleDelete(id) {
-    if (!window.confirm('Are you sure you want to delete this photograph from the gallery?')) return
+  function closeEditModal() {
+    setEditingPhoto(null);
+    setEditTitle('');
+    setEditCategory('Events');
+  }
+
+  async function handleUpdate(event) {
+    event.preventDefault();
+
+    if (!token || !editingPhoto) return;
+
+    setIsSaving(true);
 
     try {
-      await axios.delete(`http://localhost:5500/api/v1/gallery/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-        timeout: 3000,
-      })
+      const id = getPhotoId(editingPhoto);
+
+      // PATCH /api/v1/gallery/:id
+      await axios.patch(
+        `${API_URL}/${id}`,
+        {
+          title: editTitle.trim(),
+          category: editCategory,
+        },
+        authConfig
+      );
+
+      closeEditModal();
+      await fetchGallery();
+      showSuccess('Photograph updated successfully.');
     } catch (err) {
-      // continue
+      showSuccess(
+        err.response?.data?.message || 'Failed to update photograph.'
+      );
+    } finally {
+      setIsSaving(false);
     }
-
-    // Remove from local custom storage if present
-    const existing = loadCustomItems()
-    const updated = existing.filter((item) => (item._id ?? item.id) !== id)
-    saveCustomItems(updated)
-
-    setGalleryItems((prev) => prev.filter((item) => (item._id ?? item.id) !== id))
-    showSuccess('Photograph removed from gallery.')
   }
 
-  function showSuccess(msg) {
-    setSuccessMessage(msg)
-    setTimeout(() => setSuccessMessage(null), 3500)
+  async function handleDelete(photo) {
+    const id = getPhotoId(photo);
+
+    if (!id) {
+      showSuccess('Cannot delete: photo ID is missing.');
+      return;
+    }
+
+    if (
+      !window.confirm(
+        `Delete "${photo.title || 'this photograph'}" permanently?`
+      )
+    ) {
+      return;
+    }
+
+    try {
+      // DELETE /api/v1/gallery/:id
+      await axios.delete(`${API_URL}/${id}`, authConfig);
+
+      setGalleryItems((previous) =>
+        previous.filter((item) => getPhotoId(item) !== id)
+      );
+
+      showSuccess('Photograph deleted successfully.');
+    } catch (err) {
+      showSuccess(
+        err.response?.data?.message || 'Failed to delete photograph.'
+      );
+    }
   }
 
   const filteredItems = galleryItems.filter((item) => {
-    if (selectedCategory === 'All') return true
-    return (item.category || '').toLowerCase() === selectedCategory.toLowerCase()
-  })
+    if (selectedCategory === 'All') return true;
+
+    return (
+      (item.category || '').toLowerCase() ===
+      selectedCategory.toLowerCase()
+    );
+  });
 
   return (
     <>
@@ -216,16 +325,23 @@ export function AdminGallery({ token }) {
           <p className="admin-section-eyebrow">Portfolio & Showcase</p>
           <h2 className="admin-section-title">Gallery Manager</h2>
         </div>
-        <div style={{ display: 'flex', gap: '10px' }}>
+
+        <div style={{ display: 'flex', gap: 10 }}>
           <button
+            type="button"
             className="admin-btn admin-btn--outline admin-btn--sm"
             onClick={fetchGallery}
             disabled={loading}
             title="Refresh gallery"
           >
-            <RefreshCw size={14} className={loading ? 'admin-spin' : ''} />
+            <RefreshCw
+              size={14}
+              className={loading ? 'admin-spin' : ''}
+            />
           </button>
+
           <button
+            type="button"
             className="admin-btn admin-btn--primary admin-btn--sm"
             onClick={() => setShowUploadModal(true)}
           >
@@ -235,119 +351,168 @@ export function AdminGallery({ token }) {
       </div>
 
       {successMessage && (
-        <div className="admin-alert-banner">
+        <div className="admin-alert-banner" role="status">
           <CheckCircle size={15} color="#d4af37" />
           <span>{successMessage}</span>
         </div>
       )}
 
-      {/* Category Tabs & Auto-Sort Controls */}
       <div className="admin-controls-card">
         <div className="admin-filter-tabs">
-          {CATEGORIES.map((cat) => (
+          {['All', ...categories].map((cat) => (
             <button
+              type="button"
               key={cat}
-              className={`admin-filter-tab${selectedCategory === cat ? ' active' : ''}`}
+              className={`admin-filter-tab${
+                selectedCategory === cat ? ' active' : ''
+              }`}
               onClick={() => setSelectedCategory(cat)}
             >
               {cat}
               <span className="admin-filter-count">
                 {cat === 'All'
                   ? galleryItems.length
-                  : galleryItems.filter((i) => (i.category || '').toLowerCase() === cat.toLowerCase()).length}
+                  : galleryItems.filter(
+                      (item) =>
+                        (item.category || '').toLowerCase() ===
+                        cat.toLowerCase()
+                    ).length}
               </span>
             </button>
           ))}
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '11px', textTransform: 'uppercase', color: '#5c5852', letterSpacing: '0.1em' }}>
-            <ArrowUpDown size={12} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-            Auto-Sort:
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span
+            style={{
+              fontSize: 11,
+              textTransform: 'uppercase',
+              color: '#5c5852',
+              letterSpacing: '0.1em',
+            }}
+          >
+            <ArrowUpDown
+              size={12}
+              style={{ verticalAlign: 'middle', marginRight: 4 }}
+            />
+            Sort:
           </span>
+
           <select
             className="admin-select"
-            style={{ width: 'auto', padding: '6px 10px', fontSize: '12px' }}
+            style={{ width: 'auto', padding: '6px 10px', fontSize: 12 }}
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
+            onChange={(event) => setSortBy(event.target.value)}
           >
-            <option value="newest">Newest First (Default)</option>
+            <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
-            <option value="title">Title Alphabetical</option>
+            <option value="title">Title A–Z</option>
           </select>
         </div>
       </div>
 
-      {/* Gallery Grid */}
       {loading ? (
         <div className="admin-spinner-wrap">
           <div className="admin-spinner" />
         </div>
       ) : error ? (
-        <div className="admin-error">
+        <div className="admin-error" role="alert">
           <AlertCircle size={36} className="admin-error__icon" />
           <p>{error}</p>
-          <button className="admin-btn admin-btn--outline" onClick={fetchGallery}>
+          <button
+            type="button"
+            className="admin-btn admin-btn--outline"
+            onClick={fetchGallery}
+          >
             <RefreshCw size={14} /> Retry
           </button>
         </div>
       ) : filteredItems.length === 0 ? (
         <div className="admin-empty-state">
           <Image size={48} className="admin-empty-icon" />
-          <h3>No gallery photographs found in {selectedCategory}</h3>
-          <p>New uploads will automatically appear at the top of the collection.</p>
+          <h3>No photographs found</h3>
+          <p>Upload photographs to add them to your collection.</p>
           <button
+            type="button"
             className="admin-btn admin-btn--primary"
-            style={{ marginTop: '16px' }}
+            style={{ marginTop: 16 }}
             onClick={() => setShowUploadModal(true)}
           >
-            <Upload size={14} /> Upload First Image
+            <Upload size={14} /> Upload Image
           </button>
         </div>
       ) : (
         <div className="admin-gallery-grid">
-          {filteredItems.map((item) => {
-            const id = item._id ?? item.id
-            const imgUrl = item.src || item.imageUrl || item.url || item.image || '/assets/DSC05561.jpg'
-            return (
-              <div key={id} className="admin-gallery-card">
-                <div className="admin-gallery-thumb-wrap">
-                  <img src={imgUrl} alt={item.title || 'Studio Work'} loading="lazy" />
-                  <span className="admin-gallery-category-badge">
-                    {item.category || 'Visual'}
-                  </span>
+          {filteredItems.map((item) => (
+            <div key={getPhotoId(item)} className="admin-gallery-card">
+              <div className="admin-gallery-thumb-wrap">
+                <img
+                  src={getPhotoUrl(item)}
+                  alt={item.title || 'Gallery photograph'}
+                  loading="lazy"
+                />
+
+                <span className="admin-gallery-category-badge">
+                  {formatCategory(item.category || 'Visual')}
+                </span>
+
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 10,
+                    right: 10,
+                    display: 'flex',
+                    gap: 6,
+                  }}
+                >
                   <button
+                    type="button"
                     className="admin-gallery-delete-btn"
-                    title="Delete item"
-                    onClick={() => handleDelete(id)}
+                    title="Edit photograph"
+                    aria-label="Edit photograph"
+                    onClick={() => openEditModal(item)}
+                  >
+                    <Pencil size={15} />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="admin-gallery-delete-btn"
+                    title="Delete photograph"
+                    aria-label="Delete photograph"
+                    onClick={() => handleDelete(item)}
                   >
                     <Trash2 size={15} />
                   </button>
                 </div>
-                <div className="admin-gallery-card-body">
-                  <h4 className="admin-gallery-card-title">{item.title || 'Untitled Work'}</h4>
-                  <span className="admin-gallery-card-date">
-                    {item.createdAt ? new Date(item.createdAt).toLocaleDateString() : 'Active'}
-                  </span>
-                </div>
               </div>
-            )
-          })}
+
+              <div className="admin-gallery-card-body">
+                <h4 className="admin-gallery-card-title">
+                  {item.title || 'Untitled Work'}
+                </h4>
+                <span className="admin-gallery-card-date">
+                  {item.createdAt
+                    ? new Date(item.createdAt).toLocaleDateString()
+                    : 'Active'}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
-      {/* Upload Modal */}
+      {/* Upload modal */}
       {showUploadModal && (
         <div className="admin-modal-overlay">
           <div className="admin-modal-card admin-modal-card--lg">
             <div className="admin-modal-header">
               <h3>Upload Gallery Media</h3>
               <button
+                type="button"
                 className="admin-close-btn"
-                onClick={() => {
-                  setShowUploadModal(false)
-                  resetForm()
-                }}
+                onClick={closeUploadModal}
+                aria-label="Close upload modal"
               >
                 <X size={18} />
               </button>
@@ -355,71 +520,76 @@ export function AdminGallery({ token }) {
 
             <form onSubmit={handleUpload}>
               {uploadError && (
-                <div className="admin-form-error">
+                <div className="admin-form-error" role="alert">
                   <AlertCircle size={14} /> {uploadError}
                 </div>
               )}
 
               <div className="admin-form-group">
-                <label className="admin-label">Image File</label>
-                <div className="admin-dropzone">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileSelect}
-                    id="gallery-file-input"
-                    className="admin-file-hidden"
-                  />
-                  <label htmlFor="gallery-file-input" className="admin-dropzone-label">
-                    {previewUrl ? (
-                      <div className="admin-dropzone-preview">
-                        <img src={previewUrl} alt="Preview" />
-                        <span>Click to choose different image</span>
-                      </div>
-                    ) : (
-                      <div className="admin-dropzone-placeholder">
-                        <Upload size={32} />
-                        <p>Click or drag to select photo</p>
-                        <span>JPG, PNG, WEBP high-resolution</span>
-                      </div>
-                    )}
-                  </label>
+                <label className="admin-label" htmlFor="gallery-files">
+                  Images (up to 20)
+                </label>
+
+                <input
+                  id="gallery-files"
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  className="admin-input"
+                  onChange={handleFileSelect}
+                />
+
+                {files.length > 0 && (
+                  <p>{files.length} image(s) selected</p>
+                )}
+
+                <div className="admin-upload-previews">
+                  {previewUrls.map((url, index) => (
+                    <img
+                      key={url}
+                      src={url}
+                      alt={`Selected preview ${index + 1}`}
+                      style={{
+                        width: 80,
+                        height: 80,
+                        objectFit: 'cover',
+                        margin: 4,
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
 
               <div className="admin-form-group">
-                <label className="admin-label">Title / Caption</label>
+                <label className="admin-label" htmlFor="gallery-title">
+                  Title / Caption
+                </label>
                 <input
+                  id="gallery-title"
                   type="text"
                   className="admin-input"
-                  placeholder="e.g. Golden Hour Fashion Study"
+                  placeholder="e.g. Graduation Day"
                   value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  onChange={(event) => setTitle(event.target.value)}
                 />
               </div>
 
               <div className="admin-form-group">
-                <label className="admin-label">Subtitle / Sub-theme</label>
-                <input
-                  type="text"
-                  className="admin-input"
-                  placeholder="e.g. High Contrast Editorial Film"
-                  value={subtitle}
-                  onChange={(e) => setSubtitle(e.target.value)}
-                />
-              </div>
-
-              <div className="admin-form-group">
-                <label className="admin-label">Category</label>
+                <label className="admin-label" htmlFor="gallery-category">
+                  Category
+                </label>
                 <select
+                  id="gallery-category"
                   className="admin-select"
                   value={category}
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={(event) => setCategory(event.target.value)}
+                  required
                 >
-                  <option value="Portrait">Portrait</option>
-                  <option value="Film">Film</option>
-                  <option value="Graduation">Graduation</option>
-                  <option value="Event">Event</option>
+                  {[...new Set([...categories, category])].map((cat) => (
+                    <option key={cat} value={cat}>
+                      {formatCategory(cat)}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -427,13 +597,12 @@ export function AdminGallery({ token }) {
                 <button
                   type="button"
                   className="admin-btn admin-btn--outline"
-                  onClick={() => {
-                    setShowUploadModal(false)
-                    resetForm()
-                  }}
+                  onClick={closeUploadModal}
+                  disabled={isUploading}
                 >
                   Cancel
                 </button>
+
                 <button
                   type="submit"
                   className="admin-btn admin-btn--primary"
@@ -441,11 +610,12 @@ export function AdminGallery({ token }) {
                 >
                   {isUploading ? (
                     <>
-                      <RefreshCw size={14} className="admin-spin" /> Uploading & Auto-sorting...
+                      <RefreshCw size={14} className="admin-spin" />
+                      Uploading...
                     </>
                   ) : (
                     <>
-                      <Upload size={14} /> Complete Upload
+                      <Upload size={14} /> Upload Images
                     </>
                   )}
                 </button>
@@ -454,6 +624,80 @@ export function AdminGallery({ token }) {
           </div>
         </div>
       )}
+
+      {/* Edit modal */}
+      {editingPhoto && (
+        <div className="admin-modal-overlay">
+          <div className="admin-modal-card">
+            <div className="admin-modal-header">
+              <h3>Edit Photograph</h3>
+              <button
+                type="button"
+                className="admin-close-btn"
+                onClick={closeEditModal}
+                aria-label="Close edit modal"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <form onSubmit={handleUpdate}>
+              <div className="admin-form-group">
+                <label className="admin-label" htmlFor="edit-photo-title">
+                  Title
+                </label>
+                <input
+                  id="edit-photo-title"
+                  type="text"
+                  className="admin-input"
+                  value={editTitle}
+                  onChange={(event) => setEditTitle(event.target.value)}
+                />
+              </div>
+
+              <div className="admin-form-group">
+                <label className="admin-label" htmlFor="edit-photo-category">
+                  Category
+                </label>
+                <select
+                  id="edit-photo-category"
+                  className="admin-select"
+                  value={editCategory}
+                  onChange={(event) => setEditCategory(event.target.value)}
+                  required
+                >
+                  {[...new Set([...categories, editCategory])].map((cat) => (
+                    <option key={cat} value={cat}>
+                      {formatCategory(cat)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="admin-modal-actions">
+                <button
+                  type="button"
+                  className="admin-btn admin-btn--outline"
+                  onClick={closeEditModal}
+                  disabled={isSaving}
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className="admin-btn admin-btn--primary"
+                  disabled={isSaving}
+                >
+                  {isSaving ? 'Saving...' : 'Save Changes'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
-  )
+  );
 }
+
+export default AdminGallery;

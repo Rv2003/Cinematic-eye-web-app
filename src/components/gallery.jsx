@@ -1,292 +1,363 @@
+
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import './gallery.css';
 
-// Automatically import all images from src/assets using Vite's glob import
-const assetModules = import.meta.glob('../assets/*.{jpg,jpeg,png,webp,avif}', {
-  eager: true,
-  import: 'default',
-});
+const API_URL = 'http://localhost:5500/api/v1/gallery';
 
-// Editorial project metadata tailored for Cinematic Eye assets
-const CURATED_PROJECTS = {
-  'DSC_0056': {
-    title: 'CHASING LIGHT',
-    category: 'Narrative Short',
-    year: '2026',
-    sizeClass: 'grid-item-tall',
-    description:
-      'An intimate character study exploring visual loneliness, illuminated exclusively by natural ambient light leaks and street lamps.',
-  },
-  'DSC_7866': {
-    title: 'SILENT VOWS',
-    category: 'Editorial Campaign',
-    year: '2025',
-    sizeClass: 'grid-item-wide',
-    description:
-      'A high-fashion cinematic campaign investigating form, shadow, and minimal structural design in abandoned architecture.',
-  },
-  'DSC00144': {
-    title: 'ETHEREAL SHADOWS',
-    category: 'Studio Portrait',
-    year: '2026',
-    sizeClass: 'grid-item-compact',
-    description:
-      'A high-contrast chiaroscuro portrait series capturing contemplative stillness and sculptural light play.',
-  },
-  'DSC00153': {
-    title: 'VIVID NOIR',
-    category: 'Cinematic Film',
-    year: '2026',
-    sizeClass: 'grid-item-compact',
-    description:
-      'Exploration of rich cinematic tones, dynamic movement, and evocative human expression under theatrical lighting.',
-  },
-  'DSC02878': {
-    title: 'KINETIC DRIFT',
-    category: 'Fashion Editorial',
-    year: '2025',
-    sizeClass: 'grid-item-compact',
-    description:
-      'Fluid textures in motion, capturing the raw synergy between contemporary tailoring and spontaneous gesture.',
-  },
-  'DSC05561': {
-    title: 'ANALOG REFLECTIONS',
-    category: 'Documentary Short',
-    year: '2025',
-    sizeClass: 'grid-item-wide',
-    description:
-      'A quiet visual poem observing fleeting urban vignettes, nostalgic color palettes, and reflective surfaces.',
-  },
-  'DSC_9597': {
-    title: 'ECHOES OF DUST',
-    category: 'Experimental Film',
-    year: '2026',
-    sizeClass: 'grid-item-tall',
-    description:
-      'A sensory audio-visual exploration of dry landscapes, wind textures, and geological time scales in the high desert.',
-  },
-};
+function getPhotoTitle(photo) {
+  if (photo.title?.trim()) return photo.title.trim();
 
-// Rhythmic size class cadence to ensure 12-column grid rows always balance evenly
-const SIZE_CYCLE = [
-  'grid-item-tall',    // span 5
-  'grid-item-wide',    // span 7 (5 + 7 = 12)
-  'grid-item-compact', // span 4
-  'grid-item-compact', // span 4
-  'grid-item-compact', // span 4 (4 + 4 + 4 = 12)
-  'grid-item-wide',    // span 7
-  'grid-item-tall',    // span 5 (7 + 5 = 12)
-];
-
-/**
- * Automatically load and assemble all photography pictures from the assets folder
- */
-function loadAssetsGallery() {
-  const list = [];
-  let index = 0;
-
-  for (const [path, url] of Object.entries(assetModules)) {
-    const filename = path.split('/').pop() || '';
-    const nameWithoutExt = filename.replace(/\.[^/.]+$/, '');
-
-    // Skip non-gallery UI / branding assets
-    if (/^(hero|hero_bg|react|vite|logo|banner)/i.test(filename)) {
-      continue;
-    }
-
-    const curated = CURATED_PROJECTS[nameWithoutExt] || {};
-    const fallbackTitle = nameWithoutExt.replace(/[-_]/g, ' ').toUpperCase();
-    const fallbackSize = SIZE_CYCLE[index % SIZE_CYCLE.length];
-
-    list.push({
-      id: nameWithoutExt,
-      filename,
-      image: url,
-      title: curated.title || fallbackTitle,
-      category: curated.category || 'Curated Portfolio',
-      year: curated.year || '2026',
-      sizeClass: curated.sizeClass || fallbackSize,
-      description:
-        curated.description ||
-        'An artistic exploration of cinematic light, atmosphere, and visual narrative craft.',
-    });
-
-    index++;
-  }
-
-  return list;
+  return photo.category
+    ? `${photo.category.charAt(0).toUpperCase()}${photo.category.slice(1)}`
+    : 'Untitled photograph';
 }
 
-const DEFAULT_PROJECTS = loadAssetsGallery();
+function formatCategory(category = '') {
+  return category
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
 
 export function Gallery() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [photos, setPhotos] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [activePhoto, setActivePhoto] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  const projects = useMemo(() => DEFAULT_PROJECTS, []);
-
-  const openLightbox = (project) => {
-    setActiveProject(project);
-  };
-
-  const closeLightbox = () => {
-    setActiveProject(null);
-  };
-
-  const activeIndex = useMemo(() => {
-    if (!activeProject) return -1;
-    return projects.findIndex((p) => p.id === activeProject.id);
-  }, [activeProject, projects]);
-
-  const navigateLightbox = useCallback(
-    (direction) => {
-      if (activeIndex === -1 || projects.length === 0) return;
-      const nextIndex = (activeIndex + direction + projects.length) % projects.length;
-      setActiveProject(projects[nextIndex]);
-    },
-    [activeIndex, projects]
-  );
-
-  // Keyboard navigation
+  // Fetch every page provided by the API.
   useEffect(() => {
-    if (!activeProject) return;
+    const controller = new AbortController();
 
-    const onKey = (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') navigateLightbox(1);
-      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    async function loadGallery() {
+      setLoading(true);
+      setError('');
+
+      try {
+        const firstResponse = await fetch(
+          `${API_URL}?page=1`,
+          { signal: controller.signal }
+        );
+
+        if (!firstResponse.ok) {
+          throw new Error(`Gallery request failed (${firstResponse.status})`);
+        }
+
+        const firstData = await firstResponse.json();
+        const allPhotos = [...(firstData.photos ?? [])];
+        const totalPages = Math.max(1, Number(firstData.pages) || 1);
+
+        for (let page = 2; page <= totalPages; page++) {
+          const response = await fetch(
+            `${API_URL}?page=${page}`,
+            { signal: controller.signal }
+          );
+
+          if (!response.ok) {
+            throw new Error(`Could not load gallery page ${page}`);
+          }
+
+          const data = await response.json();
+          allPhotos.push(...(data.photos ?? []));
+        }
+
+        // Newest photographs first.
+        allPhotos.sort(
+          (a, b) =>
+            new Date(b.createdAt || 0).getTime() -
+            new Date(a.createdAt || 0).getTime()
+        );
+
+        setPhotos(allPhotos);
+        setCategories(
+          [...new Set([
+            ...(firstData.categories ?? []),
+            ...allPhotos.map((photo) => photo.category).filter(Boolean),
+          ])].sort((a, b) => a.localeCompare(b))
+        );
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          setError(err.message || 'Unable to load the gallery.');
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadGallery();
+
+    return () => controller.abort();
+  }, []);
+
+  const filteredPhotos = useMemo(() => {
+    if (activeCategory === 'all') return photos;
+
+    return photos.filter(
+      (photo) =>
+        photo.category?.toLowerCase() === activeCategory.toLowerCase()
+    );
+  }, [photos, activeCategory]);
+
+  const openPhoto = (photo) => setActivePhoto(photo);
+  const closePhoto = () => setActivePhoto(null);
+
+  const navigatePhoto = useCallback((direction) => {
+    setActivePhoto((current) => {
+      if (!current || filteredPhotos.length < 2) return current;
+
+      const index = filteredPhotos.findIndex(
+        (photo) => photo._id === current._id
+      );
+
+      if (index < 0) return current;
+
+      const nextIndex =
+        (index + direction + filteredPhotos.length) %
+        filteredPhotos.length;
+
+      return filteredPhotos[nextIndex];
+    });
+  }, [filteredPhotos]);
+
+  // Lightbox keyboard controls.
+  useEffect(() => {
+    if (!activePhoto) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') closePhoto();
+      if (event.key === 'ArrowRight') navigatePhoto(1);
+      if (event.key === 'ArrowLeft') navigatePhoto(-1);
     };
 
-    const originalOverflow = document.body.style.overflow;
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKey);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = originalOverflow;
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [activeProject, navigateLightbox]);
+  }, [activePhoto, navigatePhoto]);
 
   return (
     <section id="work" className="gallery-section">
       <div className="gallery-inner">
-        {/* Section Header Title */}
-        <div className="gallery-header">
-          <span className="gallery-eyebrow">
-            <span className="eyebrow-dot"></span>
-            Curated Portfolio
-          </span>
-          <h2 className="gallery-title">
-            SELECTED <span className="gold-accent">WORKS</span>
-          </h2>
-          <p className="gallery-subtitle">
-            A showcase of raw emotion, meticulous lighting, and deliberate storytelling across cinema and editorial photography.
-          </p>
-        </div>
 
-        {/* Edge-to-Edge 12-Column Editorial Grid */}
-        <div className="gallery-grid">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className={`gallery-item ${project.sizeClass}`}
-              onClick={() => openLightbox(project)}
+        <header className="gallery-header">
+          <div className="gallery-heading-copy">
+            <span className="gallery-eyebrow">
+              <span className="eyebrow-dot" />
+              A selection of our work
+            </span>
+
+            <h2 className="gallery-title" id="gallery-title">
+              Stories in <span className="gold-accent">frames.</span>
+            </h2>
+
+            <p className="gallery-subtitle">
+              Photography and film shaped by real moments,
+              thoughtful light, and a cinematic point of view.
+            </p>
+          </div>
+
+          <div className="gallery-count">
+            <span>{String(filteredPhotos.length).padStart(2, '0')}</span>
+            {' '}photographs
+          </div>
+        </header>
+
+        {!loading && !error && categories.length > 0 && (
+          <nav className="gallery-filters" aria-label="Filter photographs">
+            <button
+              type="button"
+              className={`gallery-filter ${
+                activeCategory === 'all' ? 'is-active' : ''
+              }`}
+              onClick={() => setActiveCategory('all')}
             >
-              <div className="gallery-image-wrapper">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="gallery-img"
-                  loading="lazy"
-                />
-                <div className="gallery-item-overlay"></div>
+              All work
+            </button>
 
-                {/* Visual Arrow CTA on Hover */}
-                <div className="gallery-hover-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </div>
+            {categories.map((category) => (
+              <button
+                type="button"
+                key={category}
+                className={`gallery-filter ${
+                  activeCategory === category ? 'is-active' : ''
+                }`}
+                onClick={() => setActiveCategory(category)}
+              >
+                {formatCategory(category)}
+              </button>
+            ))}
+          </nav>
+        )}
 
-                {/* Hover Meta Information Card */}
-                <div className="gallery-item-meta">
-                  <div className="meta-top">
-                    <span className="meta-category">{project.category}</span>
-                    <span className="meta-year">{project.year}</span>
-                  </div>
-                  <h3 className="meta-title">{project.title}</h3>
+        {loading && (
+          <div className="gallery-status" role="status">
+            <span className="gallery-spinner" />
+            <p>Developing the collection...</p>
+          </div>
+        )}
+
+        {!loading && error && (
+          <div className="gallery-status gallery-error" role="alert">
+            <p>We couldn't load the photographs.</p>
+            <span>{error}</span>
+            <button
+              type="button"
+              className="gallery-retry"
+              onClick={() => window.location.reload()}
+            >
+              Try again
+            </button>
+          </div>
+        )}
+
+        {!loading && !error && filteredPhotos.length === 0 && (
+          <div className="gallery-status">
+            <p>
+              {photos.length === 0
+                ? 'The collection is being prepared.'
+                : 'No photographs in this category yet.'}
+            </p>
+          </div>
+        )}
+
+        {!loading && !error && filteredPhotos.length > 0 && (
+          <div className="gallery-grid" aria-labelledby="gallery-title">
+            {filteredPhotos.map((photo, index) => (
+              <button
+                type="button"
+                key={photo._id}
+                className={`gallery-item gallery-item--${index % 6}`}
+                onClick={() => openPhoto(photo)}
+                aria-label={`View ${getPhotoTitle(photo)}`}
+              >
+                <div className="gallery-image-wrapper">
+                  <img
+                    src={photo.url}
+                    alt={getPhotoTitle(photo)}
+                    className="gallery-img"
+                    loading={index < 4 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+
+                  <span
+                    className="gallery-item-overlay"
+                    aria-hidden="true"
+                  />
+
+                  <span className="gallery-photo-info">
+                    <span className="gallery-photo-category">
+                      {formatCategory(photo.category)}
+                    </span>
+                    <span className="gallery-photo-title">
+                      {getPhotoTitle(photo)}
+                    </span>
+                  </span>
+
+                  <span className="gallery-hover-icon" aria-hidden="true">
+                    ↗
+                  </span>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Lightbox / Modal View */}
-      {activeProject && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
+      {activePhoto && (
+        <div
+          className="lightbox-overlay"
+          onClick={closePhoto}
+          role="presentation"
+        >
           <button
+            type="button"
             className="lightbox-close-btn"
-            onClick={closeLightbox}
-            aria-label="Close modal"
+            onClick={closePhoto}
+            aria-label="Close viewer"
           >
-            <span className="close-line top-line"></span>
-            <span className="close-line bot-line"></span>
+            ×
           </button>
 
-          {/* Navigation Arrows */}
-          {projects.length > 1 && (
+          {filteredPhotos.length > 1 && (
             <>
               <button
                 type="button"
                 className="lightbox-nav-btn lightbox-nav-btn--prev"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigateLightbox(-1);
+                onClick={(event) => {
+                  event.stopPropagation();
+                  navigatePhoto(-1);
                 }}
                 aria-label="Previous photograph"
               >
-                &#8249;
+                ‹
               </button>
+
               <button
                 type="button"
                 className="lightbox-nav-btn lightbox-nav-btn--next"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigateLightbox(1);
+                onClick={(event) => {
+                  event.stopPropagation();
+                  navigatePhoto(1);
                 }}
                 aria-label="Next photograph"
               >
-                &#8250;
+                ›
               </button>
             </>
           )}
 
           <div
             className="lightbox-content-wrapper"
-            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={getPhotoTitle(activePhoto)}
+            onClick={(event) => event.stopPropagation()}
           >
             <div className="lightbox-image-column">
               <img
-                src={activeProject.image}
-                alt={activeProject.title}
+                src={activePhoto.url}
+                alt={getPhotoTitle(activePhoto)}
                 className="lightbox-img"
               />
             </div>
 
             <div className="lightbox-details-column">
-              <div className="lightbox-details-inner">
-                <span className="lightbox-category">{activeProject.category}</span>
-                <h3 className="lightbox-title">{activeProject.title}</h3>
-                <span className="lightbox-year">Release: {activeProject.year}</span>
-                <div className="lightbox-divider"></div>
-                <p className="lightbox-description">{activeProject.description}</p>
-                <div className="lightbox-cta-wrap">
-                  <button className="lightbox-cta-btn" onClick={closeLightbox}>
-                    <span>Close Viewer</span>
-                  </button>
-                </div>
-              </div>
+              <span className="lightbox-category">
+                {formatCategory(activePhoto.category)}
+              </span>
+
+              <h3 className="lightbox-title">
+                {getPhotoTitle(activePhoto)}
+              </h3>
+
+              {activePhoto.createdAt && (
+                <span className="lightbox-year">
+                  {new Date(activePhoto.createdAt).getFullYear()}
+                </span>
+              )}
+
+              <div className="lightbox-divider" />
+
+              <p className="lightbox-description">
+                {activePhoto.title?.trim()
+                  ? activePhoto.title
+                  : 'A moment captured through a cinematic eye.'}
+              </p>
+
+              <button
+                type="button"
+                className="lightbox-cta-btn"
+                onClick={closePhoto}
+              >
+                Close viewer
+              </button>
             </div>
           </div>
         </div>
