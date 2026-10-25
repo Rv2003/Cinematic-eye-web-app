@@ -178,6 +178,7 @@ export function Booking({ token, user, authLoading }) {
           WhatsappNumber: form.phone,
           Location: form.location,
           Description: form.notes,
+          status:"pending",
         },
         config
       );

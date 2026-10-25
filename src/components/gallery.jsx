@@ -1,340 +1,293 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import './gallery.css';
 
-const DEFAULT_CLOUD_NAME = 'kongszas';
-const DEFAULT_TAG = 'gallery';
-const FADE_MS = 600;
+// Automatically import all images from src/assets using Vite's glob import
+const assetModules = import.meta.glob('../assets/*.{jpg,jpeg,png,webp,avif}', {
+  eager: true,
+  import: 'default',
+});
 
-const rand = (n) => Math.floor(Math.random() * n);
+// Editorial project metadata tailored for Cinematic Eye assets
+const CURATED_PROJECTS = {
+  'DSC_0056': {
+    title: 'CHASING LIGHT',
+    category: 'Narrative Short',
+    year: '2026',
+    sizeClass: 'grid-item-tall',
+    description:
+      'An intimate character study exploring visual loneliness, illuminated exclusively by natural ambient light leaks and street lamps.',
+  },
+  'DSC_7866': {
+    title: 'SILENT VOWS',
+    category: 'Editorial Campaign',
+    year: '2025',
+    sizeClass: 'grid-item-wide',
+    description:
+      'A high-fashion cinematic campaign investigating form, shadow, and minimal structural design in abandoned architecture.',
+  },
+  'DSC00144': {
+    title: 'ETHEREAL SHADOWS',
+    category: 'Studio Portrait',
+    year: '2026',
+    sizeClass: 'grid-item-compact',
+    description:
+      'A high-contrast chiaroscuro portrait series capturing contemplative stillness and sculptural light play.',
+  },
+  'DSC00153': {
+    title: 'VIVID NOIR',
+    category: 'Cinematic Film',
+    year: '2026',
+    sizeClass: 'grid-item-compact',
+    description:
+      'Exploration of rich cinematic tones, dynamic movement, and evocative human expression under theatrical lighting.',
+  },
+  'DSC02878': {
+    title: 'KINETIC DRIFT',
+    category: 'Fashion Editorial',
+    year: '2025',
+    sizeClass: 'grid-item-compact',
+    description:
+      'Fluid textures in motion, capturing the raw synergy between contemporary tailoring and spontaneous gesture.',
+  },
+  'DSC05561': {
+    title: 'ANALOG REFLECTIONS',
+    category: 'Documentary Short',
+    year: '2025',
+    sizeClass: 'grid-item-wide',
+    description:
+      'A quiet visual poem observing fleeting urban vignettes, nostalgic color palettes, and reflective surfaces.',
+  },
+  'DSC_9597': {
+    title: 'ECHOES OF DUST',
+    category: 'Experimental Film',
+    year: '2026',
+    sizeClass: 'grid-item-tall',
+    description:
+      'A sensory audio-visual exploration of dry landscapes, wind textures, and geological time scales in the high desert.',
+  },
+};
 
-export function Gallery({
-  cloudName = DEFAULT_CLOUD_NAME,
-  tag = DEFAULT_TAG,
-  slots = 8,
-  animated = true,
-  interval = 3500,
-  imageWidth = 900,
-}) {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [slotMap, setSlotMap] = useState([]);
-  const [fading, setFading] = useState({});
-  const [lightbox, setLightbox] = useState(null);
+// Rhythmic size class cadence to ensure 12-column grid rows always balance evenly
+const SIZE_CYCLE = [
+  'grid-item-tall',    // span 5
+  'grid-item-wide',    // span 7 (5 + 7 = 12)
+  'grid-item-compact', // span 4
+  'grid-item-compact', // span 4
+  'grid-item-compact', // span 4 (4 + 4 + 4 = 12)
+  'grid-item-wide',    // span 7
+  'grid-item-tall',    // span 5 (7 + 5 = 12)
+];
 
-  const slotMapRef = useRef([]);
-  const touchX = useRef(null);
-  slotMapRef.current = slotMap;
+/**
+ * Automatically load and assemble all photography pictures from the assets folder
+ */
+function loadAssetsGallery() {
+  const list = [];
+  let index = 0;
 
-  /* ----------------------------------------------------
-     Fetch and Auto-Sort Images from Cloudinary
-     Auto-sorts by created_at (newest uploaded images first)
-     ---------------------------------------------------- */
-  useEffect(() => {
-    const controller = new AbortController();
+  for (const [path, url] of Object.entries(assetModules)) {
+    const filename = path.split('/').pop() || '';
+    const nameWithoutExt = filename.replace(/\.[^/.]+$/, '');
 
-    async function loadImages() {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const url = `https://res.cloudinary.com/${cloudName}/image/list/${tag}.json`;
-        const res = await fetch(url, { signal: controller.signal });
-
-        if (!res.ok) {
-          throw new Error(`Failed to load gallery (status ${res.status})`);
-        }
-
-        const data = await res.json();
-        const rawList = Array.isArray(data) ? data : data.resources || [];
-
-        // Auto-sort: Newest uploaded images automatically come first
-        const sorted = [...rawList].sort((a, b) => {
-          const timeA = new Date(a.created_at || 0).getTime();
-          const timeB = new Date(b.created_at || 0).getTime();
-          return timeB - timeA;
-        });
-
-        setImages(sorted);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.error('Gallery loading error:', err);
-          setError(err.message);
-        }
-      } finally {
-        if (!controller.signal.aborted) setLoading(false);
-      }
+    // Skip non-gallery UI / branding assets
+    if (/^(hero|hero_bg|react|vite|logo|banner)/i.test(filename)) {
+      continue;
     }
 
-    loadImages();
-    return () => controller.abort();
-  }, [cloudName, tag]);
+    const curated = CURATED_PROJECTS[nameWithoutExt] || {};
+    const fallbackTitle = nameWithoutExt.replace(/[-_]/g, ' ').toUpperCase();
+    const fallbackSize = SIZE_CYCLE[index % SIZE_CYCLE.length];
 
-  const thumbUrl = useCallback(
-    (img) =>
-      `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto,c_limit,w_${imageWidth}/${img.public_id}.${img.format}`,
-    [cloudName, imageWidth]
-  );
+    list.push({
+      id: nameWithoutExt,
+      filename,
+      image: url,
+      title: curated.title || fallbackTitle,
+      category: curated.category || 'Curated Portfolio',
+      year: curated.year || '2026',
+      sizeClass: curated.sizeClass || fallbackSize,
+      description:
+        curated.description ||
+        'An artistic exploration of cinematic light, atmosphere, and visual narrative craft.',
+    });
 
-  const fullUrl = useCallback(
-    (img) =>
-      `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto,c_limit,w_1920/${img.public_id}.${img.format}`,
-    [cloudName]
-  );
+    index++;
+  }
 
-  /* ----------------------------------------------------
-     Assign Slots for the Cinematic Grid
-     ---------------------------------------------------- */
-  const tileCount = animated ? Math.min(slots, images.length) : images.length;
+  return list;
+}
 
-  useEffect(() => {
-    setSlotMap(Array.from({ length: tileCount }, (_, i) => i));
-    setFading({});
-  }, [images, tileCount]);
+const DEFAULT_PROJECTS = loadAssetsGallery();
 
-  /* ----------------------------------------------------
-     Cinematic Dissolve Transition (Auto-Rotate Tiles)
-     ---------------------------------------------------- */
-  const paused = lightbox !== null;
+export function Gallery() {
+  const [activeProject, setActiveProject] = useState(null);
 
-  useEffect(() => {
-    if (!animated || images.length <= tileCount || tileCount < 1 || paused) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const projects = useMemo(() => DEFAULT_PROJECTS, []);
 
-    let timeout;
-    let cancelled = false;
+  const openLightbox = (project) => {
+    setActiveProject(project);
+  };
 
-    const runSwap = (tile, toIndex) => {
-      setFading((f) => ({ ...f, [tile]: true }));
+  const closeLightbox = () => {
+    setActiveProject(null);
+  };
 
-      setTimeout(() => {
-        if (cancelled) return;
-        setSlotMap((prev) => {
-          const next = [...prev];
-          next[tile] = toIndex;
-          return next;
-        });
-        setFading((f) => {
-          const next = { ...f };
-          delete next[tile];
-          return next;
-        });
-      }, FADE_MS);
-    };
+  const activeIndex = useMemo(() => {
+    if (!activeProject) return -1;
+    return projects.findIndex((p) => p.id === activeProject.id);
+  }, [activeProject, projects]);
 
-    const tick = () => {
-      if (document.hidden) return;
-      const current = slotMapRef.current;
-      if (!current.length) return;
-
-      const tile = rand(current.length);
-      const offscreen = [];
-      images.forEach((_, i) => {
-        if (!current.includes(i)) offscreen.push(i);
-      });
-
-      if (offscreen.length > 0) {
-        const to = offscreen[rand(offscreen.length)];
-        const preload = new Image();
-        preload.onload = () => {
-          if (!cancelled) runSwap(tile, to);
-        };
-        preload.src = thumbUrl(images[to]);
-      }
-    };
-
-    const schedule = () => {
-      timeout = setTimeout(() => {
-        tick();
-        schedule();
-      }, interval);
-    };
-
-    schedule();
-
-    return () => {
-      cancelled = true;
-      clearTimeout(timeout);
-    };
-  }, [animated, images, tileCount, paused, interval, thumbUrl]);
-
-  /* ----------------------------------------------------
-     Lightbox Navigation
-     ---------------------------------------------------- */
-  const go = useCallback(
-    (dir) => {
-      setLightbox((i) => (i + dir + images.length) % images.length);
+  const navigateLightbox = useCallback(
+    (direction) => {
+      if (activeIndex === -1 || projects.length === 0) return;
+      const nextIndex = (activeIndex + direction + projects.length) % projects.length;
+      setActiveProject(projects[nextIndex]);
     },
-    [images.length]
+    [activeIndex, projects]
   );
 
+  // Keyboard navigation
   useEffect(() => {
-    if (lightbox === null) return;
+    if (!activeProject) return;
 
     const onKey = (e) => {
-      if (e.key === 'Escape') setLightbox(null);
-      if (e.key === 'ArrowRight') go(1);
-      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
     };
 
-    const prevOverflow = document.body.style.overflow;
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKey);
 
     return () => {
       window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = prevOverflow;
+      document.body.style.overflow = originalOverflow;
     };
-  }, [lightbox, go]);
-
-  const onTouchEnd = (e) => {
-    if (touchX.current === null) return;
-    const dx = e.changedTouches[0].clientX - touchX.current;
-    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
-    touchX.current = null;
-  };
-
-  /* Helper to auto-assign cinematic shape based on aspect ratio */
-  const getShape = (img, index) => {
-    if (!img) return '';
-    const ratio = img.width && img.height ? img.width / img.height : 1.33;
-    if (ratio > 1.45 && index % 3 === 0) return ' gx-tile--wide';
-    if (ratio < 0.85) return ' gx-tile--tall';
-    if (index % 5 === 0) return ' gx-tile--wide';
-    return '';
-  };
+  }, [activeProject, navigateLightbox]);
 
   return (
-    <section id="work" className="gx-section">
-      <div className="gx-container">
-        {/* Cinematic Clean Header */}
-        <div className="gx-header">
-          <span className="gx-eyebrow">
-            <span className="gx-eyebrow-dot" />
+    <section id="work" className="gallery-section">
+      <div className="gallery-inner">
+        {/* Section Header Title */}
+        <div className="gallery-header">
+          <span className="gallery-eyebrow">
+            <span className="eyebrow-dot"></span>
             Curated Portfolio
           </span>
-          <h2 className="gx-title">
-            SELECTED <span className="gx-accent">WORKS</span>
+          <h2 className="gallery-title">
+            SELECTED <span className="gold-accent">WORKS</span>
           </h2>
-          <div className="gx-divider" />
+          <p className="gallery-subtitle">
+            A showcase of raw emotion, meticulous lighting, and deliberate storytelling across cinema and editorial photography.
+          </p>
         </div>
 
-        {/* Loading / Error States */}
-        {loading && (
-          <div className="gx-status">
-            <span className="gx-spinner" />
-          </div>
-        )}
+        {/* Edge-to-Edge 12-Column Editorial Grid */}
+        <div className="gallery-grid">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className={`gallery-item ${project.sizeClass}`}
+              onClick={() => openLightbox(project)}
+            >
+              <div className="gallery-image-wrapper">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="gallery-img"
+                  loading="lazy"
+                />
+                <div className="gallery-item-overlay"></div>
 
-        {error && (
-          <div className="gx-status gx-status--error">
-            <p>Unable to load gallery stream: {error}</p>
-          </div>
-        )}
+                {/* Visual Arrow CTA on Hover */}
+                <div className="gallery-hover-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
 
-        {/* Gallery Grid */}
-        {!loading && !error && images.length > 0 && (
-          <div className="gx-grid">
-            {slotMap.map((imgIndex, tile) => {
-              const img = images[imgIndex];
-              if (!img) return null;
-              const shapeClass = getShape(img, tile);
-
-              return (
-                <button
-                  key={tile}
-                  type="button"
-                  className={`gx-tile${shapeClass}`}
-                  onClick={() => setLightbox(imgIndex)}
-                  aria-label="View photograph"
-                >
-                  <img
-                    className={`gx-img${fading[tile] ? ' is-fading' : ''}`}
-                    src={thumbUrl(img)}
-                    alt={img.public_id.split('/').pop()}
-                    loading="lazy"
-                    draggable="false"
-                  />
-                  <div className="gx-tile-overlay" />
-                  <span className="gx-tile-indicator">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                    </svg>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        )}
-
-        {!loading && !error && images.length === 0 && (
-          <div className="gx-status">
-            <p>No photographs found for tag "{tag}".</p>
-          </div>
-        )}
+                {/* Hover Meta Information Card */}
+                <div className="gallery-item-meta">
+                  <div className="meta-top">
+                    <span className="meta-category">{project.category}</span>
+                    <span className="meta-year">{project.year}</span>
+                  </div>
+                  <h3 className="meta-title">{project.title}</h3>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Cinematic Clean Lightbox */}
-      {lightbox !== null && images[lightbox] && (
-        <div
-          className="gx-lightbox"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setLightbox(null)}
-          onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
-          onTouchEnd={onTouchEnd}
-        >
-          <div className="gx-lightbox-matte gx-lightbox-matte--top" />
-          <div className="gx-lightbox-matte gx-lightbox-matte--bottom" />
-
-          {/* Close button */}
+      {/* Lightbox / Modal View */}
+      {activeProject && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
           <button
-            type="button"
-            className="gx-btn gx-btn--close"
-            onClick={() => setLightbox(null)}
-            aria-label="Close"
+            className="lightbox-close-btn"
+            onClick={closeLightbox}
+            aria-label="Close modal"
           >
-            <span>&times;</span>
+            <span className="close-line top-line"></span>
+            <span className="close-line bot-line"></span>
           </button>
 
-          {/* Navigation Controls */}
-          <button
-            type="button"
-            className="gx-btn gx-btn--prev"
-            onClick={(e) => {
-              e.stopPropagation();
-              go(-1);
-            }}
-            aria-label="Previous"
+          {/* Navigation Arrows */}
+          {projects.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="lightbox-nav-btn lightbox-nav-btn--prev"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateLightbox(-1);
+                }}
+                aria-label="Previous photograph"
+              >
+                &#8249;
+              </button>
+              <button
+                type="button"
+                className="lightbox-nav-btn lightbox-nav-btn--next"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateLightbox(1);
+                }}
+                aria-label="Next photograph"
+              >
+                &#8250;
+              </button>
+            </>
+          )}
+
+          <div
+            className="lightbox-content-wrapper"
+            onClick={(e) => e.stopPropagation()}
           >
-            &#8249;
-          </button>
+            <div className="lightbox-image-column">
+              <img
+                src={activeProject.image}
+                alt={activeProject.title}
+                className="lightbox-img"
+              />
+            </div>
 
-          <div className="gx-lightbox-stage" onClick={(e) => e.stopPropagation()}>
-            <img
-              key={lightbox}
-              className="gx-lightbox-img"
-              src={fullUrl(images[lightbox])}
-              alt={images[lightbox].public_id.split('/').pop()}
-            />
-          </div>
-
-          <button
-            type="button"
-            className="gx-btn gx-btn--next"
-            onClick={(e) => {
-              e.stopPropagation();
-              go(1);
-            }}
-            aria-label="Next"
-          >
-            &#8250;
-          </button>
-
-          <div className="gx-lightbox-footer">
-            <span className="gx-count">
-              {String(lightbox + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
-            </span>
+            <div className="lightbox-details-column">
+              <div className="lightbox-details-inner">
+                <span className="lightbox-category">{activeProject.category}</span>
+                <h3 className="lightbox-title">{activeProject.title}</h3>
+                <span className="lightbox-year">Release: {activeProject.year}</span>
+                <div className="lightbox-divider"></div>
+                <p className="lightbox-description">{activeProject.description}</p>
+                <div className="lightbox-cta-wrap">
+                  <button className="lightbox-cta-btn" onClick={closeLightbox}>
+                    <span>Close Viewer</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

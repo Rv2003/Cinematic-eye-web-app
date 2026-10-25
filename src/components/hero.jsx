@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import './hero.css';
 import slide1 from '../assets/DSC_0056.jpg';
 import slide2 from '../assets/DSC_7866.png';
-import slide3 from '../assets/DSC_9597.jpg';
+import slide3 from '../assets/DSC00153.jpg';
+import slide4 from '../assets/DSC00144.jpg';
 
 // Define slides data mapping user's assets
 const slidesData = [
@@ -12,7 +13,7 @@ const slidesData = [
     title: "SHAPING THE ART",
     subtitle: "OF VISUAL STORIES",
     description: "We combine cutting-edge cinematography with deeply human narratives. Crafting raw, emotive, and high-fashion cinematic experiences.",
-    image: slide1,
+    image: slide3,
   },
   {
     id: 2,
@@ -28,7 +29,15 @@ const slidesData = [
     title: "INTO THE DEPTHS",
     subtitle: "OF SILENT CINEMA",
     description: "A visual study on minimal sound design, atmospheric depth, and immersive environmental cinematography in raw wilderness.",
-    image: slide3,
+    image: slide1,
+  },
+  {
+    id: 4,
+    eyebrow: "Documentaries & Soundscapes",
+    title: "INTO THE DEPTHS",
+    subtitle: "OF SILENT CINEMA",
+    description: "A visual study on minimal sound design, atmospheric depth, and immersive environmental cinematography in raw wilderness.",
+    image: slide4,
   }
 ];
 

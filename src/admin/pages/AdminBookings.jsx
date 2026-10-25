@@ -94,7 +94,7 @@ export function AdminBookings({ token }) {
 
   async function handleDelete(bookingId) {
     try {
-      await axios.delete(`http://localhost:5500/api/v1/booking/${bookingId}`, {
+      await axios.delete(`http://localhost:5500/api/v1/booking/${bookingId}/delete`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       setBookings((prev) => prev.filter((b) => (b._id ?? b.id) !== bookingId))

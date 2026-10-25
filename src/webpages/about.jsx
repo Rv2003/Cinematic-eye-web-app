@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router';
 import { Navbar } from '../components/navbar';
 import { Footer } from '../components/footer';
+import { FacebookFeed } from '../components/facebook';
 import {
   Film,
   Camera,
@@ -242,6 +243,14 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
           </div>
         </div>
       </section>
+
+      {/* ----------------------------------------------------
+          FACEBOOK COMMUNITY DISPATCH EMBED
+          ---------------------------------------------------- */}
+      <FacebookFeed
+        pageUrl="https://www.facebook.com/facebook"
+        pageName="Cinematic Eye Studio"
+      />
 
       {/* ----------------------------------------------------
           CALL TO ACTION (BOOKING INVITATION)
