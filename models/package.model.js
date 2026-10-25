@@ -27,7 +27,11 @@ user:{
         required:true,
         index:true
     }
- 
+, status: {
+    type: String,
+    enum: ["pending", "confirmed", "completed", "cancelled"],
+    default: "pending",
+  }
 
    
 })

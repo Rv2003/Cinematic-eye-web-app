@@ -7,6 +7,7 @@ import connectToDatabase from './database/mongodb.js'
 import cookieParser from 'cookie-parser'
 import errorMiddleware from './middleware/error.middleware.js'
 import otpRoutes from '../backend/routes/otp.routes.js'
+import galleryRouter from '../backend/routes/gallery.routes.js'
 import cors from "cors";
 
 
@@ -14,7 +15,7 @@ import cors from "cors";
 const app = express()
 app.use(cors({
   origin: "http://localhost:5173",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS","PATCH"],
   credentials: true
 }));
 app.options("*", cors());
@@ -26,14 +27,14 @@ app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/booking', bookingRouter)
 app.use("/api/v1/otp", otpRoutes);
+app.use("/api/v1/gallery", galleryRouter);
 app.use(errorMiddleware)
 
 app.get('/', (req, res) => {
-    res.send('pakaya')
+
 })
 
 app.listen(PORT,async () => {
-    console.log('pakaay');
     await connectToDatabase()
 })
 
