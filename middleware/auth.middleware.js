@@ -55,4 +55,22 @@ console.log("Current time:", new Date());
   }
 };
 
+
+export const isAdmin = async (req, res, next) => {
+  try {
+    // works whichever way your verifyToken attaches the user
+    const id = req.user?._id || req.user?.id || req.userId;
+    if (!id) return res.status(401).json({ message: "Not authenticated" });
+
+    const user = await User.findById(id).select("role");
+    if (!user || user.role !== "admin") {
+      return res.status(403).json({ message: "Admin access only" });
+    }
+
+    next();
+  } catch (err) {
+    res.status(500).json({ message: "Authorization failed" });
+  }
+};
+
 export default authorize;

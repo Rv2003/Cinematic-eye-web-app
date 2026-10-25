@@ -1,194 +1,96 @@
+import Photo from "../models/gallery.js";
+import cloudinary from "../config/cloudinary.js";
 
-import axios from "axios";
-
-const PAGE_SIZE = 12;
-const FACEBOOK_PAGE_LIMIT = 100;
-const MAX_PHOTOS = 1000;
-const CACHE_DURATION = 5 * 60 * 1000;
-
-let cachedPhotos = null;
-let cacheTime = 0;
-
-// Fetch all available Page photos from Facebook.
-const fetchFacebookPhotos = async () => {
-  const {
-    META_GRAPH_API_VERSION,
-    FACEBOOK_PAGE_ID,
-    FACEBOOK_PAGE_ACCESS_TOKEN,
-  } = process.env;
-
-  // Validate configuration.
-  if (
-    !META_GRAPH_API_VERSION ||
-    !FACEBOOK_PAGE_ID ||
-    !FACEBOOK_PAGE_ACCESS_TOKEN
-  ) {
-    throw new Error(
-      "Missing environment variables: META_GRAPH_API_VERSION, FACEBOOK_PAGE_ID, or FACEBOOK_PAGE_ACCESS_TOKEN."
-    );
-  }
-
-  const url =
-    `https://graph.facebook.com/${META_GRAPH_API_VERSION}/` +
-    `${FACEBOOK_PAGE_ID}/photos`;
-
-  const photos = [];
-  const seenIds = new Set();
-  let after = null;
-
-  while (photos.length < MAX_PHOTOS) {
-    const params = {
-      fields: "id,name,images,link,created_time",
-      limit: Math.min(
-        FACEBOOK_PAGE_LIMIT,
-        MAX_PHOTOS - photos.length
-      ),
-      access_token: FACEBOOK_PAGE_ACCESS_TOKEN,
-    };
-
-    if (after) {
-      params.after = after;
-    }
-
-    const response = await axios.get(url, {
-      params,
-      timeout: 20000,
-    });
-
-    const pagePhotos = response.data?.data ?? [];
-
-    for (const photo of pagePhotos) {
-      if (!photo.id || seenIds.has(photo.id)) {
-        continue;
-      }
-
-      const imageUrl = photo.images?.[0]?.source;
-
-      if (!imageUrl) {
-        continue;
-      }
-
-      seenIds.add(photo.id);
-
-      photos.push({
-        id: photo.id,
-        caption: photo.name ?? "",
-        imageUrl,
-        facebookUrl: photo.link ?? "",
-        createdAt: photo.created_time ?? null,
-      });
-
-      if (photos.length >= MAX_PHOTOS) {
-        break;
-      }
-    }
-
-    const nextAfter = response.data?.paging?.cursors?.after;
-
-    if (
-      !response.data?.paging?.next ||
-      !nextAfter ||
-      nextAfter === after ||
-      pagePhotos.length === 0
-    ) {
-      break;
-    }
-
-    after = nextAfter;
-  }
-
-  // Sort by creation date, newest first.
-  photos.sort((a, b) => {
-    const dateA = Date.parse(a.createdAt ?? "") || 0;
-    const dateB = Date.parse(b.createdAt ?? "") || 0;
-
-    return dateB - dateA;
+const uploadToCloudinary = (buffer) =>
+  new Promise((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream({ folder: "cinematic-eye/gallery", tags: ["gallery"] }, (err, result) =>
+        err ? reject(err) : resolve(result)
+      )
+      .end(buffer);
   });
 
-  return photos;
-};
-
-// GET /api/v1/gallery/
-export const getFacebookGallery = async (req, res) => {
+// GET /api/v1/gallery?featured=true&category=wedding&page=1&limit=24
+export const getPhotos = async (req, res) => {
   try {
-    const parsedCursor = Number(req.query.cursor ?? 0);
+    const { category, featured } = req.query;
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
+    const limit = Math.min(parseInt(req.query.limit) || 24, 100);
 
-    if (
-      !Number.isSafeInteger(parsedCursor) ||
-      parsedCursor < 0
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "Cursor must be a non-negative integer.",
-      });
-    }
+    const filter = {};
+    if (category && category !== "all") filter.category = category.toLowerCase();
+    if (featured === "true") filter.featured = true;
 
-    // Refresh the cache when missing or expired.
-    if (
-      !cachedPhotos ||
-      Date.now() - cacheTime >= CACHE_DURATION
-    ) {
-      console.log("Fetching photos from Facebook Graph API...");
+    const [photos, total, categories] = await Promise.all([
+      Photo.find(filter)
+        .sort({ order: 1, createdAt: -1 })
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .lean(),
+      Photo.countDocuments(filter),
+      Photo.distinct("category"), // for the filter pills
+    ]);
 
-      const latestPhotos = await fetchFacebookPhotos();
-
-      cachedPhotos = latestPhotos;
-      cacheTime = Date.now();
-
-      console.log(
-        `Facebook gallery updated. Photos found: ${cachedPhotos.length}`
-      );
-    }
-
-    const cursor = parsedCursor;
-
-    const photos = cachedPhotos.slice(
-      cursor,
-      cursor + PAGE_SIZE
-    );
-
-    const nextPosition = cursor + photos.length;
-    const hasMore = nextPosition < cachedPhotos.length;
-
-    return res.status(200).json({
-      success: true,
-      count: cachedPhotos.length,
-      photos,
-      nextCursor: hasMore ? String(nextPosition) : null,
-      hasMore,
-    });
-  } catch (error) {
-    // Log details on the backend, but never log the access token.
-    console.error("Facebook Gallery Error:", {
-      message: error.message,
-      status: error.response?.status,
-      facebookError: error.response?.data?.error
-        ? {
-            message: error.response.data.error.message,
-            type: error.response.data.error.type,
-            code: error.response.data.error.code,
-            subcode: error.response.data.error.error_subcode,
-          }
-        : undefined,
-    });
-
-    return res.status(502).json({
-      success: false,
-      message:
-        error.response?.data?.error?.message ||
-        error.message ||
-        "Failed to fetch Facebook gallery photos.",
-    });
+    res.json({ photos, categories, page, pages: Math.ceil(total / limit), total });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to load gallery" });
   }
 };
 
-// Optional: clear the cached gallery when needed.
-export const clearGalleryCache = (req, res) => {
-  cachedPhotos = null;
-  cacheTime = 0;
+// POST /api/v1/gallery  (admin) — multipart: images[], category, title?, featured?
+export const uploadPhotos = async (req, res) => {
+  try {
+    if (!req.files?.length) return res.status(400).json({ message: "No images uploaded" });
+    const { category, title = "", featured = "false" } = req.body;
+    if (!category) return res.status(400).json({ message: "Category is required" });
 
-  return res.status(200).json({
-    success: true,
-    message: "Gallery cache cleared.",
-  });
+    const results = await Promise.all(req.files.map((f) => uploadToCloudinary(f.buffer)));
+
+    const docs = await Photo.insertMany(
+      results.map((r) => ({
+        title,
+        category,
+        featured: featured === "true",
+        url: r.secure_url,
+        publicId: r.public_id,
+        width: r.width,
+        height: r.height,
+      }))
+    );
+
+    res.status(201).json({ photos: docs });
+  } catch (err) {
+    res.status(500).json({ message: "Upload failed" });
+  }
+};
+
+// PATCH /api/v1/gallery/:id  (admin)
+export const updatePhoto = async (req, res) => {
+  try {
+    const { title, category, featured, order } = req.body;
+    const photo = await Photo.findByIdAndUpdate(
+      req.params.id,
+      { $set: { title, category, featured, order } },
+      { new: true, runValidators: true, omitUndefined: true }
+    );
+    if (!photo) return res.status(404).json({ message: "Photo not found" });
+    res.json(photo);
+  } catch (err) {
+    res.status(500).json({ message: "Update failed" });
+  }
+};
+
+// DELETE /api/v1/gallery/:id  (admin)
+export const deletePhoto = async (req, res) => {
+  try {
+    const photo = await Photo.findById(req.params.id);
+    if (!photo) return res.status(404).json({ message: "Photo not found" });
+
+    await cloudinary.uploader.destroy(photo.publicId);
+    await photo.deleteOne();
+
+    res.json({ message: "Deleted" });
+  } catch (err) {
+    res.status(500).json({ message: "Delete failed" });
+  }
 };

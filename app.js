@@ -7,7 +7,7 @@ import connectToDatabase from './database/mongodb.js'
 import cookieParser from 'cookie-parser'
 import errorMiddleware from './middleware/error.middleware.js'
 import otpRoutes from '../backend/routes/otp.routes.js'
-import galleryRouter from '../backend/routes/gallery.routes.js'
+import galleryRoutes from "./routes/gallery.routes.js";
 import cors from "cors";
 
 
@@ -27,9 +27,8 @@ app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/booking', bookingRouter)
 app.use("/api/v1/otp", otpRoutes);
-app.use("/api/v1/gallery", galleryRouter);
 app.use(errorMiddleware)
-
+app.use("/api/v1/gallery", galleryRoutes);
 app.get('/', (req, res) => {
 
 })
