@@ -37,7 +37,7 @@ function App() {
         );
         setToken(response.data.data.token);
         setUser(response.data.data.user);
-      } catch (error) {
+      } catch {
         // No valid refresh cookie — genuinely logged out
         setToken(null);
         setUser(null);
@@ -129,7 +129,7 @@ function App() {
             <Route index element={<AdminDashboard token={token} />} />
             <Route path="bookings" element={<AdminBookings token={token} />} />
             <Route path="gallery" element={<AdminGallery token={token} />} />
-            <Route path="team" element={<AdminTeam />} />
+            <Route path="team" element={<AdminTeam token={token} />} />
             <Route
               path="settings"
               element={

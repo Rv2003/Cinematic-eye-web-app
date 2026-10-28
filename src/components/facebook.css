@@ -219,8 +219,8 @@
 .chrome-dot.green { background-color: #27c93f; }
 
 .chrome-title {
-  font-family: monospace;
-  font-size: 11.5px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
   color: var(--text-muted, #5c5852);
   letter-spacing: 0.04em;
 }

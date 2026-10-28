@@ -19,7 +19,7 @@ import './about.css';
 
 // Studio assets
 import founderImg from '../assets/DSC05561.jpg';
-import studioImg1 from '../assets/DSC_7866.png';
+import studioImg1 from '../assets/4.png';
 import studioImg2 from '../assets/DSC_9597.jpg';
 
 export function About({ user, setUser, token, setToken, authLoading, setAuthLoading }) {

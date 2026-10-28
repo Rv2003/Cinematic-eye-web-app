@@ -376,7 +376,7 @@ export function Profile({ token,setToken,setUser }) {
         }
 
         .profile-title {
-          font-family: 'Cinzel', serif;
+          font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
           font-size: clamp(26px, 3.5vw, 36px);
           font-weight: 300;
           letter-spacing: 0.04em;
@@ -664,8 +664,9 @@ export function Profile({ token,setToken,setUser }) {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          font-family: monospace;
-          font-size: 12px;
+          font-family: var(--font-mono, 'Space Mono', monospace);
+          font-size: 11.5px;
+          letter-spacing: 0.04em;
           color: #a8a29e;
           background: rgba(255, 255, 255, 0.04);
           padding: 3px 8px;
@@ -700,7 +701,7 @@ export function Profile({ token,setToken,setUser }) {
         }
 
         .price-text {
-          font-family: 'Cinzel', serif;
+          font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
           font-weight: 600;
           color: #d4af37;
           font-size: 14px;
@@ -761,7 +762,7 @@ export function Profile({ token,setToken,setUser }) {
         }
 
         .card-session-type {
-          font-family: 'Cinzel', serif;
+          font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
           font-size: 18px;
           font-weight: 500;
           color: #f5f3ef;
@@ -823,7 +824,7 @@ export function Profile({ token,setToken,setUser }) {
         }
 
         .empty-title {
-          font-family: 'Cinzel', serif;
+          font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
           font-size: 20px;
           font-weight: 400;
           color: #f5f3ef;
@@ -874,7 +875,7 @@ export function Profile({ token,setToken,setUser }) {
         }
 
         .modal-title-wrap h3 {
-          font-family: 'Cinzel', serif;
+          font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
           font-size: 18px;
           margin: 0 0 4px;
           color: #f5f3ef;

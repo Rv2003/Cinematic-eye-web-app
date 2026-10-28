@@ -92,11 +92,11 @@
 }
 
 .about-hero-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: clamp(32px, 5.5vw, 64px);
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(42px, 6.5vw, 84px);
   font-weight: 300;
-  letter-spacing: 0.04em;
-  line-height: 1.15;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
   color: var(--text-primary, #f5f3ef);
   margin-bottom: 24px;
 }
@@ -158,11 +158,11 @@
 }
 
 .about-heading {
-  font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: clamp(24px, 3.2vw, 38px);
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(30px, 4vw, 52px);
   font-weight: 300;
-  letter-spacing: 0.03em;
-  line-height: 1.25;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
   color: var(--text-primary, #f5f3ef);
   margin-bottom: 20px;
 }
@@ -234,7 +234,7 @@
 }
 
 .badge-name {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
   font-size: 20px;
   color: var(--text-primary, #f5f3ef);
 }
@@ -271,13 +271,16 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 18px;
+  padding: 14px 20px;
   background: rgba(212, 175, 55, 0.06);
   border-left: 3px solid var(--accent, #d4af37);
   border-radius: 0 4px 4px 0;
-  font-size: 13.5px;
+  font-family: var(--font-editorial, 'Cormorant Garamond', Georgia, serif);
+  font-size: 16px;
+  font-style: italic;
   color: var(--text-primary, #f5f3ef);
   margin-top: 12px;
+  letter-spacing: 0.02em;
 }
 
 /* ----------------------------------------------------
@@ -326,9 +329,11 @@
 }
 
 .pillar-num {
-  font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: 24px;
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: 32px;
+  font-weight: 300;
   color: var(--text-muted, #5c5852);
+  font-style: italic;
 }
 
 .pillar-icon-wrap {
@@ -343,8 +348,10 @@
 }
 
 .pillar-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: 19px;
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   color: var(--text-primary, #f5f3ef);
   margin-bottom: 12px;
 }
@@ -378,10 +385,11 @@
 
 .stat-num {
   display: block;
-  font-family: var(--font-heading, 'Cinzel', serif);
-  font-size: clamp(32px, 3.5vw, 48px);
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(42px, 4.5vw, 64px);
   color: var(--accent, #d4af37);
   font-weight: 500;
+  letter-spacing: 0.01em;
   margin-bottom: 4px;
 }
 
@@ -467,7 +475,7 @@
 }
 
 .about-cta-title {
-  font-family: var(--font-heading, 'Cinzel', serif);
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
   font-size: clamp(28px, 4vw, 46px);
   font-weight: 300;
   margin: 16px 0 20px;

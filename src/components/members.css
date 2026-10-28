@@ -108,6 +108,18 @@
   transform-origin: left center;
 }
 
+.team__status {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 1.25rem;
+  color: var(--text-secondary, #9a9a9a);
+  font-size: 0.85rem;
+}
+
+.team__status--error {
+  color: #e6a19b;
+}
+
 /* ── Grid ──────────────────────────────────────────────────────────── */
 .team__grid {
   list-style: none;
@@ -133,12 +145,12 @@
 /* Sequence number */
 .team__card-num {
   display: block;
-  font-family: var(--font-heading);
-  font-size: 0.52rem;
-  letter-spacing: 0.26em;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--text-secondary, #9a9a9a);
-  opacity: 0.15;
+  color: var(--accent, #d4af37);
+  opacity: 0.35;
   margin-bottom: 0.4rem;
 }
 

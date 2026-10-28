@@ -8,7 +8,9 @@
   width: 100vw;
   height: 100vh;
   min-height: 600px;
-  background-color: var(--bg-primary);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.08), transparent 22%),
+    var(--bg-primary);
   overflow: hidden;
 }
 
@@ -82,15 +84,16 @@
   display: inline-flex;
   align-items: center;
   font-family: var(--font-heading);
-  font-size: 13px;
-  letter-spacing: 0.38em;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   color: var(--text-primary);
   text-decoration: none;
   margin-bottom: 16px;
 }
 
 .login-brand-logo .brand-light { font-weight: 300; opacity: 0.9; }
-.login-brand-logo .brand-bold  { font-weight: 700; }
+.login-brand-logo .brand-bold  { font-weight: 700; font-style: italic; color: var(--accent); }
 
 .login-brand-dot {
   display: inline-block;
@@ -104,13 +107,13 @@
 }
 
 .login-visual-tagline {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 300;
+  font-family: var(--font-editorial, 'Cormorant Garamond', Georgia, serif);
+  font-size: 16px;
+  font-weight: 400;
   font-style: italic;
-  color: var(--text-secondary);
-  letter-spacing: 0.04em;
-  max-width: 340px;
+  color: rgba(245, 243, 239, 0.85);
+  letter-spacing: 0.02em;
+  max-width: 360px;
   line-height: 1.7;
 }
 
@@ -148,7 +151,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-primary);
+  background: linear-gradient(180deg, rgba(9, 9, 9, 0.98), rgba(8, 8, 8, 0.96));
   padding: 48px 64px;
   height: 100%;
   overflow-y: auto;
@@ -167,15 +170,16 @@
   display: none;
   align-items: center;
   font-family: var(--font-heading);
-  font-size: 12px;
-  letter-spacing: 0.38em;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   color: var(--text-primary);
   text-decoration: none;
   margin-bottom: 40px;
 }
 
 .login-brand-mobile .brand-light { font-weight: 300; opacity: 0.9; }
-.login-brand-mobile .brand-bold  { font-weight: 700; }
+.login-brand-mobile .brand-bold  { font-weight: 700; font-style: italic; color: var(--accent); }
 
 /* Form Header */
 .login-form-header {
@@ -205,17 +209,18 @@
 
 .login-heading {
   font-family: var(--font-heading);
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(40px, 5vw, 60px);
   font-weight: 300;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.01em;
   color: var(--text-primary);
-  line-height: 1.15;
+  line-height: 1.1;
   margin-bottom: 14px;
 }
 
 .gold-accent {
   color: var(--accent);
   font-weight: 600;
+  font-style: italic;
 }
 
 .login-subtext {
@@ -273,16 +278,20 @@
 /* Underline-style input */
 .form-input {
   width: 100%;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.01);
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
   padding: 12px 0;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 300;
   color: var(--text-primary);
   outline: none;
-  transition: border-color 0.4s var(--transition);
+  transition: border-color 0.4s var(--transition), background-color 0.3s ease;
+}
+
+.form-input:hover {
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .form-input::placeholder {
@@ -292,6 +301,7 @@
 
 .form-input:focus {
   border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 var(--accent);
 }
 
 /* Custom Remember Me checkbox */
@@ -370,6 +380,7 @@
   overflow: hidden;
   z-index: 1;
   margin-top: 4px;
+  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.08);
   transition: transform 0.4s var(--transition),
               box-shadow 0.4s var(--transition),
               border-color 0.4s var(--transition),
@@ -488,6 +499,11 @@
 }
 
 .google-signin-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.google-signin-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.22);
   transform: translateY(-2px);
@@ -503,6 +519,19 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+
+.google-signin-btn > div {
+  width: 100%;
+}
+
+.google-signin-btn iframe {
+  min-height: 44px;
+  border-radius: 100px;
+}
+
+.login-form .google-signin-btn {
+  margin-top: 8px;
 }
 
 /* ==========================================================================

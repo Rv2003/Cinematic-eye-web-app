@@ -4,9 +4,9 @@ import { GoogleLogin } from '@react-oauth/google';
 //import{jwtDecode} from "jwt-decode"
 import "./login.css";
 import axios from "axios";
-import slide1 from "../assets/DSC_0056.jpg";
-import slide2 from "../assets/DSC_7866.png";
-import slide3 from "../assets/DSC_9597.jpg";
+import slide1 from "../assets/1.jpg";
+import slide2 from "../assets/2.jpg";
+import slide3 from "../assets/3.jpg";
 import { LoadingScreen } from "../components/loading";
 
 const slides = [slide1, slide2, slide3];
@@ -168,22 +168,29 @@ export function Login({user,setUser,token,setToken}) {
                 <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-           <GoogleLogin onSuccess={async (credentialResponse) => {
-  try {
-    const res = await axios.post(
-      'http://localhost:5500/api/v1/auth/google-signup',
-      { credential: credentialResponse.credential },
-      { withCredentials: true }
-    );
-    if (res.data.success) {
-      setUser(res.data.data.user.username);
-      setToken(res.data.data.token);
-      navigate('/');
-    }
-  } catch (error) {
-    console.error('Google sign-in failed:', error);
-  }
-}} />
+           <GoogleLogin
+             className="google-signin-btn"
+             text="continue_with"
+             size="large"
+             shape="pill"
+             theme="filled_black"
+             onSuccess={async (credentialResponse) => {
+               try {
+                 const res = await axios.post(
+                   'http://localhost:5500/api/v1/auth/google-signup',
+                   { credential: credentialResponse.credential },
+                   { withCredentials: true }
+                 );
+                 if (res.data.success) {
+                   setUser(res.data.data.user.username);
+                   setToken(res.data.data.token);
+                   navigate('/');
+                 }
+               } catch (error) {
+                 console.error('Google sign-in failed:', error);
+               }
+             }}
+           />
           </form>
 
           {/* Divider */}

@@ -12,8 +12,10 @@
   --bp-text-secondary: var(--text-secondary, #a8a29b);
   --bp-text-muted: var(--text-muted, #6b6660);
   --bp-accent: var(--accent, #d4af37);
-  --bp-font-heading: var(--font-heading, 'Playfair Display', serif);
-  --bp-font-body: var(--font-body, 'Jost', sans-serif);
+  --bp-font-heading: var(--font-heading, 'Cinzel', serif);
+  --bp-font-editorial: var(--font-editorial, 'Cormorant Garamond', Georgia, serif);
+  --bp-font-body: var(--font-body, 'Outfit', sans-serif);
+  --bp-font-mono: var(--font-mono, 'Space Mono', monospace);
   --bp-transition: var(--transition, cubic-bezier(0.25, 0.8, 0.25, 1));
 
   background-color: var(--bp-bg);
@@ -96,16 +98,17 @@
 .booking-title .title-line.thin {
   font-family: var(--bp-font-heading);
   font-weight: 300;
-  font-size: clamp(32px, 4.2vw, 52px);
-  letter-spacing: 0.1em;
+  font-size: clamp(40px, 5.2vw, 68px);
+  letter-spacing: 0.01em;
   color: var(--bp-text);
 }
 
 .booking-title .title-line.bold-accent {
   font-family: var(--bp-font-heading);
   font-weight: 600;
-  font-size: clamp(30px, 4vw, 48px);
-  letter-spacing: 0.08em;
+  font-size: clamp(38px, 5vw, 64px);
+  letter-spacing: 0.01em;
+  font-style: italic;
   color: var(--bp-accent);
 }
 
@@ -151,20 +154,24 @@
   gap: 6px;
   padding: 18px 26px;
   min-width: 168px;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   cursor: pointer;
-  transition: border-color 0.4s var(--bp-transition), background-color 0.4s var(--bp-transition);
+  backdrop-filter: blur(8px);
+  transition: all 0.35s var(--bp-transition);
 }
 
 .session-chip:hover {
-  border-color: rgba(212, 175, 55, 0.4);
+  border-color: rgba(212, 175, 55, 0.45);
+  background-color: rgba(212, 175, 55, 0.04);
+  transform: translateY(-2px);
 }
 
 .session-chip.active {
   border-color: var(--bp-accent);
-  background-color: rgba(212, 175, 55, 0.06);
+  background-color: rgba(212, 175, 55, 0.08);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15), inset 0 0 0 1px rgba(212, 175, 55, 0.3);
 }
 
 .session-chip .chip-name {
@@ -637,22 +644,23 @@
   height: 52px;
   text-align: center;
   font-size: 22px;
-  font-weight: 500;
-  font-family: var(--bp-font-heading);
+  font-weight: 600;
+  font-family: var(--bp-font-mono, monospace);
+  letter-spacing: -0.02em;
   color: var(--bp-text);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.16) !important;
-  border-bottom: none !important;
   border-radius: 8px;
   padding: 0 !important;
   caret-color: var(--bp-accent);
-  transition: border-color 0.25s, box-shadow 0.25s;
+  transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
 }
 
 .otp-digit:focus {
   outline: none;
+  background: rgba(212, 175, 55, 0.04);
   border-color: var(--bp-accent) !important;
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18), 0 0 12px rgba(212, 175, 55, 0.2);
 }
 
 .otp-digit-error {

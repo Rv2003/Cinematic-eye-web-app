@@ -1,19 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./members.css";
-import project3 from '../assets/DSC05561.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Replace with your real team. Put photos in /public/team/ and reference them as "/team/name.jpg".
-// Leave `photo` empty and the card shows the member's initials instead.
-const TEAM = [
-  { id: 1, name: "Rusiru",      role: "Founder & Lead Photographer", photo: project3, instagram: "https://instagram.com/" },
-  { id: 2, name: "Team Member", role: "Cinematographer",             photo: "", instagram: "" },
-  { id: 3, name: "Team Member", role: "Editor & Colourist",          photo: "", instagram: "" },
-  { id: 4, name: "Team Member", role: "Studio Coordinator",          photo: "", instagram: "" },
-];
+const MEMBERS_API_URL = "http://localhost:5500/api/v1/members";
 
 const initials = (name) =>
   name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
@@ -32,7 +24,10 @@ function splitToChars(el) {
   return Array.from(el.querySelectorAll(".team__char"));
 }
 
-export function TeamSection({ members = TEAM }) {
+export function TeamSection() {
+  const [members, setMembers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
   const sectionRef    = useRef(null);
   const spotlightRef  = useRef(null);
   const scanLineRef   = useRef(null);
@@ -46,6 +41,58 @@ export function TeamSection({ members = TEAM }) {
   const cardsRef      = useRef([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadMembers() {
+      try {
+        const response = await fetch(MEMBERS_API_URL, {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(`Members request failed (${response.status})`);
+        }
+
+        const payload = await response.json();
+        const records = Array.isArray(payload)
+          ? payload
+          : Array.isArray(payload.members)
+            ? payload.members
+            : Array.isArray(payload.data)
+              ? payload.data
+              : Array.isArray(payload.data?.members)
+                ? payload.data.members
+                : null;
+
+        if (!records) {
+          throw new Error("Members response did not contain a member list.");
+        }
+
+        setMembers(
+          records.map((member, index) => ({
+            ...member,
+            id: member.id ?? member._id ?? index,
+            photo: member.photo ?? member.image ?? "",
+          }))
+        );
+      } catch (requestError) {
+        if (requestError.name !== "AbortError") {
+          setError(requestError.message || "Unable to load team members.");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadMembers();
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    if (isLoading) return;
+
     const section   = sectionRef.current;
     const evCleans  = []; // event-listener cleanup queue
 
@@ -355,7 +402,7 @@ export function TeamSection({ members = TEAM }) {
       ctx.revert();
       evCleans.forEach((fn) => fn());
     };
-  }, []);
+  }, [isLoading]);
 
   /* ─── JSX ──────────────────────────────────────────────────────── */
   return (
@@ -384,8 +431,18 @@ export function TeamSection({ members = TEAM }) {
         <div ref={dividerRef} className="team__divider" aria-hidden="true" />
       </div>
 
-      <ul ref={gridRef} className="team__grid">
-        {members.map((m, i) => (
+        {isLoading && (
+          <p className="team__status" role="status">Loading our crew...</p>
+        )}
+        {!isLoading && error && (
+          <p className="team__status team__status--error" role="alert">{error}</p>
+        )}
+        {!isLoading && !error && members.length === 0 && (
+          <p className="team__status">Team details are coming soon.</p>
+        )}
+
+        <ul ref={gridRef} className="team__grid">
+          {members.map((m, i) => (
           <li
             key={m.id}
             className="team__card"
@@ -398,16 +455,16 @@ export function TeamSection({ members = TEAM }) {
 
             <div className="team__photo">
               {m.photo ? (
-                <img src={m.photo} alt={m.name} loading="lazy" />
+                <img src={m.photo} alt={m.name || "Team member"} loading="lazy" />
               ) : (
                 <span className="team__initials" aria-hidden="true">
-                  {initials(m.name)}
+                  {initials(m.name || "Team member")}
                 </span>
               )}
               <div className="team__photo-overlay" aria-hidden="true" />
             </div>
 
-            <h3 className="team__name">{m.name}</h3>
+            <h3 className="team__name">{m.name || "Team member"}</h3>
             <p className="team__role">{m.role}</p>
 
             {m.instagram && (

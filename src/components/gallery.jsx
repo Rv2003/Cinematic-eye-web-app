@@ -148,10 +148,7 @@ export function Gallery() {
 
         <header className="gallery-header">
           <div className="gallery-heading-copy">
-            <span className="gallery-eyebrow">
-              <span className="eyebrow-dot" />
-              A selection of our work
-            </span>
+          
 
             <h2 className="gallery-title" id="gallery-title">
               Stories in <span className="gold-accent">frames.</span>
@@ -163,10 +160,7 @@ export function Gallery() {
             </p>
           </div>
 
-          <div className="gallery-count">
-            <span>{String(filteredPhotos.length).padStart(2, '0')}</span>
-            {' '}photographs
-          </div>
+         
         </header>
 
         {!loading && !error && categories.length > 0 && (
