@@ -8,13 +8,14 @@ import cookieParser from 'cookie-parser'
 import errorMiddleware from './middleware/error.middleware.js'
 import otpRoutes from '../backend/routes/otp.routes.js'
 import galleryRoutes from "./routes/gallery.routes.js";
+import memberRoutes from "./routes/member.routes.js";
 import cors from "cors";
 
 
 
 const app = express()
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "http://localhost:5174",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS","PATCH"],
   credentials: true
 }));
@@ -27,8 +28,10 @@ app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/booking', bookingRouter)
 app.use("/api/v1/otp", otpRoutes);
+app.use("/api/v1/members", memberRoutes);
 app.use(errorMiddleware)
 app.use("/api/v1/gallery", galleryRoutes);
+app.use("/api/v1/member",memberRoutes)
 app.get('/', (req, res) => {
 
 })

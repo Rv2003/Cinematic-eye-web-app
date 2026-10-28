@@ -5,8 +5,15 @@ export const createBooking=async(req,res,next)=>{
 
 try{
 
+if (!req.user?.username) {
+    const error = new Error("Authenticated user has no username");
+    error.statusCode = 500;
+    throw error;
+}
+
 const booking= await userPackage.create({
    ...req.body,
+   username:req.user.username,
    user:req.user._id
 
 })
@@ -97,4 +104,3 @@ const { id } = req.params;
         next(error)
     }
 }
-
