@@ -7,6 +7,7 @@ import './App.css';
 import { Homepage } from './webpages/homepage';
 import { About } from './webpages/about';
 import { Login } from './webpages/loginpage';
+import { Register } from './webpages/register';
 import { Booking } from './webpages/booking';
 import { Profile } from './webpages/profile';
 import { ProtectedRoutes } from './utils/protectedroutes';
@@ -21,6 +22,7 @@ import { AdminTeam } from './admin/pages/AdminTeam';
 import { AdminSettings } from './admin/pages/AdminSettings';
 
 const CLIENT_ID = "806438665621-ot0fnvqdvp6irvj2nfme3ue53d8ic77o.apps.googleusercontent.com";
+let sessionRestoreRequest;
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,18 +32,23 @@ function App() {
   useEffect(() => {
     const restoreSession = async () => {
       try {
-        const response = await axios.post(
+        sessionRestoreRequest ??= axios.post(
           'http://localhost:5500/api/v1/auth/refresh',
           {},
           { withCredentials: true }
         );
+        const response = await sessionRestoreRequest;
         setToken(response.data.data.token);
         setUser(response.data.data.user);
-      } catch {
-        // No valid refresh cookie — genuinely logged out
+      } catch (error) {
         setToken(null);
         setUser(null);
+
+        if (axios.isAxiosError(error) && error.response?.status !== 401) {
+          console.error('Unable to restore the user session:', error);
+        }
       } finally {
+        sessionRestoreRequest = undefined;
         setAuthLoading(false);
       }
     };
@@ -83,6 +90,17 @@ function App() {
           path="/login"
           element={
             <Login
+              user={user}
+              setUser={setUser}
+              token={token}
+              setToken={setToken}
+            />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <Register
               user={user}
               setUser={setUser}
               token={token}

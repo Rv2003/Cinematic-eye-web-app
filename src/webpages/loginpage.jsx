@@ -143,7 +143,6 @@ export function Login({user,setUser,token,setToken}) {
             <div className="form-field-group">
               <div className="form-label-row">
                 <label className="form-label" htmlFor="password">Password</label>
-                <a href="#" className="form-forgot">Forgot password?</a>
               </div>
               <input
                 id="password"
@@ -203,7 +202,7 @@ export function Login({user,setUser,token,setToken}) {
          
           <p className="login-signup-text">
             Don't have an account?{" "}
-            <a href="#" className="login-signup-link">Create Account</a>
+            <Link to="/register" className="login-signup-link">Create Account</Link>
           </p>
 
         </div>
