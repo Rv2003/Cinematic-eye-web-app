@@ -16,6 +16,12 @@ export const signup = async (req, res, next) => {
       const error = new Error("User already exists");
       error.statusCode = 400;
       throw error;
+    } 
+    const existingUsername = await User.findOne({ username });
+    if (existingUser) {
+      const error = new Error("Username already exists please use different");
+      error.statusCode = 400;
+      throw error;
     }
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
