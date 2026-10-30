@@ -1,4 +1,3 @@
-import { resolveStream } from "nodemailer/lib/shared";
 import userPackage from "../models/package.model.js";
 
 export const createBooking=async(req,res,next)=>{
@@ -71,8 +70,20 @@ export const patchStatus = async (req, res, next) => {
     const { id } = req.params;
     const { status } = req.body;
 
+    const allowedStatuses = userPackage.schema.path("status").enumValues;
+    if (typeof status !== "string" || !allowedStatuses.includes(status)) {
+      const error = new Error(`Status must be one of: ${allowedStatuses.join(", ")}`);
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const packageFilter = { _id: id };
+    if (req.user.role !== "admin") {
+      packageFilter.user = req.user._id;
+    }
+
     const updated = await userPackage.findOneAndUpdate(
-      { _id: id, user: req.user._id },      // only the owner's package
+      packageFilter,
       { $set: { status } },
       { new: true, runValidators: true }
     );
