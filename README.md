@@ -54,21 +54,41 @@ cd backend
 npm install
 ```
 
-Create a `.env` file in `backend/` (see `.env.example` if included):
+The backend loads an environment file named `.env.<NODE_ENV>.local` from
+`backend/`. For local development, create `backend/.env.development.local`:
 
 ```env
-PORT=5000
-DATABASE_URL=your_database_connection_string
-JWT_SECRET=your_secret_key
+PORT=5500
+NODE_ENV=development
+DB_URI=your_mongodb_connection_string
+JWT_SECRET=replace_with_a_long_random_secret
+JWT_REF_SECRET=replace_with_a_different_long_random_secret
+JWT_EXPIRES_IN=1000s
+JWT_REFRESH_EXPIRES_IN=1000s
+CLIENT_ID=your_google_oauth_client_id
+EMAIL_USER=your_email_address
+EMAIL_PASS=your_email_app_password
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+META_TOKEN=your_meta_access_token
+META_GRAPH_API_VERSION=v26.0
+FACEBOOK_PAGE_ID=your_facebook_page_id
+FACEBOOK_PAGE_ACCESS_TOKEN=your_facebook_page_access_token
 ```
 
-Start the server:
+Keep real credentials in this local file or a secrets manager; never commit them
+or paste them into documentation. The development environment file is ignored by
+Git. If credentials have been exposed, revoke or rotate them before using them
+again.
+
+Start the development server:
 
 ```bash
-npm start
+npm run dev
 ```
 
-The API runs at `http://localhost:5000`.
+The API runs at `http://localhost:5500` with the configuration above.
 
 ### 3. Set up the frontend
 
@@ -101,6 +121,7 @@ The app runs at `http://localhost:5173`.
 | Command         | Description         |
 |-----------------|---------------------|
 | `npm start`     | Start the server    |
+| `npm run dev`   | Start with nodemon  |
 
 ## Original Repositories
 
@@ -114,4 +135,3 @@ This project was originally developed in two separate repositories, which were m
 
 **Rusiru Vinvidu**
 GitHub: [@Rv2003](https://github.com/Rv2003)
-
