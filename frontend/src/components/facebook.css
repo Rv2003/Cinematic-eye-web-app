@@ -1,0 +1,295 @@
+                                                               
+                                                         
+                                                                  
+
+.fb-section {
+  position: relative;
+  background-color: #0b0b0b;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.fb-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+                                                       
+         
+                                                          
+.fb-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+
+.fb-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, 'Outfit', sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent, #d4af37);
+  margin-bottom: 12px;
+}
+
+.fb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent, #d4af37);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  animation: fbPulse 1.6s infinite;
+}
+
+.fb-title {
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: clamp(26px, 3.8vw, 44px);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--text-primary, #f5f3ef);
+  margin-bottom: 14px;
+}
+
+.fb-sub {
+  font-size: 14.5px;
+  color: var(--text-secondary, #a39e93);
+  line-height: 1.65;
+}
+
+                                                       
+              
+                                                          
+.fb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+                            
+.fb-info-card {
+  background-color: #121212;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 6px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.fb-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.fb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, #d4af37);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.fb-status-pulse {
+  font-size: 11px;
+  color: #5c5852;
+  letter-spacing: 0.05em;
+}
+
+.fb-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.fb-logo-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #1877f2;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(24, 119, 242, 0.35);
+}
+
+.fb-brand-title {
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: 20px;
+  color: var(--text-primary, #f5f3ef);
+  margin: 0 0 4px 0;
+}
+
+.fb-brand-sub {
+  font-size: 12px;
+  color: var(--text-secondary, #a39e93);
+}
+
+.fb-bio {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary, #a39e93);
+  margin-bottom: 28px;
+}
+
+.fb-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fb-perk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--text-primary, #f5f3ef);
+}
+
+.fb-action-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.fb-cta {
+  display: inline-flex;
+  align-items: center;
+}
+
+.fb-msg-btn {
+  padding: 12px 20px;
+}
+
+                                                       
+                                       
+                                                          
+.fb-embed-wrapper {
+  background-color: #121212;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+}
+
+.fb-embed-chrome {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chrome-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.chrome-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.chrome-dot.red { background-color: #ff5f56; }
+.chrome-dot.yellow { background-color: #ffbd2e; }
+.chrome-dot.green { background-color: #27c93f; }
+
+.chrome-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--text-muted, #5c5852);
+  letter-spacing: 0.04em;
+}
+
+.fb-iframe-container {
+  position: relative;
+  min-height: 500px;
+  background-color: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fb-iframe {
+  width: 100%;
+  height: 500px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.fb-iframe.loaded {
+  opacity: 1;
+}
+
+.fb-loading-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--accent, #d4af37);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.fb-spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-top-color: var(--accent, #d4af37);
+  border-radius: 50%;
+  animation: fbSpin 0.9s linear infinite;
+}
+
+@keyframes fbSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fbPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+                                                       
+                         
+                                                          
+@media (max-width: 960px) {
+  .fb-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .fb-section {
+    padding: 72px 0;
+  }
+
+  .fb-info-card {
+    padding: 24px;
+  }
+}
