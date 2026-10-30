@@ -12,7 +12,7 @@ import { Booking } from './webpages/booking';
 import { Profile } from './webpages/profile';
 import { ProtectedRoutes } from './utils/protectedroutes';
 
-// Admin Panel
+              
 import { AdminProtectedRoutes } from './admin/AdminProtectedRoutes';
 import { AdminLayout } from './admin/AdminLayout';
 import { AdminDashboard } from './admin/pages/AdminDashboard';
@@ -59,7 +59,7 @@ function App() {
   return (
     <GoogleOAuthProvider clientId={CLIENT_ID}>
       <Routes>
-        {/* Public Routes */}
+                             
         <Route
           path="/"
           element={
@@ -122,7 +122,7 @@ function App() {
           }
         />
 
-        {/* User Protected Routes */}
+                                     
         <Route element={<ProtectedRoutes user={user} authLoading={authLoading} />}>
           <Route
             path="/profile"
@@ -138,7 +138,7 @@ function App() {
           />
         </Route>
 
-        {/* Admin Protected Routes */}
+                                      
         <Route element={<AdminProtectedRoutes user={user} authLoading={authLoading} />}>
           <Route
             path="/admin"

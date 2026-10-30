@@ -1,7 +1,7 @@
 import { useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router";
 import { GoogleLogin } from '@react-oauth/google';
-//import{jwtDecode} from "jwt-decode"
+                                     
 import "./login.css";
 import axios from "axios";
 import slide1 from "../assets/1.jpg";
@@ -42,7 +42,7 @@ export function Login({user,setUser,token,setToken}) {
         password: document.getElementById('password').value
       },{ withCredentials: true });
       if (res.data.success) {
-        setUser(res.data.data.user.username)
+        setUser(res.data.data.user)
         setToken(res.data.data.token)
         console.log("success")
         navigate("/")
@@ -66,7 +66,7 @@ export function Login({user,setUser,token,setToken}) {
   return (
     <div className={`login-page ${loaded ? "animate-in" : ""}`}>
 
-      {/* ── Left: Cinematic Image Panel ── */}
+                                               
       <div className="login-visual-panel">
         {slides.map((src, i) => (
           <div
@@ -77,10 +77,10 @@ export function Login({user,setUser,token,setToken}) {
           </div>
         ))}
 
-        {/* Edge vignette */}
+                             
         <div className="login-visual-vignette"></div>
 
-        {/* Brand overlay inside the image */}
+                                              
         <div className="login-visual-brand">
           <Link to="/" className="login-brand-logo">
             <span className="brand-light">CINEMATIC</span>
@@ -92,7 +92,7 @@ export function Login({user,setUser,token,setToken}) {
           </p>
         </div>
 
-        {/* Slide progress dots */}
+                                   
         <div className="login-slide-dots">
           {slides.map((_, i) => (
             <button
@@ -105,18 +105,18 @@ export function Login({user,setUser,token,setToken}) {
         </div>
       </div>
 
-      {/* ── Right: Login Form Panel ── */}
+                                           
       <div className="login-form-panel">
         <div className="login-form-inner">
 
-          {/* Mobile-only brand header */}
+                                          
           <Link to="/" className="login-brand-mobile">
             <span className="brand-light">CINEMATIC</span>
             <span className="login-brand-dot"></span>
             <span className="brand-bold">EYE</span>
           </Link>
 
-          {/* Header text */}
+                             
           <div className="login-form-header">
             <span className="login-eyebrow">
               <span className="eyebrow-dot"></span>
@@ -126,7 +126,7 @@ export function Login({user,setUser,token,setToken}) {
             <p className="login-subtext">Sign in to continue to your creative workspace.</p>
           </div>
 
-          {/* Form */}
+                      
           <form className="login-form" onSubmit={handleLogin}>
 
             <div className="form-field-group">
@@ -181,7 +181,7 @@ export function Login({user,setUser,token,setToken}) {
                    { withCredentials: true }
                  );
                  if (res.data.success) {
-                   setUser(res.data.data.user.username);
+                   setUser(res.data.data.user);
                    setToken(res.data.data.token);
                    navigate('/');
                  }
@@ -192,7 +192,7 @@ export function Login({user,setUser,token,setToken}) {
            />
           </form>
 
-          {/* Divider */}
+                         
           <div className="login-divider">
             <span className="divider-line"></span>
             <span className="divider-text">or</span>

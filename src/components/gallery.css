@@ -69,7 +69,6 @@
 
 .gold-accent {
   color: var(--gallery-gold);
-  font-style: italic;
   font-weight: 500;
 }
 
@@ -98,7 +97,7 @@
   margin-right: 5px;
 }
 
-/* Category filters */
+                      
 
 .gallery-filters {
   display: flex;
@@ -138,7 +137,7 @@
   box-shadow: 0 4px 16px rgba(214, 173, 96, 0.25);
 }
 
-/* Automatically responsive gallery grid */
+                                           
 
 .gallery-grid {
   display: grid;
@@ -283,7 +282,7 @@
   transform: translate(0, 0);
 }
 
-/* Loading and error states */
+                              
 
 .gallery-status {
   min-height: 250px;
@@ -328,7 +327,7 @@
   cursor: pointer;
 }
 
-/* Lightbox */
+              
 
 .lightbox-overlay {
   position: fixed;
@@ -488,7 +487,7 @@
   box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
 }
 
-/* Tablet */
+            
 
 @media (max-width: 900px) {
   .gallery-section {
@@ -533,7 +532,7 @@
   }
 }
 
-/* Mobile */
+            
 
 @media (max-width: 560px) {
   .gallery-section {

@@ -39,7 +39,7 @@ export function Profile({ token,setToken,setUser }) {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All");
-  const [viewMode, setViewMode] = useState("table"); // 'table' or 'cards'
+  const [viewMode, setViewMode] = useState("table");                      
   const [activeBooking, setActiveBooking] = useState(null);
   const [copiedId, setCopiedId] = useState(null);
 
@@ -101,7 +101,7 @@ export function Profile({ token,setToken,setUser }) {
     fetchBookings(true);
   }, [token]);
 
-  // Handle escape key to close modal
+                                     
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -114,7 +114,7 @@ export function Profile({ token,setToken,setUser }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeBooking]);
 
-  // GSAP Initial Page Entrance Animation
+                                         
   useEffect(() => {
     if (isLoading) return;
 
@@ -151,7 +151,7 @@ export function Profile({ token,setToken,setUser }) {
     return () => ctx.revert();
   }, [isLoading]);
 
-  // GSAP Transition for Table Rows / Grid Cards when filtered or view toggled
+                                                                              
   useEffect(() => {
     if (isLoading) return;
 
@@ -179,7 +179,7 @@ export function Profile({ token,setToken,setUser }) {
     return () => ctx.revert();
   }, [viewMode, selectedStatus, bookings.length, isLoading]);
 
-  // GSAP Modal Entrance Animation
+                                  
   useEffect(() => {
     if (!activeBooking) return;
 
@@ -236,7 +236,7 @@ export function Profile({ token,setToken,setUser }) {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  // KPIs
+         
   const stats = useMemo(() => {
     const total = bookings.length;
     const upcoming = bookings.filter(
@@ -253,7 +253,7 @@ export function Profile({ token,setToken,setUser }) {
     return { total, upcoming, completed, totalSpent };
   }, [bookings]);
 
-  // Filtered Bookings
+                      
   const filteredBookings = useMemo(() => {
     return bookings.filter((booking) => {
       const matchesStatus =
@@ -300,7 +300,7 @@ export function Profile({ token,setToken,setUser }) {
         icon: AlertCircle,
       };
     }
-    // Default Upcoming / Pending
+                                 
     return {
       bg: "rgba(212, 175, 55, 0.14)",
       color: "#d4af37",
@@ -1048,7 +1048,7 @@ export function Profile({ token,setToken,setUser }) {
       `}</style>
 
       <div className="profile-max-w">
-        {/* Header Section */}
+                              
         <header className="profile-header">
           <div>
             <div className="eyebrow-tag">
@@ -1085,7 +1085,7 @@ export function Profile({ token,setToken,setUser }) {
           </div>
         </header>
 
-        {/* Stats Grid */}
+                          
         <section className="stats-grid">
           <div className="stat-card">
             <div className="stat-top">
@@ -1134,7 +1134,7 @@ export function Profile({ token,setToken,setUser }) {
           </div>
         </section>
 
-        {/* Controls: Search, Filter Tabs & View Switcher */}
+                                                             
         <div className="controls-bar">
           <div className="search-box">
             <Search size={16} color="#8c8880" />
@@ -1188,7 +1188,7 @@ export function Profile({ token,setToken,setUser }) {
           </div>
         </div>
 
-        {/* Main Content Area */}
+                                 
         {filteredBookings.length === 0 ? (
           <div className="empty-container">
             <div className="empty-icon-circle">
@@ -1222,7 +1222,7 @@ export function Profile({ token,setToken,setUser }) {
             )}
           </div>
         ) : viewMode === "table" ? (
-          /* Table View */
+                          
           <div className="table-container">
             <div style={{ overflowX: "auto" }}>
               <table className="lux-table">
@@ -1317,7 +1317,7 @@ export function Profile({ token,setToken,setUser }) {
             </div>
           </div>
         ) : (
-          /* Cards Grid View */
+                               
           <div className="cards-grid">
             {filteredBookings.map((booking) => {
               const badge = getStatusBadge(booking.status);
@@ -1404,7 +1404,7 @@ export function Profile({ token,setToken,setUser }) {
           </div>
         )}
 
-        {/* Interactive Booking Details Modal with GSAP Entrance */}
+                                                                    
         {activeBooking && (
           <div className="modal-overlay" onClick={() => setActiveBooking(null)}>
             <div className="modal-card" onClick={(e) => e.stopPropagation()}>
@@ -1437,7 +1437,7 @@ export function Profile({ token,setToken,setUser }) {
               </div>
 
               <div className="modal-body">
-                {/* Visual Production Timeline */}
+                                                  
                 <div>
                   <div className="modal-section-title">Production Status</div>
                   <div className="timeline-steps">
@@ -1473,7 +1473,7 @@ export function Profile({ token,setToken,setUser }) {
                   </div>
                 </div>
 
-                {/* Session Details Grid */}
+                                            
                 <div>
                   <div className="modal-section-title">Session Details</div>
                   <div className="modal-info-grid">
@@ -1537,7 +1537,7 @@ export function Profile({ token,setToken,setUser }) {
                   </div>
                 </div>
 
-                {/* Client Notes / Requests */}
+                                               
                 {(activeBooking.Description || activeBooking.notes) && (
                   <div>
                     <div className="modal-section-title">Creative Brief & Notes</div>

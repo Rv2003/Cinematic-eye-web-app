@@ -19,7 +19,7 @@ export function FacebookFeed({
 }) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  // Encode URL for the official Facebook Page Plugin
+                                                     
   const encodedUrl = encodeURIComponent(pageUrl);
   const pluginSrc = `https://www.facebook.com/plugins/page.php?href=${encodedUrl}&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
 
@@ -27,7 +27,7 @@ export function FacebookFeed({
     <section className="fb-section">
       <div className="fb-container">
         
-        {/* Section Header */}
+                              
         <div className="fb-header">
           <div className="fb-eyebrow">
             <span className="fb-dot" />
@@ -41,10 +41,10 @@ export function FacebookFeed({
           </p>
         </div>
 
-        {/* Studio Social Grid */}
+                                  
         <div className="fb-grid">
           
-          {/* Left Column: Studio Social Profile & Highlights */}
+                                                                 
           <div className="fb-info-card">
             <div className="fb-badge-row">
               <span className="fb-pill">
@@ -104,7 +104,7 @@ export function FacebookFeed({
             </div>
           </div>
 
-          {/* Right Column: Embedded Facebook Page Plugin Frame */}
+                                                                   
           <div className="fb-embed-wrapper">
             <div className="fb-embed-chrome">
               <div className="chrome-dots">

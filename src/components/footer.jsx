@@ -21,7 +21,7 @@ const SESSIONS = [
   { label: "Documentary & Events", desc: "Live Storytelling" },
 ];
 
-// Clean custom SVG icons for Instagram, Facebook, and WhatsApp
+                                                               
 const InstagramIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
@@ -62,7 +62,7 @@ export function Footer() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Headline and CTA Button reveal
+                                       
       gsap.from([headlineRef.current, ctaBtnRef.current], {
         scrollTrigger: {
           trigger: footerRef.current,
@@ -76,7 +76,7 @@ export function Footer() {
         ease: "power3.out",
       });
 
-      // Grid columns staggered fade-up
+                                       
       if (gridColsRef.current.length > 0) {
         gsap.from(gridColsRef.current, {
           scrollTrigger: {
@@ -97,12 +97,12 @@ export function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="footer" aria-label="Site Footer">
-      {/* Background ambient glow effect */}
+    <footer id="contact" ref={footerRef} className="footer" aria-label="Site Footer">
+                                            
       <div className="footer__glow" aria-hidden="true" />
 
       <div className="footer__container">
-        {/* Top Call to Action Banner */}
+                                         
         <div className="footer__cta">
           <div ref={headlineRef} className="footer__cta-text">
             <span className="footer__eyebrow">
@@ -122,9 +122,9 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Content Link Grid */}
+                                 
         <div className="footer__grid">
-          {/* Brand Column */}
+                              
           <div
             className="footer__col footer__brand"
             ref={(el) => (gridColsRef.current[0] = el)}
@@ -141,7 +141,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Navigation Column */}
+                                   
           <nav
             className="footer__col"
             aria-label="Navigation Links"
@@ -159,7 +159,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Sessions Column */}
+                                 
           <div
             className="footer__col"
             ref={(el) => (gridColsRef.current[2] = el)}
@@ -177,7 +177,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Studio Info Column */}
+                                    
           <div
             className="footer__col footer__studio"
             ref={(el) => (gridColsRef.current[3] = el)}
@@ -208,7 +208,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright, Socials, Back to Top */}
+                                                           
         <div className="footer__bottom">
           <div className="footer__bottom-left">
             <p className="footer__copyright">

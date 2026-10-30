@@ -26,7 +26,7 @@ export function Gallery() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // Fetch every page provided by the API.
+                                          
   useEffect(() => {
     const controller = new AbortController();
 
@@ -62,7 +62,7 @@ export function Gallery() {
           allPhotos.push(...(data.photos ?? []));
         }
 
-        // Newest photographs first.
+                                    
         allPhotos.sort(
           (a, b) =>
             new Date(b.createdAt || 0).getTime() -
@@ -122,7 +122,7 @@ export function Gallery() {
     });
   }, [filteredPhotos]);
 
-  // Lightbox keyboard controls.
+                                
   useEffect(() => {
     if (!activePhoto) return;
 

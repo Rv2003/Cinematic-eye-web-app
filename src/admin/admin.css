@@ -1,9 +1,9 @@
-/* ============================================================
-   admin.css  –  Cinematic Eye · Admin Panel Styles
-   Shared across all admin pages via AdminLayout.jsx import
-   ============================================================ */
+                                                               
+                                                   
+                                                           
+                                                                  
 
-/* ── Reset / base ───────────────────────────────────────────── */
+                                                                   
 .admin-root {
   display: flex;
   min-height: 100vh;
@@ -12,9 +12,9 @@
   font-family: 'Outfit', sans-serif;
 }
 
-/* ════════════════════════════════════════════════════════════
-   SIDEBAR
-   ════════════════════════════════════════════════════════════ */
+                                                               
+          
+                                                                  
 .admin-sidebar {
   width: 240px;
   flex-shrink: 0;
@@ -60,7 +60,7 @@
   display: block;
 }
 
-/* Nav */
+         
 .admin-sidebar__nav {
   flex: 1;
   padding: 16px 0;
@@ -99,7 +99,7 @@
   opacity: 1;
 }
 
-/* Sidebar footer */
+                    
 .admin-sidebar__footer {
   padding: 16px 0;
   border-top: 1px solid rgba(212, 175, 55, 0.08);
@@ -140,9 +140,9 @@
   color: #ef4444;
 }
 
-/* ════════════════════════════════════════════════════════════
-   MOBILE OVERLAY
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                 
+                                                                  
 .admin-sidebar-overlay {
   display: none;
   position: fixed;
@@ -151,9 +151,9 @@
   z-index: 150;
 }
 
-/* ════════════════════════════════════════════════════════════
-   MAIN WRAPPER  (right of sidebar)
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                                   
+                                                                  
 .admin-main {
   margin-left: 240px;
   flex: 1;
@@ -162,9 +162,9 @@
   min-width: 0;
 }
 
-/* ════════════════════════════════════════════════════════════
-   TOP BAR
-   ════════════════════════════════════════════════════════════ */
+                                                               
+          
+                                                                  
 .admin-topbar {
   height: 64px;
   background-color: #1a1a1a;
@@ -220,18 +220,18 @@
   font-family: 'Outfit', sans-serif;
 }
 
-/* ════════════════════════════════════════════════════════════
-   CONTENT AREA
-   ════════════════════════════════════════════════════════════ */
+                                                               
+               
+                                                                  
 .admin-content {
   flex: 1;
   padding: 32px;
   overflow-y: auto;
 }
 
-/* ════════════════════════════════════════════════════════════
-   STATS CARDS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+              
+                                                                  
 .admin-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -293,9 +293,9 @@
   color: rgba(212, 175, 55, 0.3);
 }
 
-/* ════════════════════════════════════════════════════════════
-   SECTION HEADERS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                  
+                                                                  
 .admin-section-header {
   display: flex;
   align-items: center;
@@ -319,9 +319,9 @@
   margin: 0 0 6px;
 }
 
-/* ════════════════════════════════════════════════════════════
-   TABLES
-   ════════════════════════════════════════════════════════════ */
+                                                               
+         
+                                                                  
 .admin-table-wrap {
   background-color: #1a1a1a;
   border: 1px solid rgba(212, 175, 55, 0.08);
@@ -374,7 +374,7 @@
   color: #f5f3ef;
 }
 
-/* Expandable detail row */
+                           
 .admin-table-detail {
   background-color: rgba(212, 175, 55, 0.03);
 }
@@ -386,9 +386,9 @@
   border-bottom: 1px solid rgba(212, 175, 55, 0.06);
 }
 
-/* ════════════════════════════════════════════════════════════
-   STATUS BADGES
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                
+                                                                  
 .admin-badge {
   display: inline-block;
   padding: 3px 10px;
@@ -424,9 +424,9 @@
   border: 1px solid rgba(239, 68, 68, 0.25);
 }
 
-/* ════════════════════════════════════════════════════════════
-   BUTTONS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+          
+                                                                  
 .admin-btn {
   display: inline-flex;
   align-items: center;
@@ -498,9 +498,9 @@
   flex-wrap: wrap;
 }
 
-/* ════════════════════════════════════════════════════════════
-   FORM INPUTS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+              
+                                                                  
 .admin-form {
   display: flex;
   flex-direction: column;
@@ -571,7 +571,7 @@
   min-height: 80px;
 }
 
-/* Search bar */
+                
 .admin-search-wrap {
   position: relative;
   flex: 1;
@@ -590,9 +590,9 @@
   padding-left: 38px;
 }
 
-/* ════════════════════════════════════════════════════════════
-   FILTER TABS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+              
+                                                                  
 .admin-filter-tabs {
   display: flex;
   gap: 4px;
@@ -622,7 +622,7 @@
   color: #d4af37;
 }
 
-/* Toolbar (search + filters row) */
+                                    
 .admin-toolbar {
   display: flex;
   gap: 12px;
@@ -631,9 +631,9 @@
   margin-bottom: 16px;
 }
 
-/* ════════════════════════════════════════════════════════════
-   GALLERY GRID
-   ════════════════════════════════════════════════════════════ */
+                                                               
+               
+                                                                  
 .admin-gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -723,7 +723,7 @@
   border-color: rgba(239, 68, 68, 0.4);
 }
 
-/* Upload box */
+                
 .admin-upload-box {
   background-color: #1a1a1a;
   border: 1px dashed rgba(212, 175, 55, 0.25);
@@ -775,7 +775,7 @@
   color: #5c5852;
 }
 
-/* Empty state */
+                 
 .admin-empty {
   text-align: center;
   padding: 60px 24px;
@@ -793,9 +793,9 @@
   margin: 0 0 20px;
 }
 
-/* ════════════════════════════════════════════════════════════
-   TEAM CARDS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+             
+                                                                  
 .admin-team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -846,9 +846,9 @@
   margin: 0 0 14px;
 }
 
-/* ════════════════════════════════════════════════════════════
-   SETTINGS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+           
+                                                                  
 .admin-settings-section {
   background-color: #1a1a1a;
   border: 1px solid rgba(212, 175, 55, 0.08);
@@ -892,7 +892,7 @@
   color: #a39e93;
 }
 
-/* Session type cards */
+                        
 .admin-session-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -919,7 +919,7 @@
   flex-shrink: 0;
 }
 
-/* Danger zone */
+                 
 .admin-danger-zone {
   border-color: rgba(239, 68, 68, 0.15) !important;
 }
@@ -936,9 +936,9 @@
   line-height: 1.6;
 }
 
-/* ════════════════════════════════════════════════════════════
-   ALERTS / BANNERS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                   
+                                                                  
 .admin-banner {
   display: flex;
   align-items: flex-start;
@@ -968,9 +968,9 @@
   color: #fcd34d;
 }
 
-/* ════════════════════════════════════════════════════════════
-   LOADING / SPINNER
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                    
+                                                                  
 .admin-spinner-wrap {
   display: flex;
   align-items: center;
@@ -991,9 +991,9 @@
   to { transform: rotate(360deg); }
 }
 
-/* ════════════════════════════════════════════════════════════
-   ERROR STATE
-   ════════════════════════════════════════════════════════════ */
+                                                               
+              
+                                                                  
 .admin-error {
   text-align: center;
   padding: 60px 24px;
@@ -1011,9 +1011,9 @@
   margin: 0 0 20px;
 }
 
-/* ════════════════════════════════════════════════════════════
-   MODAL / CONFIRMATION DIALOG
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                              
+                                                                  
 .admin-modal-overlay {
   position: fixed;
   inset: 0;
@@ -1055,9 +1055,9 @@
   justify-content: flex-end;
 }
 
-/* ════════════════════════════════════════════════════════════
-   INLINE STATUS DROPDOWN
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                         
+                                                                  
 .admin-status-wrap {
   position: relative;
   display: inline-block;
@@ -1095,9 +1095,9 @@
   color: #f5f3ef;
 }
 
-/* ════════════════════════════════════════════════════════════
-   QUICK ACTIONS
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                
+                                                                  
 .admin-quick-actions {
   display: flex;
   gap: 12px;
@@ -1105,9 +1105,9 @@
   flex-wrap: wrap;
 }
 
-/* ════════════════════════════════════════════════════════════
-   RESPONSIVE — MOBILE
-   ════════════════════════════════════════════════════════════ */
+                                                               
+                      
+                                                                  
 @media (max-width: 900px) {
   .admin-sidebar {
     transform: translateX(-100%);
@@ -1160,9 +1160,9 @@
   }
 }
 
-/* ============================================================
-   ADMIN COMPONENT ENHANCEMENTS & EXTENDED CONTROLS
-   ============================================================ */
+                                                               
+                                                   
+                                                                  
 
 .admin-page-header {
   display: flex;
@@ -1301,7 +1301,7 @@
   outline: none;
 }
 
-/* Client Table Specifics */
+                            
 .admin-client-info {
   display: flex;
   flex-direction: column;
@@ -1396,7 +1396,7 @@
   background: rgba(229, 83, 83, 0.1);
 }
 
-/* Expandable Detail Card */
+                            
 .row-expanded {
   background: rgba(212, 175, 55, 0.03);
 }
@@ -1452,7 +1452,7 @@
   line-height: 1.6;
 }
 
-/* Modals */
+            
 .admin-modal-overlay {
   position: fixed;
   inset: 0;
@@ -1548,7 +1548,7 @@
   border-radius: 4px;
 }
 
-/* Gallery Upload */
+                    
 .admin-file-hidden {
   display: none;
 }
@@ -1601,7 +1601,7 @@
   color: #d4af37;
 }
 
-/* Gallery Grid */
+                  
 .admin-gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -1684,7 +1684,7 @@
   color: #5c5852;
 }
 
-/* Team Section */
+                  
 .admin-team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1910,7 +1910,7 @@
   color: #f5f3ef;
 }
 
-/* Settings Layout */
+                     
 .admin-settings-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2011,7 +2011,7 @@
   background: rgba(229, 83, 83, 0.02);
 }
 
-/* Empty States & Spins */
+                          
 .admin-empty-state {
   text-align: center;
   padding: 60px 20px;

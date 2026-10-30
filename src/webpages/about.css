@@ -1,6 +1,6 @@
-/* ============================================================
-   About Page Styles — Cinematic Eye
-   ============================================================ */
+                                                               
+                                    
+                                                                  
 
 .about-page {
   background-color: var(--bg-primary, #080808);
@@ -16,9 +16,9 @@
   padding: 0 24px;
 }
 
-/* ----------------------------------------------------
-   Hero
-   ---------------------------------------------------- */
+                                                       
+       
+                                                          
 .about-hero {
   position: relative;
   min-height: 85vh;
@@ -140,9 +140,9 @@
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-/* ----------------------------------------------------
-   Shared Section Styling
-   ---------------------------------------------------- */
+                                                       
+                         
+                                                          
 .about-section {
   padding: 100px 0;
   position: relative;
@@ -182,9 +182,9 @@
   margin-bottom: 18px;
 }
 
-/* ----------------------------------------------------
-   Vision / Founder Section
-   ---------------------------------------------------- */
+                                                       
+                           
+                                                          
 .about-vision {
   border-top: 1px solid rgba(212, 175, 55, 0.08);
   border-bottom: 1px solid rgba(212, 175, 55, 0.08);
@@ -277,15 +277,14 @@
   border-radius: 0 4px 4px 0;
   font-family: var(--font-editorial, 'Cormorant Garamond', Georgia, serif);
   font-size: 16px;
-  font-style: italic;
   color: var(--text-primary, #f5f3ef);
   margin-top: 12px;
   letter-spacing: 0.02em;
 }
 
-/* ----------------------------------------------------
-   Three Pillars
-   ---------------------------------------------------- */
+                                                       
+                
+                                                          
 .about-pillars-section {
   background-color: #0b0b0b;
 }
@@ -333,7 +332,6 @@
   font-size: 32px;
   font-weight: 300;
   color: var(--text-muted, #5c5852);
-  font-style: italic;
 }
 
 .pillar-icon-wrap {
@@ -362,9 +360,9 @@
   color: var(--text-secondary, #a39e93);
 }
 
-/* ----------------------------------------------------
-   Milestone Stats
-   ---------------------------------------------------- */
+                                                       
+                  
+                                                          
 .about-stats-section {
   padding: 60px 0;
   background: linear-gradient(180deg, #0b0b0b 0%, #101010 100%);
@@ -400,9 +398,9 @@
   color: var(--text-secondary, #a39e93);
 }
 
-/* ----------------------------------------------------
-   Craft / Gear Section
-   ---------------------------------------------------- */
+                                                       
+                       
+                                                          
 .about-craft-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -459,9 +457,9 @@
   background: linear-gradient(180deg, transparent 40%, rgba(8, 8, 8, 0.8) 100%);
 }
 
-/* ----------------------------------------------------
-   Call to Action
-   ---------------------------------------------------- */
+                                                       
+                 
+                                                          
 .about-cta-section {
   padding: 120px 0;
   background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, rgba(8, 8, 8, 0.95) 75%);
@@ -496,9 +494,9 @@
   flex-wrap: wrap;
 }
 
-/* ----------------------------------------------------
-   Responsive Breakpoints
-   ---------------------------------------------------- */
+                                                       
+                         
+                                                          
 @media (max-width: 900px) {
   .about-vision-grid,
   .about-craft-grid {

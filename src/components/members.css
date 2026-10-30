@@ -1,10 +1,10 @@
-/* ════════════════════════════════════════════════════════════════════
-   MEMBERS / TEAM SECTION
-   All transform/opacity animations driven by GSAP — avoid duplicating
-   them here with CSS transitions unless explicitly for non-GSAP states.
-════════════════════════════════════════════════════════════════════ */
+                                                                       
+                         
+                                                                      
+                                                                        
+                                                                       
 
-/* ── Root ──────────────────────────────────────────────────────────── */
+                                                                          
 .team {
   position: relative;
   overflow: hidden;
@@ -13,7 +13,7 @@
   color: var(--text-primary);
 }
 
-/* ── Letterbox cinematic bars ──────────────────────────────────────── */
+                                                                          
 .team__letterbox {
   position: absolute;
   left: 0;
@@ -25,7 +25,7 @@
 .team__letterbox--top    { top: 0;    height: 52%; transform-origin: top center;    }
 .team__letterbox--bottom { bottom: 0; height: 52%; transform-origin: bottom center; }
 
-/* ── Cursor-tracking spotlight ─────────────────────────────────────── */
+                                                                          
 .team__spotlight {
   position: absolute;
   width: 400px;
@@ -44,7 +44,7 @@
   will-change: transform, opacity;
 }
 
-/* ── Horizontal scan line ──────────────────────────────────────────── */
+                                                                          
 .team__scanline {
   position: absolute;
   left: 0;
@@ -63,7 +63,7 @@
   pointer-events: none;
 }
 
-/* ── Title block ───────────────────────────────────────────────────── */
+                                                                          
 .team__title-wrapper {
   position: relative;
   z-index: 2;
@@ -120,7 +120,7 @@
   color: #e6a19b;
 }
 
-/* ── Grid ──────────────────────────────────────────────────────────── */
+                                                                          
 .team__grid {
   list-style: none;
   margin: 0;
@@ -132,7 +132,7 @@
   z-index: 2;
 }
 
-/* ── Card ──────────────────────────────────────────────────────────── */
+                                                                          
 .team__card {
   display: flex;
   flex-direction: column;
@@ -142,7 +142,7 @@
   will-change: transform, opacity, filter;
 }
 
-/* Sequence number */
+                     
 .team__card-num {
   display: block;
   font-family: var(--font-mono, monospace);
@@ -154,7 +154,7 @@
   margin-bottom: 0.4rem;
 }
 
-/* ── Photo container ───────────────────────────────────────────────── */
+                                                                          
 .team__photo {
   position: relative;
   aspect-ratio: 4 / 4;
@@ -175,7 +175,7 @@
   will-change: transform, filter;
 }
 
-/* Cinematic radial vignette */
+                               
 .team__photo-overlay {
   position: absolute;
   inset: 0;
@@ -196,7 +196,7 @@
   letter-spacing: 0.08em;
 }
 
-/* ── Text ──────────────────────────────────────────────────────────── */
+                                                                          
 .team__name {
   margin: 0;
   font-family: var(--font-heading);
@@ -231,7 +231,7 @@
   outline: none;
 }
 
-/* ── Reduced motion ────────────────────────────────────────────────── */
+                                                                          
 @media (prefers-reduced-motion: reduce) {
   .team__letterbox,
   .team__spotlight,

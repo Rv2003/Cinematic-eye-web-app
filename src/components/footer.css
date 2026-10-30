@@ -1,20 +1,22 @@
-/* ════════════════════════════════════════════════════════════════════
-   CINEMATIC FOOTER SECTION
-   Edge-to-edge layout, responsive typography, polished dark luxury styling
-════════════════════════════════════════════════════════════════════ */
+                                                                       
+                           
+                                                                           
+                                                                       
 
 .footer {
   position: relative;
   width: 100%;
   margin-top: 3rem;
+  scroll-margin-top: 5rem;
   background-color: var(--bg-primary, #080808);
+  background-image: linear-gradient(180deg, rgba(212, 175, 55, 0.025), transparent 12rem);
   border-top: 1px solid rgba(212, 175, 55, 0.15);
   color: var(--text-primary, #f5f3ef);
   font-family: var(--font-body);
   overflow: hidden;
 }
 
-/* Subtle ambient radial light in top center of footer */
+                                                         
 .footer__glow {
   position: absolute;
   top: -120px;
@@ -32,15 +34,17 @@
   z-index: 0;
 }
 
-/* Edge-to-edge container matching 4vw side padding */
+                                                      
 .footer__container {
   position: relative;
   width: 100%;
-  padding: 4.5rem 4vw 2.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 4.5rem clamp(24px, 4vw, 64px) 2.5rem;
   z-index: 1;
 }
 
-/* ── Top Call To Action ───────────────────────────────────────────── */
+                                                                         
 .footer__cta {
   display: flex;
   align-items: flex-end;
@@ -132,11 +136,11 @@
   transform: translate(2px, -2px);
 }
 
-/* ── Content Grid ─────────────────────────────────────────────────── */
+                                                                         
 .footer__grid {
   display: grid;
   grid-template-columns: 1.8fr 1fr 1.2fr 1fr;
-  gap: 3rem 2rem;
+  gap: 3rem clamp(1.5rem, 3vw, 3rem);
   padding: 3.5rem 0 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -146,7 +150,7 @@
   flex-direction: column;
 }
 
-/* Brand column */
+                  
 .footer__logo {
   font-family: var(--font-heading);
   font-size: 1.45rem;
@@ -164,12 +168,12 @@
 }
 
 .footer__tagline {
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.7;
   color: var(--text-secondary, #a39e93);
-  max-width: 32ch;
+  max-width: 36ch;
   margin: 0 0 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .footer__status {
@@ -194,7 +198,7 @@
   box-shadow: 0 0 6px #22c55e;
 }
 
-/* Labels and lists */
+                      
 .footer__label {
   font-family: var(--font-body);
   font-size: 0.68rem;
@@ -215,12 +219,12 @@
 }
 
 .footer__link {
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: var(--text-secondary, #a39e93);
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
   display: inline-block;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .footer__link:hover {
@@ -228,7 +232,7 @@
   transform: translateX(3px);
 }
 
-/* Session item with sub-desc */
+                                
 .footer__session-item .footer__link {
   display: flex;
   flex-direction: column;
@@ -236,7 +240,7 @@
 }
 
 .footer__session-name {
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: var(--text-primary);
   transition: color 0.3s ease;
 }
@@ -251,7 +255,7 @@
   letter-spacing: 0.02em;
 }
 
-/* Studio details */
+                    
 .footer__contact-info {
   display: flex;
   flex-direction: column;
@@ -259,11 +263,11 @@
 }
 
 .footer__location {
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   color: var(--text-secondary, #a39e93);
   margin: 0;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .footer__contact-links {
@@ -272,7 +276,7 @@
   gap: 0.5rem;
 }
 
-/* ── Bottom Bar ───────────────────────────────────────────────────── */
+                                                                         
 .footer__bottom {
   display: flex;
   align-items: center;
@@ -289,7 +293,7 @@
   letter-spacing: 0.03em;
 }
 
-/* Social links icons */
+                        
 .footer__socials {
   display: flex;
   align-items: center;
@@ -318,7 +322,7 @@
   font-size: 0.72rem;
 }
 
-/* Back to Top button */
+                        
 .footer__back-to-top {
   display: inline-flex;
   align-items: center;
@@ -341,7 +345,13 @@
   transform: translateY(-2px);
 }
 
-/* ── Responsive Media Queries ─────────────────────────────────────── */
+.footer a:focus-visible,
+.footer button:focus-visible {
+  outline: 2px solid var(--accent, #d4af37);
+  outline-offset: 4px;
+}
+
+                                                                         
 @media (max-width: 960px) {
   .footer__cta {
     flex-direction: column;

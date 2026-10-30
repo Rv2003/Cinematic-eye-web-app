@@ -1,6 +1,6 @@
-/* ==========================================================================
-   Navbar Styling — Luxury Black & Gold Cinematic Aesthetic
-   ========================================================================== */
+                                                                             
+                                                           
+                                                                                
 
 .navbar {
   position: fixed;
@@ -26,7 +26,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
 }
 
-/* Active Menu State (When Mobile Menu Open) */
+                                               
 .navbar.menu-active {
   background-color: rgba(8, 8, 8, 0.98) !important;
   backdrop-filter: blur(30px) !important;
@@ -34,14 +34,14 @@
   border-bottom: 1px solid rgba(212, 175, 55, 0.08);
 }
 
-/* Fade out right actions when mobile menu is active to avoid collisions */
+                                                                           
 .navbar.menu-active .nav-right {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
 }
 
-/* Navbar Container - CSS Grid for exact mathematical centering */
+                                                                  
 .navbar-container {
   width: 100%;
   max-width: 1400px;
@@ -53,7 +53,7 @@
   position: relative;
 }
 
-/* Brand Logo Styling */
+                        
 .nav-brand {
   display: inline-flex;
   align-items: center;
@@ -92,11 +92,10 @@
 
 .brand-bold {
   font-weight: 700;
-  font-style: italic;
   color: var(--accent);
 }
 
-/* Center Floating Dock Wrapper */
+                                  
 .nav-menu-wrapper {
   display: flex;
   align-items: center;
@@ -129,12 +128,12 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* Dock Hover: Dim unhovered links */
+                                     
 .nav-dock:hover .nav-link:not(:hover) .nav-link-text {
   opacity: 0.35;
 }
 
-/* Nav Links List */
+                    
 .nav-links {
   display: flex;
   align-items: center;
@@ -144,7 +143,7 @@
   list-style: none;
 }
 
-/* Nav Link Item */
+                   
 .nav-link {
   display: block;
   text-decoration: none;
@@ -171,7 +170,7 @@
   transform: scaleX(1);
 }
 
-/* Double-layered Inner Wrapper */
+                                  
 .nav-link-inner {
   display: flex;
   flex-direction: column;
@@ -186,7 +185,7 @@
   transform: translateY(-20px);
 }
 
-/* Link Typography */
+                     
 .nav-link-text {
   display: block;
   height: 20px;
@@ -203,14 +202,14 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* Second line inside inner (hover state) */
+                                            
 .nav-link-text.hover-text {
   color: var(--accent);
   font-weight: 500;
   opacity: 1;
 }
 
-/* Right Action Cluster */
+                          
 .nav-right-cluster {
   display: flex;
   align-items: center;
@@ -226,7 +225,7 @@
   transition: opacity 0.3s ease;
 }
 
-/* Luxury Profile Pill & Auth Group */
+                                      
 .nav-auth-group {
   display: inline-flex;
   align-items: center;
@@ -349,7 +348,7 @@
   opacity: 1;
 }
 
-/* Sign Out Button */
+                     
 .nav-signout-btn {
   width: 32px;
   height: 32px;
@@ -372,7 +371,7 @@
   box-shadow: 0 0 12px rgba(244, 63, 94, 0.15);
 }
 
-/* CTA Login Button (Premium Outlined Pill with Slide Fill) */
+                                                              
 .nav-login {
   position: relative;
   font-family: var(--font-body);
@@ -423,7 +422,7 @@
   transform-origin: left;
 }
 
-/* Hamburger Toggle Button */
+                             
 .nav-toggle-btn {
   display: none;
   background: transparent;
@@ -462,19 +461,19 @@
   bottom: 0;
 }
 
-/* Mobile Profile Wrapper hidden on desktop */
+                                              
 .mobile-profile-wrapper {
   display: none;
 }
 
-/* Mobile Logout hidden on desktop */
+                                     
 .mobile-logout-li {
   display: none;
 }
 
-/* ==========================================================================
-   Responsive / Tablet & Mobile Layout
-   ========================================================================== */
+                                                                             
+                                      
+                                                                                
 
 @media (max-width: 900px) {
   .navbar-container {
@@ -492,7 +491,7 @@
     padding: 14px 0;
   }
 
-  /* Reset dock styling in mobile menu overlay */
+                                                 
   .nav-menu-wrapper {
     position: fixed;
     top: 0;
@@ -529,7 +528,7 @@
     width: 100%;
   }
 
-  /* When open */
+                 
   .nav-menu-wrapper.open {
     opacity: 1;
     visibility: visible;
@@ -542,7 +541,7 @@
     width: 100%;
   }
 
-  /* Adjust heights for larger typography in mobile view */
+                                                           
   .nav-link {
     height: 32px;
   }
@@ -564,7 +563,7 @@
     margin-right: -0.22em;
   }
 
-  /* Staggered load animations */
+                                 
   .nav-links li {
     opacity: 0;
     transform: translateY(25px);
@@ -577,7 +576,7 @@
     transition-delay: calc(var(--index) * 0.08s + 0.1s);
   }
 
-  /* Toggle button active */
+                            
   .nav-toggle-btn {
     display: flex;
   }
@@ -587,7 +586,7 @@
     font-size: 10px;
   }
 
-  /* Mobile Profile Card */
+                           
   .mobile-profile-wrapper {
     display: block;
     width: 100%;
@@ -694,7 +693,7 @@
     color: #f43f5e;
   }
 
-  /* Morphing hamburger to X close */
+                                     
   .menu-active .hamburger-line.top {
     transform: translateY(8px) rotate(45deg);
     background-color: var(--accent);

@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import './about.css';
 
-// Studio assets
+                
 import founderImg from '../assets/DSC05561.jpg';
 import studioImg1 from '../assets/4.png';
 import studioImg2 from '../assets/DSC_9597.jpg';
@@ -66,9 +66,9 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
         setAuthLoading={setAuthLoading}
       />
 
-      {/* ----------------------------------------------------
-          HERO SECTION
-          ---------------------------------------------------- */}
+                                                              
+                      
+                                                                  
       <section className="about-hero">
         <div className="about-hero-bg">
           <img src={studioImg1} alt="Cinematic background" className="about-hero-bg-img" />
@@ -101,9 +101,9 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
         </div>
       </section>
 
-      {/* ----------------------------------------------------
-          FOUNDER & VISION STATEMENT
-          ---------------------------------------------------- */}
+                                                              
+                                    
+                                                                  
       <section className="about-section about-vision">
         <div className="about-container about-vision-grid">
           <div className="vision-image-col">
@@ -145,9 +145,9 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
         </div>
       </section>
 
-      {/* ----------------------------------------------------
-          THREE PILLARS OF OUR CRAFT
-          ---------------------------------------------------- */}
+                                                              
+                                    
+                                                                  
       <section className="about-section about-pillars-section">
         <div className="about-container">
           <div className="about-center-header">
@@ -178,9 +178,9 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
         </div>
       </section>
 
-      {/* ----------------------------------------------------
-          MILESTONES & NUMBERS
-          ---------------------------------------------------- */}
+                                                              
+                              
+                                                                  
       <section className="about-stats-section">
         <div className="about-container">
           <div className="stats-grid">
@@ -194,9 +194,9 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
         </div>
       </section>
 
-      {/* ----------------------------------------------------
-          THE STUDIO SPACE & GEAR ETHOS
-          ---------------------------------------------------- */}
+                                                              
+                                       
+                                                                  
       <section className="about-section about-craft">
         <div className="about-container about-craft-grid">
           <div className="craft-text-col">
@@ -244,17 +244,17 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
         </div>
       </section>
 
-      {/* ----------------------------------------------------
-          FACEBOOK COMMUNITY DISPATCH EMBED
-          ---------------------------------------------------- */}
+                                                              
+                                           
+                                                                  
       <FacebookFeed
         pageUrl="https://www.facebook.com/facebook"
         pageName="Cinematic Eye Studio"
       />
 
-      {/* ----------------------------------------------------
-          CALL TO ACTION (BOOKING INVITATION)
-          ---------------------------------------------------- */}
+                                                              
+                                             
+                                                                  
       <section className="about-cta-section">
         <div className="about-container about-cta-inner">
           <span className="about-eyebrow">

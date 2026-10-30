@@ -58,9 +58,9 @@ export function Register({ user, setUser, token, setToken }) {
       );
 
       if (res.data.success) {
-        // If the backend returns auth data directly, set session
+                                                                 
         if (res.data.data?.token && res.data.data?.user) {
-          if (setUser) setUser(res.data.data.user.username || res.data.data.user);
+          if (setUser) setUser(res.data.data.user);
           if (setToken) setToken(res.data.data.token);
           navigate("/login");
         } else {
@@ -88,7 +88,7 @@ export function Register({ user, setUser, token, setToken }) {
 
   return (
     <div className={`login-page ${loaded ? "animate-in" : ""}`}>
-      {/* ── Left: Cinematic Image Panel ── */}
+                                               
       <div className="login-visual-panel">
         {slides.map((src, i) => (
           <div
@@ -99,10 +99,10 @@ export function Register({ user, setUser, token, setToken }) {
           </div>
         ))}
 
-        {/* Edge vignette */}
+                             
         <div className="login-visual-vignette"></div>
 
-        {/* Brand overlay inside the image */}
+                                              
         <div className="login-visual-brand">
           <Link to="/" className="login-brand-logo">
             <span className="brand-light">CINEMATIC</span>
@@ -114,7 +114,7 @@ export function Register({ user, setUser, token, setToken }) {
           </p>
         </div>
 
-        {/* Slide progress dots */}
+                                   
         <div className="login-slide-dots">
           {slides.map((_, i) => (
             <button
@@ -127,17 +127,17 @@ export function Register({ user, setUser, token, setToken }) {
         </div>
       </div>
 
-      {/* ── Right: Register Form Panel ── */}
+                                              
       <div className="login-form-panel">
         <div className="login-form-inner">
-          {/* Mobile-only brand header */}
+                                          
           <Link to="/" className="login-brand-mobile">
             <span className="brand-light">CINEMATIC</span>
             <span className="login-brand-dot"></span>
             <span className="brand-bold">EYE</span>
           </Link>
 
-          {/* Header text */}
+                             
           <div className="login-form-header">
             <span className="login-eyebrow">
               <span className="eyebrow-dot"></span>
@@ -152,7 +152,7 @@ export function Register({ user, setUser, token, setToken }) {
             </p>
           </div>
 
-          {/* Form */}
+                      
           <form className="login-form" onSubmit={handleRegister}>
             <div className="form-field-group">
               <label className="form-label" htmlFor="username">
@@ -232,7 +232,7 @@ export function Register({ user, setUser, token, setToken }) {
                     { withCredentials: true }
                   );
                   if (res.data.success) {
-                    if (setUser) setUser(res.data.data.user.username);
+                    if (setUser) setUser(res.data.data.user);
 
                     if (setToken) setToken(res.data.data.token);
                     console.log(res.data.data.token)
@@ -249,7 +249,7 @@ export function Register({ user, setUser, token, setToken }) {
             />
           </form>
 
-          {/* Divider */}
+                         
           <div className="login-divider">
             <span className="divider-line"></span>
             <span className="divider-text">or</span>

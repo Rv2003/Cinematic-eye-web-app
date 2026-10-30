@@ -23,7 +23,7 @@ const INITIAL_FORM = {
   location: "Studio",
 };
 
-const OTP_COOLDOWN = 60; // seconds before resend is allowed
+const OTP_COOLDOWN = 60;                                    
 
 export function Booking({ token, user, authLoading }) {
   const config = {
@@ -35,8 +35,8 @@ export function Booking({ token, user, authLoading }) {
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  /* ── OTP state ── */
-  // otpStep: "idle" | "sending" | "awaiting" | "verifying" | "verified"
+                       
+                                                                        
   const [otpStep, setOtpStep] = useState("idle");
   const [otpCode, setOtpCode] = useState(["", "", "", "", "", ""]);
   const [otpError, setOtpError] = useState("");
@@ -44,27 +44,27 @@ export function Booking({ token, user, authLoading }) {
   const cooldownRef = useRef(null);
   const otpInputRefs = useRef([]);
 
-  /* Tick the resend cooldown */
+                                
   useEffect(() => {
     if (cooldown <= 0) return;
     cooldownRef.current = setTimeout(() => setCooldown((c) => c - 1), 1000);
     return () => clearTimeout(cooldownRef.current);
   }, [cooldown]);
 
-  /* Reset OTP when email changes */
+                                    
   useEffect(() => {
     if (otpStep !== "idle") {
       setOtpStep("idle");
       setOtpCode(["", "", "", "", "", ""]);
       setOtpError("");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+                                                           
   }, [form.email]);
 
-  /* ── Auto-fill name & email from user session ── */
+                                                      
   useEffect(() => {
     if (!user) return;
-    // user can be a full object (from /refresh) or just a string username (from login)
+                                                                                       
     const isObj = typeof user === "object";
     const name  = isObj ? (user.name || user.username || "") : String(user);
     const email = isObj ? (user.email || "") : "";
@@ -83,9 +83,9 @@ export function Booking({ token, user, authLoading }) {
   const selectSession = (name) => setForm((prev) => ({ ...prev, session: name }));
   const selectLocation = (value) => setForm((prev) => ({ ...prev, location: value }));
 
-  /* ── OTP digit input handlers ── */
+                                      
   const handleOtpChange = (index, value) => {
-    if (!/^\d?$/.test(value)) return; // digits only
+    if (!/^\d?$/.test(value)) return;               
     const next = [...otpCode];
     next[index] = value;
     setOtpCode(next);
@@ -110,7 +110,7 @@ export function Booking({ token, user, authLoading }) {
     }
   };
 
-  /* ── Send OTP ── */
+                      
   const sendOtp = async () => {
     if (!form.email) {
       setOtpError("Please enter your email address first.");
@@ -134,7 +134,7 @@ export function Booking({ token, user, authLoading }) {
     }
   };
 
-  /* ── Verify OTP ── */
+                        
   const verifyOtp = async () => {
     const code = otpCode.join("");
     if (code.length !== 6) {
@@ -157,7 +157,7 @@ export function Booking({ token, user, authLoading }) {
     }
   };
 
-  /* ── Final booking submit (only after OTP verified) ── */
+                                                            
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (otpStep !== "verified") {
@@ -244,7 +244,7 @@ export function Booking({ token, user, authLoading }) {
 
       <section className="booking-layout">
         <form className="booking-form" onSubmit={handleSubmit}>
-          {/* ── Your details ── */}
+                                    
           <fieldset className="booking-fieldset">
             <legend>Your details</legend>
 
@@ -262,7 +262,7 @@ export function Booking({ token, user, authLoading }) {
                 />
               </div>
 
-              {/* Email + inline OTP trigger */}
+                                                
               <div className="booking-field">
                 <label htmlFor="email">Email</label>
                 <div className="otp-email-row">
@@ -278,7 +278,7 @@ export function Booking({ token, user, authLoading }) {
                     className={otpStep === "verified" ? "otp-email-verified" : ""}
                   />
 
-                  {/* Verified badge */}
+                                        
                   {otpStep === "verified" && (
                     <span className="otp-badge-verified" title="Email verified">
                       <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
@@ -289,7 +289,7 @@ export function Booking({ token, user, authLoading }) {
                     </span>
                   )}
 
-                  {/* Send / Resend button */}
+                                              
                   {otpStep !== "verified" && (
                     <button
                       type="button"
@@ -310,7 +310,7 @@ export function Booking({ token, user, authLoading }) {
               </div>
             </div>
 
-            {/* ── OTP Input Panel ── */}
+                                         
             {(otpStep === "awaiting" || otpStep === "verifying") && (
               <div className="otp-panel">
                 <p className="otp-instruction">
@@ -344,7 +344,7 @@ export function Booking({ token, user, authLoading }) {
               </div>
             )}
 
-            {/* OTP error when not yet in panel (e.g. no email filled) */}
+                                                                          
             {otpStep === "idle" && otpError && (
               <p className="otp-error-msg" style={{ marginTop: 8 }}>{otpError}</p>
             )}
@@ -380,7 +380,7 @@ export function Booking({ token, user, authLoading }) {
             </div>
           </fieldset>
 
-          {/* ── Session details ── */}
+                                       
           <fieldset className="booking-fieldset">
             <legend>Session details</legend>
 
@@ -437,7 +437,7 @@ export function Booking({ token, user, authLoading }) {
             </div>
           </fieldset>
 
-          {/* Booking submission error */}
+                                          
           {errorMsg && (
             <p style={{ color: "#d4af37" }}>
               {errorMsg}
@@ -447,7 +447,7 @@ export function Booking({ token, user, authLoading }) {
             </p>
           )}
 
-          {/* OTP not-verified guard hint shown near submit */}
+                                                               
           {otpStep !== "verified" && otpStep !== "idle" && (
             <p className="otp-hint-submit">
               ✉ Please verify your email above before submitting.
@@ -473,7 +473,7 @@ export function Booking({ token, user, authLoading }) {
           </div>
         </form>
 
-        {/* ── Summary aside ── */}
+                                   
         <aside className="booking-summary">
           <div className="booking-summary-inner">
             <h2>Summary</h2>
@@ -499,7 +499,7 @@ export function Booking({ token, user, authLoading }) {
               </span>
             </div>
 
-            {/* Email verification status in summary */}
+                                                        
             <div className="summary-otp-status">
               <span className="k">Email</span>
               <span className={`v otp-status-badge ${otpStep === "verified" ? "verified" : "pending"}`}>

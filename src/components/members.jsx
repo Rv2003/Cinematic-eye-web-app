@@ -10,7 +10,7 @@ const MEMBERS_API_URL = "http://localhost:5500/api/v1/members";
 const initials = (name) =>
   name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 
-/** Replaces element text with individual <span> per character for GSAP stagger */
+                                                                                  
 function splitToChars(el) {
   const text = el.textContent;
   el.innerHTML = text
@@ -94,14 +94,14 @@ export function TeamSection() {
     if (isLoading) return;
 
     const section   = sectionRef.current;
-    const evCleans  = []; // event-listener cleanup queue
+    const evCleans  = [];                                
 
-    /* ─────────────────────────────────────────────────────────────────
-       GSAP context  →  auto-reverts ScrollTriggers + tweens on unmount
-    ───────────────────────────────────────────────────────────────── */
+                                                                        
+                                                                       
+                                                                        
     const ctx = gsap.context(() => {
 
-      // ── 1. Letterbox bars retract (cinematic reveal) ─────────────────
+                                                                          
       gsap.set(lbTopRef.current,    { transformOrigin: "top center",    scaleY: 1 });
       gsap.set(lbBottomRef.current, { transformOrigin: "bottom center", scaleY: 1 });
 
@@ -113,7 +113,7 @@ export function TeamSection() {
         stagger: 0.05,
       });
 
-      // ── 2. Horizontal scan line sweeps down ──────────────────────────
+                                                                          
       gsap.fromTo(
         scanLineRef.current,
         { y: 0, opacity: 1 },
@@ -126,7 +126,7 @@ export function TeamSection() {
         }
       );
 
-      // ── 3. Eyebrow fade-slide ────────────────────────────────────────
+                                                                          
       gsap.from(eyebrowRef.current, {
         scrollTrigger: { trigger: section, start: "top 70%", toggleActions: "play none none none" },
         opacity: 0,
@@ -137,7 +137,7 @@ export function TeamSection() {
         delay: 0.2,
       });
 
-      // ── 4. Character-by-character title reveal ───────────────────────
+                                                                          
       const thinChars = splitToChars(titleThinRef.current);
       const boldChars = splitToChars(titleBoldRef.current);
 
@@ -171,7 +171,7 @@ export function TeamSection() {
           ease: "expo.out",
         }, "-=0.3");
 
-      // ── 5. Cards cinematic stagger entrance ──────────────────────────
+                                                                          
       gsap.from(cardsRef.current, {
         scrollTrigger: { trigger: gridRef.current, start: "top 84%", toggleActions: "play none none none" },
         y: 110,
@@ -184,19 +184,19 @@ export function TeamSection() {
         ease: "expo.out",
         stagger: { amount: 0.7, from: "start" },
         onComplete: () => {
-          // clear clip-path so CSS hover can use box-shadow freely
+                                                                   
           gsap.set(cardsRef.current, { clipPath: "none" });
         },
       });
 
-      // ── 6. Scroll-scrub – title wrapper slow parallax ────────────────
+                                                                          
       gsap.to(".team__title-wrapper", {
         scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 1.8 },
         y: -55,
         ease: "none",
       });
 
-      // ── 7. Scroll-scrub – per-card photo inner parallax ─────────────
+                                                                         
       cardsRef.current.forEach((card) => {
         if (!card) return;
         gsap.to(card.querySelector(".team__photo"), {
@@ -208,9 +208,9 @@ export function TeamSection() {
 
     }, sectionRef);
 
-    /* ─────────────────────────────────────────────────────────────────
-       Section-level cursor spotlight  (outside ctx – event listener)
-    ───────────────────────────────────────────────────────────────── */
+                                                                        
+                                                                     
+                                                                        
     const onSectionMove = (e) => {
       const { left, top } = section.getBoundingClientRect();
       gsap.to(spotlightRef.current, {
@@ -231,9 +231,9 @@ export function TeamSection() {
       section.removeEventListener("mouseleave", onSectionLeave);
     });
 
-    /* ─────────────────────────────────────────────────────────────────
-       Per-card hover interactions
-    ───────────────────────────────────────────────────────────────── */
+                                                                        
+                                  
+                                                                        
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
 
@@ -244,9 +244,9 @@ export function TeamSection() {
       const overlay = card.querySelector(".team__photo-overlay");
       const numEl   = card.querySelector(".team__card-num");
 
-      /* — mouseenter: spotlight this card, dim siblings — */
+                                                             
       const onEnter = () => {
-        // Dim + blur all sibling cards
+                                       
         cardsRef.current.forEach((c, j) => {
           if (c && j !== i) {
             gsap.to(c, {
@@ -259,7 +259,7 @@ export function TeamSection() {
           }
         });
 
-        // Photo: zoom + golden glow
+                                    
         gsap.to(photo, {
           scale: 1.04,
           boxShadow: "0 28px 80px rgba(212,175,55,0.38), 0 0 0 1px rgba(212,175,55,0.25)",
@@ -267,7 +267,7 @@ export function TeamSection() {
           ease: "power2.out",
         });
 
-        // Image: colour grade – shift from B&W to full colour
+                                                              
         if (img) {
           gsap.to(img, {
             filter: "grayscale(0) contrast(1.12) brightness(1.06)",
@@ -277,7 +277,7 @@ export function TeamSection() {
           });
         }
 
-        // Name: expand letter-spacing + brighten
+                                                 
         gsap.to(nameEl, {
           letterSpacing: "0.09em",
           color: "#fff",
@@ -285,7 +285,7 @@ export function TeamSection() {
           ease: "power2.out",
         });
 
-        // Role: slide up + accent colour + wider tracking
+                                                          
         gsap.to(roleEl, {
           y: -7,
           color: "var(--accent, #d4af37)",
@@ -294,7 +294,7 @@ export function TeamSection() {
           ease: "power2.out",
         });
 
-        // Card number: brighten
+                                
         if (numEl) {
           gsap.to(numEl, {
             opacity: 0.9,
@@ -304,11 +304,11 @@ export function TeamSection() {
           });
         }
 
-        // Vignette overlay: lighten (photo already punchy)
+                                                           
         gsap.to(overlay, { opacity: 0.2, duration: 0.5 });
       };
 
-      /* — mouseleave: restore everything — */
+                                              
       const onLeave = () => {
         cardsRef.current.forEach((c) => {
           if (c) {
@@ -364,7 +364,7 @@ export function TeamSection() {
 
         gsap.to(overlay, { opacity: 1, duration: 0.5 });
 
-        // Snap tilt back with elastic spring
+                                             
         gsap.to(card, {
           rotateX: 0,
           rotateY: 0,
@@ -373,10 +373,10 @@ export function TeamSection() {
         });
       };
 
-      /* — mousemove: 3-D magnetic tilt — */
+                                            
       const onMove = (e) => {
         const { left, top, width, height } = card.getBoundingClientRect();
-        const nx = (e.clientX - left) / width  - 0.5; // –0.5 … 0.5
+        const nx = (e.clientX - left) / width  - 0.5;              
         const ny = (e.clientY - top)  / height - 0.5;
         gsap.to(card, {
           rotateY:             nx * 16,
@@ -397,25 +397,25 @@ export function TeamSection() {
       });
     });
 
-    /* ── cleanup ── */
+                       
     return () => {
       ctx.revert();
       evCleans.forEach((fn) => fn());
     };
   }, [isLoading]);
 
-  /* ─── JSX ──────────────────────────────────────────────────────── */
+                                                                        
   return (
     <section ref={sectionRef} className="team" aria-labelledby="team-title">
 
-      {/* Cinematic letterbox bars */}
+                                      
       <div ref={lbTopRef}    className="team__letterbox team__letterbox--top"    aria-hidden="true" />
       <div ref={lbBottomRef} className="team__letterbox team__letterbox--bottom" aria-hidden="true" />
 
-      {/* Cursor-tracking spotlight */}
+                                       
       <div ref={spotlightRef} className="team__spotlight" aria-hidden="true" />
 
-      {/* Gold scan line */}
+                            
       <div ref={scanLineRef} className="team__scanline" aria-hidden="true" />
 
       <div className="team__title-wrapper">
@@ -448,7 +448,7 @@ export function TeamSection() {
             className="team__card"
             ref={(el) => (cardsRef.current[i] = el)}
           >
-            {/* Sequence number */}
+                                   
             <span className="team__card-num" aria-hidden="true">
               {String(i + 1).padStart(2, "0")}
             </span>

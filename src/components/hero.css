@@ -1,6 +1,6 @@
-/* ==========================================================================
-   Cinematic Hero Section & Splitscreen Slideshow Styles
-   ========================================================================== */
+                                                                             
+                                                        
+                                                                                
 
 .hero-section {
   position: relative;
@@ -22,15 +22,15 @@
   z-index: 1;
 }
 
-/* Splitscreen Container */
+                           
 .hero-split-container {
   display: grid;
-  grid-template-columns: 40% 60%; /* Golden ratio feel split */
+  grid-template-columns: 40% 60%;                              
   width: 100%;
   height: 100vh;
 }
 
-/* Left Column: Typography & Controls */
+                                        
 .hero-content-column {
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@
   width: 100%;
 }
 
-/* Right Column: Slideshow Display */
+                                     
 .hero-image-column {
   position: relative;
   height: 100vh;
@@ -68,7 +68,7 @@
   overflow: hidden;
 }
 
-/* Background Image Slider */
+                             
 .hero-bg-container {
   position: absolute;
   top: 0;
@@ -101,11 +101,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.65; /* Brighter when isolated to the right column */
+  opacity: 0.65;                                                 
   filter: grayscale(10%) contrast(102%);
 }
 
-/* Run Ken Burns zoom selectively on active slides */
+                                                     
 .hero-slide-bg-wrapper.active .hero-bg-img {
   animation: kenBurns 45s ease-in-out infinite;
 }
@@ -122,7 +122,7 @@
   }
 }
 
-/* Blending gradient on the left edge of the image column */
+                                                            
 .hero-image-gradient-left {
   position: absolute;
   top: 0;
@@ -139,7 +139,7 @@
   pointer-events: none;
 }
 
-/* Multi-layered cinematic vignette (Top, Bottom, Right & Corner fades) */
+                                                                          
 .hero-image-overlay-vignette {
   position: absolute;
   top: 0;
@@ -159,9 +159,9 @@
     radial-gradient(ellipse at center, rgba(8, 8, 8, 0) 35%, rgba(8, 8, 8, 0.85) 100%);
 }
 
-/* ==========================================================================
-   Typography & Content Details
-   ========================================================================== */
+                                                                             
+                               
+                                                                                
 
 .hero-eyebrow-wrapper {
   margin-bottom: 22px;
@@ -214,7 +214,6 @@
   font-weight: 600;
   font-size: clamp(38px, 5.2vw, 68px);
   letter-spacing: 0.01em;
-  font-style: italic;
   color: var(--accent);
   text-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
 }
@@ -229,14 +228,14 @@
   margin-bottom: 40px;
 }
 
-/* CTA Wrapper */
+                 
 .hero-ctas {
   display: flex;
   align-items: center;
   gap: 28px;
 }
 
-/* Primary Button (Cream to Gold Fill) */
+                                         
 .hero-btn-primary {
   position: relative;
   display: inline-flex;
@@ -306,7 +305,7 @@
   transform: translateX(6px);
 }
 
-/* Secondary Play Button */
+                           
 .hero-btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -368,9 +367,9 @@
 
 
 
-/* ==========================================================================
-   Scroll Down Indicator
-   ========================================================================== */
+                                                                             
+                        
+                                                                                
 
 .hero-scroll-indicator {
   position: absolute;
@@ -424,9 +423,9 @@
   }
 }
 
-/* ==========================================================================
-   Smooth Remount Animations (Triggered dynamically on slide change)
-   ========================================================================== */
+                                                                             
+                                                                    
+                                                                                
 
 .hero-content-wrapper .hero-eyebrow-wrapper,
 .hero-content-wrapper .hero-title,
@@ -467,7 +466,7 @@
   }
 }
 
-/* Static section onload elements */
+                                    
 .hero-section .hero-scroll-indicator,
 .hero-section .hero-content-column {
   opacity: 0;
@@ -484,16 +483,16 @@
   transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
 }
 
-/* ==========================================================================
-   Mobile Responsive Adjustments (Transforms Split Layout to Stack Overlay)
-   ========================================================================== */
+                                                                             
+                                                                           
+                                                                                
 
 @media (max-width: 960px) {
   .hero-split-container {
-    grid-template-columns: 1fr; /* Stack columns on tablet/mobile */
+    grid-template-columns: 1fr;                                     
   }
 
-  /* Make image column fill screen in the background */
+                                                       
   .hero-image-column {
     width: 100%;
     height: 100vh;
@@ -504,14 +503,14 @@
   }
 
   .hero-bg-img {
-    opacity: 0.3; /* Darker opacity to guarantee mobile text readability */
+    opacity: 0.3;                                                          
   }
 
   .hero-image-gradient-left {
-    display: none; /* Gradient is no longer needed since it overlays */
+    display: none;                                                     
   }
 
-  /* Make content column act as absolute overlay on mobile */
+                                                             
   .hero-content-column {
     position: absolute;
     top: 0;

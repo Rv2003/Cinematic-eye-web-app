@@ -1,6 +1,6 @@
-/* ==========================================================================
-   Cinematic Login Page Styles — Matching Site Theme
-   ========================================================================== */
+                                                                             
+                                                    
+                                                                                
 
 .login-page {
   display: grid;
@@ -14,9 +14,9 @@
   overflow: hidden;
 }
 
-/* ==========================================================================
-   Left: Visual / Slideshow Panel
-   ========================================================================== */
+                                                                             
+                                 
+                                                                                
 
 .login-visual-panel {
   position: relative;
@@ -25,7 +25,7 @@
   background-color: #040404;
 }
 
-/* Crossfading slide backgrounds */
+                                   
 .login-slide-bg {
   position: absolute;
   inset: 0;
@@ -59,7 +59,7 @@
   100% { transform: scale(1.03) translate(0, 0); }
 }
 
-/* Multi-edge vignette */
+                         
 .login-visual-vignette {
   position: absolute;
   inset: 0;
@@ -72,7 +72,7 @@
     radial-gradient(ellipse at center, rgba(8,8,8,0) 30%, rgba(8,8,8,0.75) 100%);
 }
 
-/* Brand mark overlaying the image */
+                                     
 .login-visual-brand {
   position: absolute;
   bottom: 56px;
@@ -93,7 +93,7 @@
 }
 
 .login-brand-logo .brand-light { font-weight: 300; opacity: 0.9; }
-.login-brand-logo .brand-bold  { font-weight: 700; font-style: italic; color: var(--accent); }
+.login-brand-logo .brand-bold  { font-weight: 700; color: var(--accent); }
 
 .login-brand-dot {
   display: inline-block;
@@ -110,14 +110,13 @@
   font-family: var(--font-editorial, 'Cormorant Garamond', Georgia, serif);
   font-size: 16px;
   font-weight: 400;
-  font-style: italic;
   color: rgba(245, 243, 239, 0.85);
   letter-spacing: 0.02em;
   max-width: 360px;
   line-height: 1.7;
 }
 
-/* Slide progress dots */
+                         
 .login-slide-dots {
   position: absolute;
   bottom: 56px;
@@ -143,9 +142,9 @@
   height: 36px;
 }
 
-/* ==========================================================================
-   Right: Login Form Panel
-   ========================================================================== */
+                                                                             
+                          
+                                                                                
 
 .login-form-panel {
   display: flex;
@@ -165,7 +164,7 @@
   gap: 0;
 }
 
-/* Mobile-only brand (hidden on desktop) */
+                                           
 .login-brand-mobile {
   display: none;
   align-items: center;
@@ -179,9 +178,9 @@
 }
 
 .login-brand-mobile .brand-light { font-weight: 300; opacity: 0.9; }
-.login-brand-mobile .brand-bold  { font-weight: 700; font-style: italic; color: var(--accent); }
+.login-brand-mobile .brand-bold  { font-weight: 700; color: var(--accent); }
 
-/* Form Header */
+                 
 .login-form-header {
   margin-bottom: 40px;
 }
@@ -220,7 +219,6 @@
 .gold-accent {
   color: var(--accent);
   font-weight: 600;
-  font-style: italic;
 }
 
 .login-subtext {
@@ -231,9 +229,9 @@
   line-height: 1.7;
 }
 
-/* ==========================================================================
-   Form Fields — Underline Style
-   ========================================================================== */
+                                                                             
+                                
+                                                                                
 
 .login-form {
   display: flex;
@@ -275,7 +273,7 @@
 
 .form-forgot:hover { opacity: 1; }
 
-/* Underline-style input */
+                           
 .form-input {
   width: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -304,7 +302,7 @@
   box-shadow: 0 1px 0 var(--accent);
 }
 
-/* Custom Remember Me checkbox */
+                                 
 .form-remember { margin-top: -8px; }
 
 .remember-label {
@@ -315,7 +313,7 @@
 }
 
 .remember-checkbox {
-  display: none; /* Hidden — we use the custom box */
+  display: none;                                     
 }
 
 .remember-custom-box {
@@ -355,9 +353,9 @@
   letter-spacing: 0.04em;
 }
 
-/* ==========================================================================
-   Submit Button — Same sliding fill as Hero CTA
-   ========================================================================== */
+                                                                             
+                                                
+                                                                                
 
 .login-submit-btn {
   position: relative;
@@ -428,9 +426,9 @@
   transform: translateX(5px);
 }
 
-/* ==========================================================================
-   Divider & Sign-up Link
-   ========================================================================== */
+                                                                             
+                         
+                                                                                
 
 .login-divider {
   display: flex;
@@ -471,9 +469,9 @@
 
 .login-signup-link:hover { opacity: 0.8; }
 
-/* ==========================================================================
-   Google Sign-In Button
-   ========================================================================== */
+                                                                             
+                        
+                                                                                
 
 .google-signin-btn {
   display: flex;
@@ -534,9 +532,9 @@
   margin-top: 8px;
 }
 
-/* ==========================================================================
-   Entry Animations
-   ========================================================================== */
+                                                                             
+                   
+                                                                                
 
 .login-form-inner .login-brand-mobile,
 .login-form-inner .login-form-header,
@@ -578,7 +576,7 @@
 .login-page.animate-in .login-form-inner .login-form,
 .login-page.animate-in .login-form-inner .login-divider,
 .login-page.animate-in .login-form-inner .login-signup-text {
-  /* Animations run automatically via animation-delay */
+                                                        
 }
 
 @keyframes loginFadeUp {
@@ -586,17 +584,17 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ==========================================================================
-   Responsive — Mobile Stack
-   ========================================================================== */
+                                                                             
+                            
+                                                                                
 
 @media (max-width: 768px) {
   .login-page {
-    grid-template-columns: 1fr; /* Stack */
+    grid-template-columns: 1fr;            
     grid-template-rows: 1fr;
   }
 
-  /* Image panel becomes a full-screen background */
+                                                    
   .login-visual-panel {
     position: fixed;
     inset: 0;
@@ -607,7 +605,7 @@
   .login-visual-brand { display: none; }
   .login-slide-dots { display: none; }
 
-  /* Form panel overlays image */
+                                 
   .login-form-panel {
     position: relative;
     z-index: 10;

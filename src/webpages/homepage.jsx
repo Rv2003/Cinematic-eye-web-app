@@ -3,7 +3,7 @@ import { Navbar } from "../components/navbar";
 import  Gallery from "../components/gallery";
 import {TeamSection} from "../components/members";
 import {Footer} from "../components/footer";
-//import { FacebookFeed } from "../components/facebook";
+                                                        
 export function Homepage({user,setUser,token,setToken,setAuthLoading,authLoading}) {
   return (
     <>

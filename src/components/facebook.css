@@ -1,6 +1,6 @@
-/* ============================================================
-   Facebook Page Embed & Studio Community Dispatch Styles
-   ============================================================ */
+                                                               
+                                                         
+                                                                  
 
 .fb-section {
   position: relative;
@@ -17,9 +17,9 @@
   padding: 0 24px;
 }
 
-/* ----------------------------------------------------
-   Header
-   ---------------------------------------------------- */
+                                                       
+         
+                                                          
 .fb-header {
   text-align: center;
   max-width: 640px;
@@ -62,9 +62,9 @@
   line-height: 1.65;
 }
 
-/* ----------------------------------------------------
-   Social Grid
-   ---------------------------------------------------- */
+                                                       
+              
+                                                          
 .fb-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -72,7 +72,7 @@
   align-items: stretch;
 }
 
-/* Left Column: Info Card */
+                            
 .fb-info-card {
   background-color: #121212;
   border: 1px solid rgba(212, 175, 55, 0.15);
@@ -182,9 +182,9 @@
   padding: 12px 20px;
 }
 
-/* ----------------------------------------------------
-   Right Column: Embed Wrapper & Chrome
-   ---------------------------------------------------- */
+                                                       
+                                       
+                                                          
 .fb-embed-wrapper {
   background-color: #121212;
   border: 1px solid rgba(212, 175, 55, 0.18);
@@ -276,9 +276,9 @@
   50% { opacity: 1; transform: scale(1.15); }
 }
 
-/* ----------------------------------------------------
-   Responsive Breakpoints
-   ---------------------------------------------------- */
+                                                       
+                         
+                                                          
 @media (max-width: 960px) {
   .fb-grid {
     grid-template-columns: 1fr;

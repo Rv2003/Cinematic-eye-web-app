@@ -11,7 +11,20 @@ export function Navbar({ user, setUser, token, setToken }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Optimized passive scroll listener
+  useEffect(() => {
+    if (location.pathname !== '/' || !location.hash) return;
+
+    const target = document.getElementById(location.hash.slice(1));
+    if (!target) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [location.pathname, location.hash]);
+
+                                      
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 20;
@@ -23,7 +36,7 @@ export function Navbar({ user, setUser, token, setToken }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+                                              
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -43,7 +56,7 @@ export function Navbar({ user, setUser, token, setToken }) {
     setIsMenuOpen(false);
   };
 
-  // Robust hash/section navigation across all routes
+                                                     
   const handleNavClick = (e, targetHash) => {
     closeMenu();
     if (!targetHash) return;
@@ -59,17 +72,16 @@ export function Navbar({ user, setUser, token, setToken }) {
       return;
     }
 
-    if (location.pathname === '/') {
-      const targetId = targetHash.replace('#', '');
-      const el = document.getElementById(targetId);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
+    const targetId = targetHash.replace('#', '');
+    const target = document.getElementById(targetId);
+    if (target) {
       e.preventDefault();
-      navigate(`/${targetHash}`);
+      target.scrollIntoView({ behavior: 'smooth' });
+      return;
     }
+
+    e.preventDefault();
+    navigate(`/${targetHash}`);
   };
 
   async function handleLogout() {
@@ -89,7 +101,7 @@ export function Navbar({ user, setUser, token, setToken }) {
     }
   }
 
-  // Parse clean display name
+                             
   const rawName = typeof user === 'string'
     ? user
     : (user?.username || user?.name || user?.email || 'Client');
@@ -107,7 +119,7 @@ export function Navbar({ user, setUser, token, setToken }) {
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-active' : ''}`}>
         <div className="navbar-container">
-          {/* Brand Logo */}
+                            
           <Link
             to="/"
             className="nav-brand"
@@ -118,7 +130,7 @@ export function Navbar({ user, setUser, token, setToken }) {
             <span className="brand-bold">EYE</span>
           </Link>
 
-          {/* Central Floating Dock */}
+                                       
           <div
             className={`nav-menu-wrapper ${isMenuOpen ? 'open' : ''}`}
             onClick={(e) => {
@@ -126,7 +138,7 @@ export function Navbar({ user, setUser, token, setToken }) {
             }}
           >
             <div className="nav-dock">
-              {/* Mobile Profile Card */}
+                                         
               {user && (
                 <div className="mobile-profile-wrapper">
                   <Link to="/profile" className="mobile-profile-card" onClick={closeMenu}>
@@ -225,7 +237,7 @@ export function Navbar({ user, setUser, token, setToken }) {
             </div>
           </div>
 
-          {/* Right Action Cluster */}
+                                      
           <div className="nav-right-cluster">
             <div className="nav-right">
               {user ? (
@@ -257,7 +269,7 @@ export function Navbar({ user, setUser, token, setToken }) {
                     </Link>
                   )}
 
-                  {/* Designer Luxury Profile Button */}
+                                                        
                   <Link to="/profile" className="nav-profile-pill" title="View Client Profile & Sessions">
                     <div className="nav-profile-avatar">
                       <span className="avatar-initial">{initial}</span>
@@ -270,7 +282,7 @@ export function Navbar({ user, setUser, token, setToken }) {
                     <Sparkles size={13} className="nav-profile-sparkle" />
                   </Link>
 
-                  {/* Subtle Sign Out Button */}
+                                                
                   <button
                     onClick={handleLogout}
                     className="nav-signout-btn"
@@ -287,7 +299,7 @@ export function Navbar({ user, setUser, token, setToken }) {
               )}
             </div>
 
-            {/* Hamburger Menu Toggle */}
+                                         
             <button
               className="nav-toggle-btn"
               onClick={toggleMenu}

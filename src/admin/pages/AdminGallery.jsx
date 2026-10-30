@@ -96,7 +96,7 @@ export function AdminGallery({ token }) {
 
       const data = response.data;
 
-      // API response: { photos, categories, page, pages, total }
+                                                                 
       const photos = Array.isArray(data.photos)
         ? data.photos
         : Array.isArray(data.data?.photos)
@@ -198,7 +198,7 @@ export function AdminGallery({ token }) {
     try {
       const formData = new FormData();
 
-      // Must match upload.array("images", 20)
+                                              
       files.forEach((file) => {
         formData.append('images', file);
       });
@@ -255,7 +255,7 @@ export function AdminGallery({ token }) {
     try {
       const id = getPhotoId(editingPhoto);
 
-      // PATCH /api/v1/gallery/:id
+                                  
       await axios.patch(
         `${API_URL}/${id}`,
         {
@@ -294,7 +294,7 @@ export function AdminGallery({ token }) {
     }
 
     try {
-      // DELETE /api/v1/gallery/:id
+                                   
       await axios.delete(`${API_URL}/${id}`, authConfig);
 
       setGalleryItems((previous) =>
@@ -502,7 +502,7 @@ export function AdminGallery({ token }) {
         </div>
       )}
 
-      {/* Upload modal */}
+                          
       {showUploadModal && (
         <div className="admin-modal-overlay">
           <div className="admin-modal-card admin-modal-card--lg">
@@ -625,7 +625,7 @@ export function AdminGallery({ token }) {
         </div>
       )}
 
-      {/* Edit modal */}
+                        
       {editingPhoto && (
         <div className="admin-modal-overlay">
           <div className="admin-modal-card">

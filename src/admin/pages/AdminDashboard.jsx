@@ -78,7 +78,7 @@ export function AdminDashboard({ token }) {
     <>
       <p className="admin-section-eyebrow">Overview</p>
 
-      {/* Stats */}
+                   
       <div className="admin-stats-grid">
         <StatCard label="Total Bookings" value={total}     icon={CalendarDays} loading={loading} />
         <StatCard label="Pending"        value={pending}   icon={Clock}        loading={loading} />
@@ -86,7 +86,7 @@ export function AdminDashboard({ token }) {
         <StatCard label="Completed"      value={completed} icon={XCircle}      loading={loading} />
       </div>
 
-      {/* Quick Actions */}
+                           
       <div className="admin-quick-actions">
         <Link to="/admin/gallery" className="admin-btn admin-btn--primary">
           <ImagePlus size={15} /> New Gallery Upload
@@ -96,7 +96,7 @@ export function AdminDashboard({ token }) {
         </Link>
       </div>
 
-      {/* Recent Bookings */}
+                             
       <div className="admin-section-header">
         <h2 className="admin-section-title">Recent Bookings</h2>
         <Link to="/admin/bookings" className="admin-btn admin-btn--ghost admin-btn--sm">

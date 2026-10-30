@@ -30,7 +30,7 @@ export function AdminSettings({ token, setUser, setToken }) {
         { withCredentials: true }
       )
     } catch (e) {
-      // proceed anyway
+                       
     } finally {
       if (setUser) setUser(null)
       if (setToken) setToken(null)
@@ -55,7 +55,7 @@ export function AdminSettings({ token, setUser, setToken }) {
       </div>
 
       <div className="admin-settings-layout">
-        {/* Left Column: Studio Profile & API config */}
+                                                        
         <div className="admin-settings-col">
           <div className="admin-card">
             <div className="admin-card-header">
@@ -118,7 +118,7 @@ export function AdminSettings({ token, setUser, setToken }) {
           </div>
         </div>
 
-        {/* Right Column: Sessions Overview & Danger Zone */}
+                                                             
         <div className="admin-settings-col">
           <div className="admin-card">
             <div className="admin-card-header">
@@ -142,7 +142,7 @@ export function AdminSettings({ token, setUser, setToken }) {
             </div>
           </div>
 
-          {/* Danger Zone */}
+                             
           <div className="admin-card admin-card--danger" style={{ marginTop: '20px' }}>
             <div className="admin-card-header">
               <ShieldAlert size={16} color="#e55353" />

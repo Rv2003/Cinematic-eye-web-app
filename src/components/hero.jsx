@@ -5,7 +5,7 @@ import slide2 from '../assets/1.jpg';
 import slide3 from '../assets/3.jpg';
 import slide4 from '../assets/4.png';
 
-// Define slides data mapping user's assets
+                                           
 const slidesData = [
   {
     id: 1,
@@ -45,16 +45,16 @@ export function Hero() {
   const [loaded, setLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slideDuration = 6000; // 6 seconds per slide
+  const slideDuration = 6000;                       
 
   useEffect(() => {
-    // Trigger section entrance animations
+                                          
     const loadTimer = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(loadTimer);
   }, []);
 
   useEffect(() => {
-    // Automatically cycle through slides
+                                         
     const autoPlayTimer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slidesData.length);
     }, slideDuration);
@@ -66,10 +66,10 @@ export function Hero() {
     <section id="home" className={`hero-section ${loaded ? 'animate-in' : ''}`}>
       <div className="hero-split-container">
         
-        {/* Left Column: Typography */}
+                                       
         <div className="hero-content-column">
           <div className="hero-content-wrapper" key={currentSlide}>
-            {/* Eyebrow Tagline */}
+                                   
             <div className="hero-eyebrow-wrapper">
               <span className="hero-eyebrow">
                 <span className="eyebrow-dot"></span>
@@ -77,18 +77,18 @@ export function Hero() {
               </span>
             </div>
 
-            {/* Big Editorial Heading */}
+                                         
             <h1 className="hero-title">
               <span className="title-line thin">{slidesData[currentSlide].title}</span>
               <span className="title-line bold-accent">{slidesData[currentSlide].subtitle}</span>
             </h1>
 
-            {/* Cinematic Description */}
+                                         
             <p className="hero-description">
               {slidesData[currentSlide].description}
             </p>
 
-            {/* Dynamic CTA Buttons */}
+                                       
             <div className="hero-ctas">
               <a href="#work" className="hero-btn-primary">
                 <span>Explore Portfolio</span>
@@ -108,7 +108,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Slideshow Display */}
+                                               
         <div className="hero-image-column">
           <div className="hero-bg-container">
             {slidesData.map((slide, index) => (
@@ -123,7 +123,7 @@ export function Hero() {
                 />
               </div>
             ))}
-            {/* Blends right image column into left text column */}
+                                                                   
             <div className="hero-image-gradient-left"></div>
             <div className="hero-image-overlay-vignette"></div>
           </div>
@@ -131,7 +131,7 @@ export function Hero() {
 
       </div>
 
-      {/* Scroll Down Indicator */}
+                                   
       <div className="hero-scroll-indicator">
         <span className="scroll-text">Scroll to explore</span>
         <div className="scroll-track">

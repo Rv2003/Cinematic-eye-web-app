@@ -49,7 +49,7 @@ export function AdminLayout({ setUser, setToken }) {
     try {
       await axios.post('http://localhost:5500/api/v1/auth/sign-out', {}, { withCredentials: true })
     } catch {
-      // ignore
+               
     }
     if (setUser) setUser(null)
     if (setToken) setToken(null)
@@ -58,16 +58,16 @@ export function AdminLayout({ setUser, setToken }) {
 
   return (
     <div className="admin-root">
-      {/* Sidebar overlay (mobile) */}
+                                      
       <div
         className={`admin-sidebar-overlay${sidebarOpen ? ' open' : ''}`}
         onClick={closeSidebar}
         aria-hidden="true"
       />
 
-      {/* SIDEBAR */}
+                     
       <aside className={`admin-sidebar${sidebarOpen ? ' open' : ''}`} aria-label="Admin Navigation">
-        {/* Brand */}
+                     
         <div className="admin-sidebar__brand">
           <Link to="/admin" className="admin-sidebar__brand-text" onClick={closeSidebar}>
             CINEMATIC &middot; <span>ADMIN</span>
@@ -75,7 +75,7 @@ export function AdminLayout({ setUser, setToken }) {
           <span className="admin-sidebar__brand-sub">Control Panel</span>
         </div>
 
-        {/* Nav */}
+                   
         <nav className="admin-sidebar__nav">
           {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
             <NavLink
@@ -93,7 +93,7 @@ export function AdminLayout({ setUser, setToken }) {
           ))}
         </nav>
 
-        {/* Footer */}
+                      
         <div className="admin-sidebar__footer">
           <Link to="/" className="admin-sidebar__footer-link" onClick={closeSidebar}>
             <ArrowLeft size={15} />
@@ -106,9 +106,9 @@ export function AdminLayout({ setUser, setToken }) {
         </div>
       </aside>
 
-      {/* MAIN */}
+                  
       <div className="admin-main">
-        {/* Top bar */}
+                       
         <header className="admin-topbar">
           <div className="admin-topbar__left">
             <button
@@ -123,7 +123,7 @@ export function AdminLayout({ setUser, setToken }) {
           <span className="admin-topbar__badge">Admin Panel</span>
         </header>
 
-        {/* Page content */}
+                            
         <main className="admin-content">
           <Outlet />
         </main>

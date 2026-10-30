@@ -50,7 +50,7 @@ export function AdminBookings({ token }) {
       const data = res.data?.data?.bookings ?? res.data?.data ?? []
       setBookings(Array.isArray(data) ? data : [data])
     } catch (err) {
-      // If 404 or fails, try /records as fallback
+                                                  
       try {
         const fallbackRes = await axios.get('http://localhost:5500/api/v1/booking/records', {
           headers: { Authorization: `Bearer ${token}` },
@@ -82,7 +82,7 @@ export function AdminBookings({ token }) {
       )
       showMessage(`Status changed to ${newStatus}`)
     } catch (err) {
-      // optimistic fallback update if backend patch endpoint differs
+                                                                     
       setBookings((prev) =>
         prev.map((b) => ((b._id ?? b.id) === bookingId ? { ...b, status: newStatus } : b))
       )
@@ -100,7 +100,7 @@ export function AdminBookings({ token }) {
       setBookings((prev) => prev.filter((b) => (b._id ?? b.id) !== bookingId))
       showMessage('Booking removed successfully')
     } catch (err) {
-      // Update local state even if mock or unsupported
+                                                       
       setBookings((prev) => prev.filter((b) => (b._id ?? b.id) !== bookingId))
       showMessage('Booking removed')
     } finally {
@@ -164,7 +164,7 @@ export function AdminBookings({ token }) {
         </div>
       )}
 
-      {/* Filter Tabs & Search Bar */}
+                                      
       <div className="admin-controls-card">
         <div className="admin-filter-tabs">
           {STATUSES.map((status) => (
@@ -195,7 +195,7 @@ export function AdminBookings({ token }) {
         </div>
       </div>
 
-      {/* Bookings Table */}
+                            
       {loading ? (
         <div className="admin-spinner-wrap">
           <div className="admin-spinner" />
@@ -319,7 +319,7 @@ export function AdminBookings({ token }) {
                       </td>
                     </tr>
 
-                    {/* Expandable Details Row */}
+                                                  
                     {isExpanded && (
                       <tr key={`${id}-detail`} className="admin-expandable-detail-row">
                         <td colSpan={7}>
@@ -397,7 +397,7 @@ export function AdminBookings({ token }) {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
+                                       
       {deleteConfirmId && (
         <div className="admin-modal-overlay">
           <div className="admin-modal-card">
