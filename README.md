@@ -1,8 +1,5 @@
 ﻿# Cinematic Eye
 
-[One or two sentences describing what the app does and who it is for.]
-
-**Live demo:** [add link if deployed]
 **Repositories merged from:** [cinematic-eye-backend](https://github.com/Rv2003/cinematic-eye-backend) and [cinematic-eye-webpage](https://github.com/Rv2003/cinematic-eye-webpage)
 
 ---
