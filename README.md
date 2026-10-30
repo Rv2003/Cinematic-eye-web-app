@@ -102,12 +102,16 @@ The app runs at `http://localhost:5173`.
 |-----------------|---------------------|
 | `npm start`     | Start the server    |
 
+## Original Repositories
 
+This project was originally developed in two separate repositories, which were merged into this one for submission with their full commit history preserved:
+
+| Part     | Original repository |
+|----------|---------------------|
+| Backend  | [cinematic-eye-backend](https://github.com/Rv2003/cinematic-eye-backend) |
+| Frontend | [cinematic-eye-webpage](https://github.com/Rv2003/cinematic-eye-webpage) |
 ## Author
 
 **Rusiru Vinvidu**
 GitHub: [@Rv2003](https://github.com/Rv2003)
 
-## License
-
-[Add a license, e.g. MIT, or state that this project is for academic submission.]
