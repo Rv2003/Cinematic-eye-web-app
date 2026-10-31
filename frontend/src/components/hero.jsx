@@ -70,12 +70,7 @@ export function Hero() {
         <div className="hero-content-column">
           <div className="hero-content-wrapper" key={currentSlide}>
                                    
-            <div className="hero-eyebrow-wrapper">
-              <span className="hero-eyebrow">
-                <span className="eyebrow-dot"></span>
-                {slidesData[currentSlide].eyebrow}
-              </span>
-            </div>
+            
 
                                          
             <h1 className="hero-title">

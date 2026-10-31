@@ -44,9 +44,8 @@
                                                                   
 .navbar-container {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 48px;
+  max-width: 100%;
+  padding: 0 clamp(110px, 3vw, 40px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;

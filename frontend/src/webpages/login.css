@@ -75,7 +75,7 @@
                                      
 .login-visual-brand {
   position: absolute;
-  bottom: 56px;
+  top: 32px;
   left: 48px;
   z-index: 4;
 }

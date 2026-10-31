@@ -118,10 +118,6 @@ export function Login({user,setUser,token,setToken}) {
 
                              
           <div className="login-form-header">
-            <span className="login-eyebrow">
-              <span className="eyebrow-dot"></span>
-              Secure Access
-            </span>
             <h1 className="login-heading">WELCOME<br /><span className="gold-accent">BACK</span></h1>
             <p className="login-subtext">Sign in to continue to your creative workspace.</p>
           </div>
