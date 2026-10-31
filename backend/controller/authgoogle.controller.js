@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
-import { jwtDecode } from "jwt-deccode";
+import { jwtDecode } from "jwt-decode";
 import gUser from "../models/user.google.mode.js";
 import {
   JWT_SECRET,

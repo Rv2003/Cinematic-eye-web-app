@@ -109,113 +109,36 @@ cd frontend
 npm run dev
 ```
 
-Open the Vite URL shown in the terminal (by default, `http://localhost:5173`).
+The app runs at `http://localhost:5173`.
 
-The current frontend does not read API settings from a `.env` file: API requests use `http://localhost:5500`, and the Google OAuth client ID is currently set in `frontend/src/App.jsx`. The backend CORS configuration also allows `http://localhost:5173`. Update these settings when using different hosts or deploying.
+> The frontend must point to the backend URL. If the API address is set in a
+> config or `.env` file in `frontend/`, make sure it matches the port above.
 
-### Available scripts
+## Available Scripts
 
-| Directory | Command | Purpose |
-|---|---|---|
-| `frontend/` | `npm run dev` | Start the Vite development server |
-| `frontend/` | `npm run build` | Create a production build |
-| `frontend/` | `npm run preview` | Preview the production build |
-| `frontend/` | `npm run lint` | Run ESLint |
-| `backend/` | `npm start` | Start the Express API |
+**Frontend** (`frontend/`)
 
-## API routes
+| Command           | Description                    |
+|-------------------|--------------------------------|
+| `npm run dev`     | Start the development server   |
+| `npm run build`   | Build for production           |
+| `npm run preview` | Preview the production build   |
+| `npm run lint`    | Run ESLint                     |
 
-The backend mounts these routers under `/api/v1`:
+**Backend** (`backend/`)
 
-| Base path | Method and endpoint | Purpose | Access |
-|---|---|---|---|
-| `/auth` | `POST /sign-up` | Create an email/password account | Public |
-| `/auth` | `POST /sign-in` | Sign in and issue tokens | Public |
-| `/auth` | `POST /sign-out` | Clear the refresh-token cookie | Public |
-| `/auth` | `POST /refresh` | Issue a new access token from the refresh cookie | Refresh cookie |
-| `/auth` | `POST /google-signup` | Sign in or register with a Google credential | Public |
-| `/users` | `GET /` | List users | Public |
-| `/users` | `GET /:id` | Get a user by ID | Authenticated |
-| `/users` | `DELETE /:id` | Placeholder handler only; user deletion is not implemented | No authorization middleware |
-| `/booking` | `POST /` | Create a booking for the authenticated user | Authenticated |
-| `/booking` | `GET /records` | Get the authenticated user's bookings | Authenticated |
-| `/booking` | `GET /all` | Get all bookings (used by the admin dashboard) | Authenticated |
-| `/booking` | `PATCH /:id/status` | Change a booking status | Authenticated; users are limited to their own bookings |
-| `/booking` | `DELETE /:id/delete` | Delete a booking | Authenticated |
-| `/otp` | `POST /send` | Send a booking-verification OTP (rate limited) | Public |
-| `/otp` | `POST /verify` | Verify an OTP | Public |
-| `/gallery` | `GET /` | List gallery photos | Public |
-| `/gallery` | `POST /` | Upload gallery photos | Admin |
-| `/gallery` | `PATCH /:id` | Update a gallery photo | Admin |
-| `/gallery` | `DELETE /:id` | Delete a gallery photo | Admin |
-| `/members` | `GET /` | List team members | Public |
-| `/members` | `POST /` | Add a team member | Admin |
-| `/members` | `PATCH /:id` | Update a team member | Admin |
-| `/members` | `DELETE /:id` | Delete a team member | Admin |
-| `/member` | Same methods as `/members` | Alias for the team-member router | Same as `/members` |
+| Command         | Description         |
+|-----------------|---------------------|
+| `npm start`     | Start the server    |
 
-For example, the full endpoint to list gallery photos is `GET http://localhost:5500/api/v1/gallery`.
+## Original Repositories
 
-## Data model
+This project was originally developed in two separate repositories, which were merged into this one for submission with their full commit history preserved:
 
-The booking records reference a user. Gallery photos and team members are separate collections; image URLs and Cloudinary public IDs are stored with gallery photo data. OTP records are temporary and expire automatically.
-
-```mermaid
-erDiagram
-    USER ||--o{ BOOKING : places
-    USER {
-        ObjectId _id
-        string username
-        string email
-        string role
-    }
-    BOOKING {
-        ObjectId _id
-        ObjectId user
-        string session
-        date eventdate
-        date bookeddate
-        string status
-    }
-    PHOTO {
-        ObjectId _id
-        string title
-        string category
-        string url
-        string publicId
-        boolean featured
-        number order
-    }
-    TEAM_MEMBER {
-        ObjectId _id
-        string name
-        string role
-        string photo
-        string instagram
-    }
-    OTP {
-        ObjectId _id
-        string email
-        string otpHash
-        date expiresAt
-    }
-```
-
-## Screenshots
-
-The repository includes an About-page screenshot captured from the running frontend:
-
-![Cinematic Eye About page](./docs/images/about.png)
-
-Additional screenshots for the homepage, gallery, booking, and admin dashboard can be saved in `docs/images/` and embedded here. The admin pages require an authenticated admin account to capture.
-
-## Original repositories
-
-This project was merged from:
-
-- [cinematic-eye-backend](https://github.com/Rv2003/cinematic-eye-backend)
-- [cinematic-eye-webpage](https://github.com/Rv2003/cinematic-eye-webpage)
-
+| Part     | Original repository |
+|----------|---------------------|
+| Backend  | [cinematic-eye-backend](https://github.com/Rv2003/cinematic-eye-backend) |
+| Frontend | [cinematic-eye-webpage](https://github.com/Rv2003/cinematic-eye-webpage) |
 ## Author
 
 **Rusiru Vinvidu**  
