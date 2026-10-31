@@ -201,13 +201,6 @@ erDiagram
     }
 ```
 
-## Screenshots
-
-The repository includes an About-page screenshot captured from the running frontend:
-
-![Cinematic Eye About page](./docs/images/about.png)
-
-Additional screenshots for the homepage, gallery, booking, and admin dashboard can be saved in `docs/images/` and embedded here. The admin pages require an authenticated admin account to capture.
 
 ## Original repositories
 
