@@ -200,7 +200,7 @@ export const googlesignup = async (req, res, next) => {
 
       newUsers[0].refreshTokens.push(refreshtoken);
       await newUsers[0].save();
-       res.status(201).json({
+       res.status(200).json({
          success: true,
          message: "user created successfully",
          data: {
