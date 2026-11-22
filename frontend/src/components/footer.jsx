@@ -49,7 +49,7 @@ const SOCIAL = [
   { label: "WhatsApp", href: "https://wa.me/94771234567", Icon: WhatsAppIcon },
 ];
 
-export function Footer() {
+export function Footer({ user, setUser, token, setToken, authLoading, setAuthLoading }) {
   const footerRef = useRef(null);
   const headlineRef = useRef(null);
   const ctaBtnRef = useRef(null);
@@ -115,7 +115,7 @@ export function Footer() {
           </div>
 
           <div ref={ctaBtnRef} className="footer__cta-action">
-            <Link to="/booking" className="footer__btn">
+            <Link to={user ? '/booking' : '/login'} className="footer__btn">
               <span>Book Your Session</span>
               <ArrowUpRight className="footer__btn-icon" size={16} />
             </Link>

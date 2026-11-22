@@ -12,7 +12,7 @@ export function Homepage({user,setUser,token,setToken,setAuthLoading,authLoading
       <Gallery />
       <TeamSection/>
       
-      <Footer />
+      <Footer/>
       </>
   )
 }

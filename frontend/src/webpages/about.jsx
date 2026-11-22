@@ -270,7 +270,7 @@ export function About({ user, setUser, token, setToken, authLoading, setAuthLoad
           </p>
 
           <div className="about-cta-btns">
-            <Link to="/booking" className="btn btn-primary">
+            <Link to={user ? '/booking' : '/login'} className="btn btn-primary">
               <span>Book Your Session</span>
               <ArrowRight size={15} style={{ marginLeft: '8px' }} />
             </Link>
