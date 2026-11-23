@@ -1,0 +1,726 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1795392624905,126,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,207,11,17,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,126,0,21
+1795392625637,109,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,207,11,18,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,109,0,2
+1795392626956,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,207,12,19,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392629672,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,207,13,20,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,1
+1795392630430,306,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,2131,291,2,21,http://127.0.0.1:5500/api/v1/auth/sign-in,306,0,3
+1795392630965,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,207,14,21,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,1
+1795392631071,101,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,207,14,21,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,101,0,0
+1795392632339,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,207,15,23,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,1
+1795392632940,276,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,2310,291,5,24,http://127.0.0.1:5500/api/v1/auth/sign-in,276,0,2
+1795392634415,282,D1. Admin - Sign In,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,4998,290,1,24,http://127.0.0.1:5500/api/v1/auth/sign-in,282,0,1
+1795392636572,276,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,2131,291,5,26,http://127.0.0.1:5500/api/v1/auth/sign-in,276,0,2
+1795392637118,111,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,207,18,26,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,111,0,2
+1795392639264,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,207,19,29,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,1
+1795392639373,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,207,19,29,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,1
+1795392639599,303,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,2131,291,3,29,http://127.0.0.1:5500/api/v1/auth/sign-in,303,0,3
+1795392639856,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,225,19,29,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,4
+1795392640571,112,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,225,20,30,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,112,0,2
+1795392643126,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,207,21,31,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392643392,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,225,21,31,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,2
+1795392643685,281,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,1952,291,7,33,http://127.0.0.1:5500/api/v1/auth/sign-in,281,0,3
+1795392643995,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,207,22,33,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392644885,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,225,22,33,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,3
+1795392645110,94,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,207,22,33,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,94,0,1
+1795392645555,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,225,23,34,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,3
+1795392646978,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,207,24,35,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,2
+1795392647091,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,225,24,35,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,3
+1795392648003,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,207,24,35,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392648267,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,207,24,35,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,94,0,2
+1795392648698,289,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,2131,291,7,36,http://127.0.0.1:5500/api/v1/auth/sign-in,288,0,2
+1795392650375,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,225,26,38,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,3
+1795392650767,188,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,1719,613,8,38,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310e5,188,0,2
+1795392650970,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,207,26,38,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,3
+1795392651580,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,207,26,38,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,2
+1795392653491,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,225,27,40,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,3
+1795392654953,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,207,28,41,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392655728,276,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,2489,291,9,43,http://127.0.0.1:5500/api/v1/auth/sign-in,275,0,2
+1795392655879,126,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,225,29,43,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,126,0,1
+1795392656553,208,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,1540,613,4,43,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310e4,208,0,4
+1795392656854,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,225,29,43,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,3
+1795392657227,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,367,191,30,44,http://127.0.0.1:5500/api/v1/members,105,0,3
+1795392657570,296,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,2489,291,4,44,http://127.0.0.1:5500/api/v1/auth/sign-in,296,0,3
+1795392657982,108,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,207,30,44,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,108,0,2
+1795392658712,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,367,191,30,44,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392660608,107,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,225,32,46,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,107,0,3
+1795392660692,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,207,32,46,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,2
+1795392660659,191,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,1540,613,9,46,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310e6,191,0,2
+1795392662012,100,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,225,32,47,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,100,0,3
+1795392662292,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,207,33,48,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,3
+1795392662323,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,225,33,48,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,3
+1795392662470,110,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,367,191,33,48,http://127.0.0.1:5500/api/v1/members,110,0,2
+1795392662850,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,207,33,48,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392663316,207,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,1540,613,4,48,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310e8,207,0,2
+1795392663336,191,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,1361,613,10,48,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310e7,191,0,2
+1795392663648,108,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,207,33,48,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,108,0,2
+1795392663747,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,367,191,33,48,http://127.0.0.1:5500/api/v1/members,103,0,2
+1795392664527,108,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,225,34,49,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,108,0,2
+1795392664613,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,225,34,49,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392664830,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,207,34,49,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,3
+1795392664836,102,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,225,34,49,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,1
+1795392664947,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,367,191,34,49,http://127.0.0.1:5500/api/v1/members,106,0,2
+1795392664973,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,367,191,34,49,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392666080,201,D2. Admin - List All Platform Bookings,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,17505,594,1,50,http://127.0.0.1:5500/api/v1/booking/all,200,0,3
+1795392667290,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,3
+1795392667494,211,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,1540,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310e9,211,0,3
+1795392667403,573,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,2489,291,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,572,0,2
+1795392668093,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392668286,290,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,2490,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,290,0,2
+1795392668522,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,3
+1795392668739,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,1
+1795392669985,102,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,1
+1795392670235,284,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,2490,292,4,50,http://127.0.0.1:5500/api/v1/auth/sign-in,283,0,1
+1795392671103,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,1
+1795392671340,101,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,101,0,1
+1795392671913,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,1
+1795392672071,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,1
+1795392672151,274,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,2490,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,274,0,1
+1795392672797,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392672971,275,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,2490,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,275,0,0
+1795392673369,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,1
+1795392673645,211,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,1123,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,211,0,3
+1795392674006,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,1
+1795392675043,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392675249,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,1
+1795392675812,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392676059,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392676120,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,3
+1795392676232,101,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,101,0,3
+1795392677410,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,3
+1795392677415,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392677483,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,1
+1795392678576,110,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,110,0,3
+1795392678636,107,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,2
+1795392679193,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392679417,101,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,101,0,1
+1795392679589,205,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,367,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,205,0,2
+1795392679783,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,3
+1795392679944,192,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,1898,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310ea,192,0,2
+1795392680074,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392680156,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392680257,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,1
+1795392680300,100,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,100,0,1
+1795392680394,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,1
+1795392680695,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,1
+1795392680924,198,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,1898,613,4,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310ec,198,0,3
+1795392681077,206,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,367,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,205,0,2
+1795392681261,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392681484,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,106,0,2
+1795392681810,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,3
+1795392682085,295,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,2490,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,295,0,1
+1795392682626,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392683733,109,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,109,0,2
+1795392684302,208,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,1121,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,208,0,2
+1795392685317,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392685612,110,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,110,0,3
+1795392685757,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,3
+1795392686012,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392686088,100,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,100,0,2
+1795392686290,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392687047,208,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,619,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,208,0,2
+1795392687367,216,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,870,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,216,0,2
+1795392687670,107,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,107,0,2
+1795392688238,115,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,115,0,2
+1795392688570,207,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,1899,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310ed,207,0,3
+1795392689048,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392689596,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,1
+1795392689727,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392690296,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392690352,195,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,1898,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310eb,195,0,3
+1795392690416,207,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,1899,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310ee,207,0,1
+1795392690750,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,106,0,2
+1795392691761,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392691840,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,1
+1795392692864,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,1
+1795392692983,193,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,1899,613,4,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310ef,193,0,2
+1795392693153,193,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,1899,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f0,193,0,3
+1795392693282,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,3
+1795392694529,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392694628,216,D3. Admin - Create Temporary Booking,201,Created,Scenario D - Studio Admin (2%) 4-1,text,true,,671,826,1,50,http://127.0.0.1:5500/api/v1/booking,216,0,8
+1795392695008,108,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,107,0,2
+1795392695054,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392695103,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,2
+1795392695451,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392695461,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392696322,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392696338,94,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,94,0,1
+1795392696511,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392696597,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392696818,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,3
+1795392697441,98,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392697723,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392698358,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392698494,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,3
+1795392698710,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392699031,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,3
+1795392699885,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,1
+1795392700293,93,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,93,0,1
+1795392700466,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,1
+1795392701787,100,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,100,0,1
+1795392701784,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392702071,101,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,100,0,2
+1795392702126,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,3
+1795392703215,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392703295,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392703348,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392703692,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,3
+1795392703705,192,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-1,text,true,,663,859,4,50,http://127.0.0.1:5500/api/v1/booking,192,0,2
+1795392703871,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,1
+1795392704462,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,1
+1795392705208,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,2
+1795392705168,191,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,1121,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,191,0,2
+1795392705301,194,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,367,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,194,0,3
+1795392705873,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392705796,190,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,1899,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f1,190,0,2
+1795392705900,191,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-2,text,true,,663,859,4,50,http://127.0.0.1:5500/api/v1/booking,191,0,1
+1795392707409,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392708133,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392708993,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392708995,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,1
+1795392709143,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,3
+1795392709516,96,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,1
+1795392709833,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392709839,194,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,620,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,194,0,1
+1795392710205,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392711539,98,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392711685,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392712360,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392712436,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392712946,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,1
+1795392713946,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392714120,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392714200,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392714393,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,3
+1795392714352,200,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,619,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,200,0,3
+1795392714462,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392714946,107,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,107,0,2
+1795392714991,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392715155,194,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,620,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,194,0,2
+1795392715850,194,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,1377,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,194,0,2
+1795392716181,122,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,1989,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,122,0,2
+1795392716178,144,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,144,0,2
+1795392716623,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392716671,187,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,620,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,187,0,1
+1795392717119,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,1
+1795392717540,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392718221,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392718785,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,1
+1795392718789,107,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,1
+1795392719202,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392719338,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,1
+1795392719366,101,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,101,0,1
+1795392719448,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392719587,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392720248,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392720740,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,1
+1795392721510,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,3
+1795392721584,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392722048,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,3
+1795392722889,101,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,1810,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,101,0,3
+1795392723145,100,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,100,0,3
+1795392724285,202,D4. Admin - Update Own Booking Status,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,603,669,1,50,http://127.0.0.1:5500/api/v1/booking/6b0384b650a0139edf9759e7/status,202,0,2
+1795392724478,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392724898,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,3
+1795392725042,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,2
+1795392725720,217,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,659,644,4,50,http://127.0.0.1:5500/api/v1/booking/6b0384bf50a0139edf9759e8/delete,217,0,3
+1795392725955,112,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,112,0,7
+1795392726078,210,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,659,644,4,50,http://127.0.0.1:5500/api/v1/booking/6b0384c150a0139edf9759e9/delete,210,0,2
+1795392727507,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,2
+1795392728307,216,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-3,text,true,,663,859,4,50,http://127.0.0.1:5500/api/v1/booking,216,0,3
+1795392728505,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,3
+1795392728984,99,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,1631,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,99,0,3
+1795392728941,192,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,367,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,192,0,2
+1795392729263,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392729540,94,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,94,0,1
+1795392729599,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,1
+1795392730184,104,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,3
+1795392730544,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392730973,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,1
+1795392730971,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,1
+1795392731138,105,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,3
+1795392731414,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392731531,107,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,107,0,2
+1795392731801,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,3
+1795392732233,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392732229,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392732502,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,2
+1795392732951,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392732967,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,1
+1795392733041,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392733218,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,3
+1795392733663,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,3
+1795392733946,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392734223,102,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,2
+1795392734816,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392735406,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,3
+1795392735770,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392736296,108,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,108,0,4
+1795392736363,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,1
+1795392737406,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392737557,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392737884,99,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,1810,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,99,0,2
+1795392737947,98,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,3
+1795392738288,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392738882,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,1
+1795392739093,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,1
+1795392739205,198,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-4,text,true,,664,860,4,50,http://127.0.0.1:5500/api/v1/booking,197,0,2
+1795392740322,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392740725,101,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,101,0,2
+1795392741963,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,1
+1795392742009,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392742278,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392743153,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,1
+1795392743532,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392744076,95,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,2
+1795392744736,206,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,659,644,4,50,http://127.0.0.1:5500/api/v1/booking/6b0384d850a0139edf9759ea/delete,206,0,2
+1795392745699,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392746008,101,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,101,0,2
+1795392746673,125,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,125,0,2
+1795392747003,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392747114,94,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,94,0,2
+1795392747661,95,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,2
+1795392747673,95,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,1
+1795392747865,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392747869,94,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,94,0,1
+1795392747980,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392748137,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392748493,102,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,102,0,2
+1795392748538,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392748624,100,C6. Booking User - Sign Out,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,462,418,4,50,http://127.0.0.1:5500/api/v1/auth/sign-out,100,0,2
+1795392748630,107,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,2
+1795392749085,106,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,106,0,2
+1795392749119,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392749317,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392749326,101,C6. Booking User - Sign Out,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,462,418,4,50,http://127.0.0.1:5500/api/v1/auth/sign-out,101,0,2
+1795392749386,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,3
+1795392750430,101,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,101,0,2
+1795392750634,100,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,2169,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,99,0,2
+1795392750853,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,1
+1795392752453,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392752534,104,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,3
+1795392752695,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392753392,312,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,312,0,2
+1795392753187,517,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,517,0,2
+1795392754183,109,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,2169,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,109,0,2
+1795392754465,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392754412,318,D5. Admin - Delete Own Booking,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,669,644,1,50,http://127.0.0.1:5500/api/v1/booking/6b0384b650a0139edf9759e7/delete,318,0,2
+1795392754705,99,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,2168,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,99,0,3
+1795392754754,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392754934,109,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,109,0,2
+1795392755749,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392756197,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,1
+1795392756226,126,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,126,0,2
+1795392756272,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,3
+1795392757021,109,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,109,0,2
+1795392757230,195,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,660,644,4,50,http://127.0.0.1:5500/api/v1/booking/6b0384e350a0139edf9759eb/delete,195,0,2
+1795392757850,99,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,2168,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,99,0,2
+1795392757932,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392758074,101,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,101,0,1
+1795392761402,136,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,2169,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,136,0,3
+1795392761477,129,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,129,0,1
+1795392762551,139,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,139,0,3
+1795392762712,182,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,182,0,1
+1795392762967,134,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,134,0,2
+1795392762997,126,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,126,0,2
+1795392763264,134,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,134,0,2
+1795392763493,159,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,159,0,2
+1795392763712,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,3
+1795392763992,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392764155,108,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,108,0,1
+1795392764089,270,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,2310,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,270,0,2
+1795392764756,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392764825,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,1
+1795392765005,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392765289,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392765522,99,C6. Booking User - Sign Out,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,462,418,4,50,http://127.0.0.1:5500/api/v1/auth/sign-out,99,0,1
+1795392765549,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,1
+1795392765612,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392765717,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392766285,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,2
+1795392766329,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392766368,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,2
+1795392766877,111,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,111,0,1
+1795392767561,294,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,294,0,2
+1795392767853,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,3
+1795392768106,111,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,111,0,2
+1795392769245,108,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,108,0,2
+1795392769659,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392769659,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392769750,261,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,2310,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,261,0,2
+1795392770517,274,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,1952,292,4,50,http://127.0.0.1:5500/api/v1/auth/sign-in,274,0,1
+1795392770837,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,2
+1795392770922,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392771697,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392772110,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392772184,107,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,107,0,2
+1795392773049,107,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,107,0,2
+1795392773178,102,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,1
+1795392773388,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392773665,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,1
+1795392773802,204,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,204,0,2
+1795392773785,319,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,1952,292,4,50,http://127.0.0.1:5500/api/v1/auth/sign-in,319,0,2
+1795392774710,100,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,2169,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,100,0,2
+1795392776599,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392776929,95,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,2
+1795392777322,103,C6. Booking User - Sign Out,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,462,418,4,50,http://127.0.0.1:5500/api/v1/auth/sign-out,103,0,2
+1795392777550,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392778017,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392778212,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392778563,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392778896,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392778980,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392779135,111,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,111,0,2
+1795392779565,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392780054,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,2
+1795392780543,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,2
+1795392781656,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392781679,101,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,101,0,2
+1795392781915,111,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,111,0,2
+1795392782241,116,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,116,0,1
+1795392782419,109,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,109,0,2
+1795392782617,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392782633,101,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,101,0,2
+1795392782777,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392783464,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,3
+1795392784001,103,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,103,0,3
+1795392784094,108,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,108,0,3
+1795392784667,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,2
+1795392784834,116,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,116,0,2
+1795392784850,105,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,105,0,2
+1795392785657,102,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,2
+1795392785829,307,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,307,0,1
+1795392786087,289,D6. Admin - Create Temporary Team Member,201,Created,Scenario D - Studio Admin (2%) 4-1,text,true,,606,690,1,50,http://127.0.0.1:5500/api/v1/members,289,0,2
+1795392786274,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,1
+1795392787380,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392787500,134,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,134,0,2
+1795392787558,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392787540,206,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,1719,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f2,206,0,2
+1795392788070,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,1
+1795392788168,212,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,212,0,2
+1795392788451,206,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,206,0,1
+1795392788764,381,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,1952,292,4,50,http://127.0.0.1:5500/api/v1/auth/sign-in,381,0,2
+1795392789542,242,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f5,242,0,2
+1795392789882,151,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,151,0,2
+1795392789961,113,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,113,0,1
+1795392790083,127,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,127,0,2
+1795392790808,258,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,1361,613,4,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f4,258,0,2
+1795392791746,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392793224,111,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,111,0,2
+1795392793271,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,1
+1795392793390,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,106,0,2
+1795392793959,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392794585,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392794602,100,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,100,0,2
+1795392795071,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,3
+1795392795387,192,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,1719,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f3,192,0,2
+1795392795680,266,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,266,0,2
+1795392795911,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,2
+1795392795933,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,1
+1795392796034,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392796222,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392796537,193,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,1361,613,4,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f6,193,0,2
+1795392797100,99,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,99,0,2
+1795392797326,124,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,124,0,1
+1795392797280,266,C1. Booking User - Sign In,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,1952,292,4,50,http://127.0.0.1:5500/api/v1/auth/sign-in,266,0,2
+1795392798043,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392798425,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392798455,108,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,108,0,2
+1795392798495,101,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,101,0,2
+1795392799747,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392799802,179,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,179,0,3
+1795392799789,287,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,287,0,2
+1795392800543,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,2
+1795392801091,107,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,2
+1795392801388,108,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,108,0,2
+1795392801552,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392801576,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,3
+1795392801630,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392802426,274,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,274,0,2
+1795392802660,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392803358,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,106,0,3
+1795392803381,111,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,111,0,1
+1795392804260,93,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,93,0,1
+1795392805009,194,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f7,194,0,3
+1795392805189,283,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,283,0,2
+1795392805949,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392806185,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,2
+1795392806356,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,1
+1795392806614,107,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,107,0,2
+1795392806621,288,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,288,0,1
+1795392807253,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392808231,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,1
+1795392808815,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,3
+1795392809347,102,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,102,0,1
+1795392809353,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392810305,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392810523,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392811050,192,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,620,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,192,0,1
+1795392811235,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,557,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,3
+1795392811247,101,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,101,0,2
+1795392811646,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,2
+1795392811535,223,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,1124,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,223,0,2
+1795392811677,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392813372,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392813301,287,D7. Admin - Update Temporary Team Member,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,563,668,1,50,http://127.0.0.1:5500/api/v1/members/6b03851250a0139edf9759ec,287,0,2
+1795392813500,205,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,1361,613,4,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f8,205,0,3
+1795392814207,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,1
+1795392814498,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,1
+1795392814583,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,1
+1795392814704,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,1
+1795392815161,191,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,620,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,191,0,2
+1795392815312,110,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,110,0,2
+1795392815668,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,1
+1795392815845,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,1
+1795392816163,139,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,139,0,2
+1795392816099,304,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,1952,292,10,50,http://127.0.0.1:5500/api/v1/auth/sign-in,304,0,1
+1795392816744,111,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,111,0,2
+1795392817096,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392817236,108,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,108,0,2
+1795392818128,111,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,111,0,2
+1795392818601,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,2
+1795392819616,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,1
+1795392819782,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,3
+1795392819908,209,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310f9,209,0,2
+1795392820007,195,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,872,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,195,0,2
+1795392820421,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,2
+1795392820454,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392821235,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392821248,211,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,872,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,211,0,2
+1795392821279,190,C2. Booking User - View Own Profile,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,1361,613,4,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310fb,190,0,1
+1795392821612,115,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,115,0,2
+1795392822022,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,1
+1795392822159,102,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,102,0,1
+1795392822306,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,1
+1795392822464,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,106,0,3
+1795392823344,108,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,108,0,2
+1795392823537,112,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,112,0,2
+1795392823652,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392823939,211,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310fa,211,0,2
+1795392824479,209,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,872,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,209,0,1
+1795392825477,206,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310fe,206,0,1
+1795392825996,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392826412,110,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,110,0,2
+1795392827865,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,103,0,1
+1795392828305,117,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,117,0,2
+1795392828406,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392828813,101,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,101,0,2
+1795392829007,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392829298,100,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,100,0,2
+1795392829492,290,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,290,0,2
+1795392829567,215,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,215,0,1
+1795392829405,466,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310fc,466,0,2
+1795392829839,106,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,106,0,1
+1795392829894,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,3
+1795392830254,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392830593,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392830839,199,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310fd,199,0,0
+1795392831342,96,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,1
+1795392831438,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392831708,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,1
+1795392832306,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392833376,194,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-1,text,true,,664,860,4,50,http://127.0.0.1:5500/api/v1/booking,194,0,2
+1795392834493,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,1
+1795392834677,190,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,367,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,190,0,1
+1795392834858,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392834914,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,1
+1795392835223,97,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,1
+1795392835468,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392835898,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392836177,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,0
+1795392836299,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392836499,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,1
+1795392837088,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392837830,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392838292,192,B2. Client - View Own Profile,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,1361,613,10,50,http://127.0.0.1:5500/api/v1/users/6b03705e144b9ea215c310ff,192,0,2
+1795392838394,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392838415,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,1
+1795392839594,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392839872,97,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392840098,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392840208,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392840660,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,1
+1795392841285,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392841538,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392841795,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392842251,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,565,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,1
+1795392842312,287,D8. Admin - Delete Temporary Team Member,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,609,637,1,50,http://127.0.0.1:5500/api/v1/members/6b03851250a0139edf9759ec,287,0,2
+1795392842670,195,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,620,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,195,0,1
+1795392842987,103,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,3
+1795392843143,203,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-2,text,true,,664,860,4,50,http://127.0.0.1:5500/api/v1/booking,203,0,2
+1795392843251,108,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,108,0,2
+1795392844873,111,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,111,0,1
+1795392844907,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392845084,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,1
+1795392845147,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392845536,205,C3. Booking User - Read Personal Records,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,367,598,4,50,http://127.0.0.1:5500/api/v1/booking/records,205,0,2
+1795392845719,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392845993,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,1
+1795392846735,191,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,1124,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,191,0,1
+1795392847039,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392847117,111,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,111,0,1
+1795392847365,102,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,102,0,2
+1795392847414,109,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,109,0,2
+1795392847396,192,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,872,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,192,0,1
+1795392848007,95,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,2
+1795392848027,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392848498,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392848776,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392849260,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392850074,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392850324,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,2
+1795392851249,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392852164,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392852568,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392852912,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,1
+1795392853284,103,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,1631,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,103,0,3
+1795392853866,193,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,620,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,193,0,1
+1795392854048,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392854129,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392855931,194,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-3,text,true,,664,860,4,50,http://127.0.0.1:5500/api/v1/booking,194,0,2
+1795392856630,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392856782,104,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,1989,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,104,0,2
+1795392856928,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,1
+1795392857108,94,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,94,0,1
+1795392857138,93,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,93,0,1
+1795392857186,102,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,102,0,2
+1795392857560,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,1
+1795392857577,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392857645,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,2
+1795392857755,100,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,100,0,2
+1795392858174,191,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,620,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,191,0,1
+1795392858595,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,2
+1795392858832,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,3
+1795392859087,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392859117,196,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,660,644,4,50,http://127.0.0.1:5500/api/v1/booking/6b03854150a0139edf9759ed/delete,196,0,2
+1795392859332,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392859380,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,1
+1795392859645,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,1
+1795392859699,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392860244,200,B3. Client - View Booking Records,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,872,598,10,50,http://127.0.0.1:5500/api/v1/booking/records,200,0,2
+1795392860404,99,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,2
+1795392860442,96,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,1989,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,96,0,2
+1795392861490,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392861611,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,1
+1795392863384,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392863560,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392864201,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,106,0,3
+1795392864425,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392865400,112,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,112,0,2
+1795392865677,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,99,0,3
+1795392865754,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392865983,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,1
+1795392866309,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392866424,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,2
+1795392866602,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392866649,99,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,1631,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,99,0,2
+1795392867339,196,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,660,644,4,50,http://127.0.0.1:5500/api/v1/booking/6b03854b50a0139edf9759ee/delete,196,0,2
+1795392868083,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,2
+1795392868190,191,C4. Booking User - Create Temporary Booking,201,Created,Scenario C - Booking Users (8%) 3-4,text,true,,664,860,4,50,http://127.0.0.1:5500/api/v1/booking,191,0,1
+1795392868753,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,97,0,2
+1795392870196,116,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,115,0,2
+1795392870414,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,1
+1795392870890,97,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392871021,95,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,95,0,1
+1795392871082,101,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,101,0,1
+1795392871470,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392871993,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,1
+1795392872128,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392872747,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,106,0,2
+1795392873224,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392873402,104,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,1
+1795392873778,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,104,0,1
+1795392873798,101,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,101,0,2
+1795392873853,95,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,2
+1795392874518,112,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,112,0,2
+1795392875157,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,2
+1795392875451,108,D9. Admin - Sign Out,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,462,418,1,50,http://127.0.0.1:5500/api/v1/auth/sign-out,108,0,1
+1795392875984,98,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,98,0,2
+1795392876161,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392876412,107,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,2
+1795392876425,95,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,95,0,2
+1795392876649,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,3
+1795392877992,98,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,3
+1795392878454,100,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,100,0,2
+1795392878180,398,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,398,0,2
+1795392878895,98,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,98,0,2
+1795392878927,99,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,99,0,2
+1795392878930,107,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,2
+1795392879013,195,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,660,644,4,50,http://127.0.0.1:5500/api/v1/booking/6b03855850a0139edf9759ef/delete,195,0,2
+1795392879267,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,105,0,2
+1795392879409,103,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,103,0,2
+1795392879795,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392879878,96,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,96,0,1
+1795392880203,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392880761,110,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,110,0,2
+1795392881311,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392881509,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,1
+1795392881550,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,1
+1795392882612,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,1
+1795392883144,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392883212,107,B4. Client - Browse Gallery,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,399,406,10,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,1
+1795392884319,107,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,1631,417,10,50,http://127.0.0.1:5500/api/v1/auth/refresh,107,0,1
+1795392884350,98,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,462,418,10,50,http://127.0.0.1:5500/api/v1/auth/sign-out,98,0,1
+1795392884496,128,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,367,191,35,50,http://127.0.0.1:5500/api/v1/members,128,0,1
+1795392884700,113,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,207,35,50,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,113,0,2
+1795392884981,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,1
+1795392886364,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,399,225,35,50,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392887030,108,C6. Booking User - Sign Out,200,OK,Scenario C - Booking Users (8%) 3-1,text,true,,462,418,4,50,http://127.0.0.1:5500/api/v1/auth/sign-out,108,0,2
+1795392887704,99,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-4,text,true,,462,418,10,49,http://127.0.0.1:5500/api/v1/auth/sign-out,99,0,2
+1795392887699,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,399,225,35,49,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392887737,96,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,207,35,48,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,96,0,2
+1795392888217,102,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-5,text,true,,399,225,35,48,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,2
+1795392888268,107,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,207,34,47,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,2
+1795392889069,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,399,225,34,47,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,2
+1795392889120,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,399,225,34,47,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392889208,107,C6. Booking User - Sign Out,200,OK,Scenario C - Booking Users (8%) 3-2,text,true,,462,418,3,47,http://127.0.0.1:5500/api/v1/auth/sign-out,107,0,2
+1795392889244,99,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-13,text,true,,399,207,34,46,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,99,0,2
+1795392889505,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-17,text,true,,399,225,33,45,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,99,0,2
+1795392889598,103,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,399,225,32,44,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,103,0,2
+1795392889993,94,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,367,191,32,44,http://127.0.0.1:5500/api/v1/members,94,0,2
+1795392889984,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,207,32,44,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392891573,104,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-3,text,true,,399,207,32,44,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392891685,102,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,367,191,31,43,http://127.0.0.1:5500/api/v1/members,102,0,2
+1795392891982,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-20,text,true,,367,191,31,43,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392892267,105,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,399,225,30,42,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,105,0,2
+1795392892451,102,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-11,text,true,,399,207,30,42,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,102,0,2
+1795392892792,210,C5. Booking User - Delete Created Booking,200,OK,Scenario C - Booking Users (8%) 3-4,text,true,,660,644,2,41,http://127.0.0.1:5500/api/v1/booking/6b03856450a0139edf9759f0/delete,210,0,2
+1795392892981,100,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-9,text,true,,1631,417,9,40,http://127.0.0.1:5500/api/v1/auth/refresh,100,0,1
+1795392894589,105,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-12,text,true,,399,207,29,39,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,104,0,2
+1795392894667,140,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-8,text,true,,1631,417,8,38,http://127.0.0.1:5500/api/v1/auth/refresh,140,0,3
+1795392894699,113,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-35,text,true,,399,225,28,37,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,113,0,2
+1795392895295,104,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-9,text,true,,399,225,27,36,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,104,0,1
+1795392895314,94,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-6,text,true,,399,225,26,35,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,94,0,1
+1795392895573,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-19,text,true,,399,207,25,34,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,1
+1795392895867,121,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-6,text,true,,1631,417,7,33,http://127.0.0.1:5500/api/v1/auth/refresh,121,0,2
+1795392896638,99,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-15,text,true,,399,225,24,32,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392896727,103,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-22,text,true,,367,191,23,31,http://127.0.0.1:5500/api/v1/members,103,0,2
+1795392897434,110,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-23,text,true,,367,191,22,30,http://127.0.0.1:5500/api/v1/members,110,0,2
+1795392897951,105,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-29,text,true,,367,191,21,29,http://127.0.0.1:5500/api/v1/members,105,0,2
+1795392898635,101,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-33,text,true,,399,225,20,28,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,101,0,1
+1795392898723,102,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-1,text,true,,399,225,19,27,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,1
+1795392898869,98,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-7,text,true,,399,225,18,26,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,98,0,2
+1795392898872,104,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-26,text,true,,367,191,17,25,http://127.0.0.1:5500/api/v1/members,104,0,2
+1795392899220,107,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-14,text,true,,399,207,16,24,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,107,0,2
+1795392899980,310,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-2,text,true,,1952,292,6,23,http://127.0.0.1:5500/api/v1/auth/sign-in,310,0,2
+1795392900893,106,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-8,text,true,,399,207,15,22,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,106,0,2
+1795392901067,106,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-28,text,true,,367,191,14,21,http://127.0.0.1:5500/api/v1/members,106,0,2
+1795392901800,102,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-34,text,true,,399,225,13,20,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,102,0,2
+1795392902068,108,C6. Booking User - Sign Out,200,OK,Scenario C - Booking Users (8%) 3-3,text,true,,462,418,1,19,http://127.0.0.1:5500/api/v1/auth/sign-out,108,0,2
+1795392902418,102,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-25,text,true,,367,191,12,18,http://127.0.0.1:5500/api/v1/members,102,0,1
+1795392902497,93,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-2,text,true,,367,191,11,17,http://127.0.0.1:5500/api/v1/members,93,0,1
+1795392902710,109,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-24,text,true,,367,191,10,16,http://127.0.0.1:5500/api/v1/members,109,0,1
+1795392902543,286,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-1,text,true,,1952,292,5,15,http://127.0.0.1:5500/api/v1/auth/sign-in,286,0,3
+1795392902785,96,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-18,text,true,,399,225,9,14,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,96,0,1
+1795392903289,95,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-31,text,true,,399,225,8,13,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,95,0,1
+1795392903596,94,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-30,text,true,,399,225,7,12,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,94,0,1
+1795392903750,99,B6. Client - Sign Out,200,OK,Scenario B - Registered Clients (20%) 2-7,text,true,,462,418,4,11,http://127.0.0.1:5500/api/v1/auth/sign-out,99,0,2
+1795392903951,96,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-10,text,true,,1631,417,3,10,http://127.0.0.1:5500/api/v1/auth/refresh,96,0,2
+1795392904062,100,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-27,text,true,,367,191,6,9,http://127.0.0.1:5500/api/v1/members,100,0,2
+1795392904449,100,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-16,text,true,,399,207,5,8,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,100,0,2
+1795392904627,289,D1. Admin - Sign In,200,OK,Scenario D - Studio Admin (2%) 4-1,text,true,,4998,290,1,7,http://127.0.0.1:5500/api/v1/auth/sign-in,289,0,2
+1795392904898,98,B5. Client - Refresh Session Token,200,OK,Scenario B - Registered Clients (20%) 2-5,text,true,,1631,417,2,6,http://127.0.0.1:5500/api/v1/auth/refresh,98,0,1
+1795392904681,316,B1. Client - Sign In,200,OK,Scenario B - Registered Clients (20%) 2-3,text,true,,1952,292,2,6,http://127.0.0.1:5500/api/v1/auth/sign-in,316,0,2
+1795392906112,99,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-4,text,true,,367,191,4,4,http://127.0.0.1:5500/api/v1/members,99,0,2
+1795392906346,97,A1. Visitor - Browse Gallery (Page 1),200,OK,Scenario A - Public Visitors (70%) 1-21,text,true,,399,207,3,3,http://127.0.0.1:5500/api/v1/gallery?page=1&limit=12,97,0,1
+1795392906882,97,A2. Visitor - Filter Gallery by Category,200,OK,Scenario A - Public Visitors (70%) 1-10,text,true,,399,225,2,2,http://127.0.0.1:5500/api/v1/gallery?category=portrait&page=1&limit=12,97,0,2
+1795392907269,97,A3. Visitor - View Team Roster,200,OK,Scenario A - Public Visitors (70%) 1-32,text,true,,367,191,1,1,http://127.0.0.1:5500/api/v1/members,97,0,2

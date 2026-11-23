@@ -1,0 +1,1502 @@
+{
+  "info": {
+    "_postman_id": "5b3a8df0-b63c-462f-8aa3-94e045ee748a",
+    "name": "Cinematic Eye - Complete API Tests",
+    "description": "Ordered API regression suite for the routes registered under /api/v1. Run against a disposable test database. Set adminToken for the Admin workflows folder, googleCredential for Google sign-in, otpEmail for email delivery, and galleryImagePath for Cloudinary upload tests. Contract tests intentionally fail when the API does not meet the expected status or response shape.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5500" },
+    { "key": "adminToken", "value": "" },
+    { "key": "googleCredential", "value": "" },
+    { "key": "otpEmail", "value": "" },
+    { "key": "galleryImagePath", "value": "" },
+    { "key": "testEmail", "value": "" },
+    { "key": "testUsername", "value": "" },
+    { "key": "testPassword", "value": "Passw0rd!Test" },
+    { "key": "accessToken", "value": "" },
+    { "key": "refreshToken", "value": "" },
+    { "key": "testUserId", "value": "" },
+    { "key": "bookingId", "value": "" },
+    { "key": "memberId", "value": "" },
+    { "key": "photoId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "01 - Authentication",
+      "item": [
+        {
+          "name": "Sign up - valid unique account",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;",
+                  "['accessToken', 'refreshToken', 'testUserId', 'bookingId', 'memberId', 'photoId'].forEach(key => pm.collectionVariables.unset(key));",
+                  "pm.collectionVariables.set('testUsername', `ce${id}`);",
+                  "pm.collectionVariables.set('testEmail', `ce${id}@example.com`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 201 with a user and access token', () => {",
+                  "  pm.response.to.have.status(201);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data.token).to.be.a('string').and.not.empty;",
+                  "  pm.expect(body.data.user._id).to.be.a('string').and.not.empty;",
+                  "  pm.collectionVariables.set('accessToken', body.data.token);",
+                  "  pm.collectionVariables.set('testUserId', body.data.user._id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\":\"{{testUsername}}\",\"email\":\"{{testEmail}}\",\"password\":\"{{testPassword}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-up"
+          }
+        },
+        {
+          "name": "Sign up - duplicate email rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 for duplicate email', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\":\"duplicate-{{testUsername}}\",\"email\":\"{{testEmail}}\",\"password\":\"{{testPassword}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-up"
+          }
+        },
+        {
+          "name": "Sign up - duplicate username rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 for duplicate username', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\":\"{{testUsername}}\",\"email\":\"another-{{testEmail}}\",\"password\":\"{{testPassword}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-up"
+          }
+        },
+        {
+          "name": "Sign up - malformed email rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 for malformed email', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\":\"invalid-{{testUsername}}\",\"email\":\"not-an-email\",\"password\":\"{{testPassword}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-up"
+          }
+        },
+        {
+          "name": "Sign in - valid credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns an access token and HttpOnly refresh cookie', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data.token).to.be.a('string').and.not.empty;",
+                  "  pm.collectionVariables.set('accessToken', body.data.token);",
+                  "  const cookie = pm.response.headers.get('Set-Cookie') || '';",
+                  "  pm.expect(cookie.toLowerCase()).to.include('httponly');",
+                  "  const match = cookie.match(/refreshtoken=([^;]+)/);",
+                  "  pm.expect(match).to.not.be.null;",
+                  "  pm.collectionVariables.set('refreshToken', match[1]);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{testEmail}}\",\"password\":\"{{testPassword}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-in"
+          }
+        },
+        {
+          "name": "Sign in - wrong password rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 401 without auth data', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(false);",
+                  "  pm.expect(body.data).to.be.undefined;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{testEmail}}\",\"password\":\"wrong-password\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-in"
+          }
+        },
+        {
+          "name": "Sign in - unknown email rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 401 for unknown email', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"unknown-{{testEmail}}\",\"password\":\"{{testPassword}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-in"
+          }
+        },
+        {
+          "name": "Sign in - operator-shaped email rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('rejects object-shaped email without server error', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "  pm.expect(pm.response.json().data).to.be.undefined;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":{\"$ne\":null},\"password\":\"not-the-password\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/sign-in"
+          }
+        },
+        {
+          "name": "Refresh - valid refresh cookie",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('restores access token for the same user', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data.token).to.be.a('string').and.not.empty;",
+                  "  pm.expect(String(body.data.user._id)).to.eql(pm.collectionVariables.get('testUserId'));",
+                  "  pm.collectionVariables.set('accessToken', body.data.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Cookie", "value": "refreshtoken={{refreshToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/api/v1/auth/refresh"
+          }
+        },
+        {
+          "name": "Refresh - missing cookie rejected",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.request.headers.upsert({ key: 'Cookie', value: 'refreshtoken=' });"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 401 when refresh cookie is missing', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().data).to.be.undefined;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/api/v1/auth/refresh"
+          }
+        },
+        {
+          "name": "Sign out - revoke refresh token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns success and clears refresh cookie', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().success).to.eql(true);",
+                  "  const cookie = (pm.response.headers.get('Set-Cookie') || '').toLowerCase();",
+                  "  pm.expect(cookie).to.include('refreshtoken=');",
+                  "  pm.expect(cookie).to.include('httponly');",
+                  "  pm.expect(cookie.includes('max-age=0') || cookie.includes('expires=thu, 01 jan 1970')).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Cookie", "value": "refreshtoken={{refreshToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/api/v1/auth/sign-out"
+          }
+        },
+        {
+          "name": "Refresh - revoked cookie rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 403 after sign-out', () => {",
+                  "  pm.response.to.have.status(403);",
+                  "  pm.expect(pm.response.json().data).to.be.undefined;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Cookie", "value": "refreshtoken={{refreshToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/api/v1/auth/refresh"
+          }
+        },
+        {
+          "name": "Sign out - no session is idempotent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns success without a refresh cookie', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().success).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/api/v1/auth/sign-out"
+          }
+        },
+        {
+          "name": "Google sign-in - invalid credential rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('invalid credential is rejected as a client error', () => {",
+                  "  pm.expect(pm.response.code).to.be.oneOf([400, 401]);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"credential\":\"not-a-valid-google-credential\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/google-signup"
+          }
+        },
+        {
+          "name": "Google sign-in - optional valid credential",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('googleCredential')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('valid Google credential returns an authenticated user', () => {",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data.token).to.be.a('string').and.not.empty;",
+                  "  pm.expect(body.data.user._id).to.be.a('string').and.not.empty;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"credential\":\"{{googleCredential}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/auth/google-signup",
+            "description": "Optional: provide a valid Google ID token; may create a user in the configured database."
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 - Public API and user routes",
+      "item": [
+        {
+          "name": "List users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns a success response with an array', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data).to.be.an('array');",
+                  "  body.data.forEach(user => pm.expect(user).to.not.have.property('password'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/users" }
+        },
+        {
+          "name": "Get user - authenticated own profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns profile without password or OTP fields', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(String(body.data._id)).to.eql(pm.collectionVariables.get('testUserId'));",
+                  "  ['password', 'passwordHash', 'otp', 'otpHash'].forEach(key => pm.expect(body.data).to.not.have.property(key));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/v1/users/{{testUserId}}"
+          }
+        },
+        {
+          "name": "Get user - no token rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 401 without a bearer token', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/users/{{testUserId}}" }
+        },
+        {
+          "name": "Get user - malformed id returns controlled 404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns controlled 404 without stack details', () => {",
+                  "  pm.response.to.have.status(404);",
+                  "  const text = pm.response.text().toLowerCase();",
+                  "  pm.expect(text).to.not.include('node_modules');",
+                  "  pm.expect(text).to.not.include('controller');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/v1/users/not-an-object-id"
+          }
+        },
+        {
+          "name": "List gallery - first page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns paginated gallery shape', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.photos).to.be.an('array').and.have.length.at.most(5);",
+                  "  pm.expect(body.categories).to.be.an('array');",
+                  "  pm.expect(body.page).to.eql(1);",
+                  "  pm.expect(body.pages).to.be.a('number');",
+                  "  pm.expect(body.total).to.be.a('number');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/gallery?page=1&limit=5" }
+        },
+        {
+          "name": "List gallery - empty page and category filter",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns empty results for a page beyond the end', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.photos).to.be.an('array').that.is.empty;",
+                  "  pm.expect(body.page).to.eql(999);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/gallery?category=portrait&page=999&limit=5" }
+        },
+        {
+          "name": "List team members",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns public member data array', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/members" }
+        }
+      ]
+    },
+    {
+      "name": "03 - Booking API",
+      "item": [
+        {
+          "name": "Create booking - valid",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const date = new Date(Date.now() + 86400000).toISOString();",
+                  "pm.collectionVariables.set('bookingDate', date);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('creates booking and stores its id', () => {",
+                  "  pm.response.to.have.status(201);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data._id).to.be.a('string').and.not.empty;",
+                  "  pm.expect(body.data.status).to.eql('pending');",
+                  "  pm.collectionVariables.set('bookingId', body.data._id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"session\":\"API test session\",\"eventdate\":\"{{bookingDate}}\",\"bookeddate\":\"{{bookingDate}}\",\"WhatsappNumber\":\"+15555550123\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/booking"
+          }
+        },
+        {
+          "name": "Create booking - missing required fields rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 for invalid booking', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/booking"
+          }
+        },
+        {
+          "name": "Get own bookings",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns own booking array including created record', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data).to.be.an('array');",
+                  "  pm.expect(body.data.some(item => item._id === pm.collectionVariables.get('bookingId'))).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/v1/booking/records"
+          }
+        },
+        {
+          "name": "Get all bookings - regular user is forbidden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('regular user cannot list all bookings', () => {",
+                  "  pm.response.to.have.status(403);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/v1/booking/all"
+          }
+        },
+        {
+          "name": "Get booking records - no token rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 401 without bearer token', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/v1/booking/records" }
+        },
+        {
+          "name": "Update booking status - valid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('updates booking to confirmed', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().status).to.eql('confirmed');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"status\":\"confirmed\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/booking/{{bookingId}}/status"
+          }
+        },
+        {
+          "name": "Update booking status - invalid status rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 for unsupported status', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"status\":\"unknown\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/booking/{{bookingId}}/status"
+          }
+        },
+        {
+          "name": "Delete booking - valid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('deletes booking and returns deleted record', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data._id).to.eql(pm.collectionVariables.get('bookingId'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/v1/booking/{{bookingId}}/delete"
+          }
+        },
+        {
+          "name": "Delete booking - unknown id returns 404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 404 for nonexistent booking', () => {",
+                  "  pm.response.to.have.status(404);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/v1/booking/000000000000000000000000/delete"
+          }
+        },
+        {
+          "name": "Update booking status - malformed id returns 404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns controlled 404 for malformed id', () => {",
+                  "  pm.response.to.have.status(404);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"status\":\"confirmed\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/booking/not-an-object-id/status"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 - OTP API",
+      "item": [
+        {
+          "name": "Send OTP - malformed email rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 with validation message', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().message).to.eql('Valid email is required');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"email\":\"not-an-email\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/otp/send"
+          }
+        },
+        {
+          "name": "Verify OTP - missing code rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 when code is missing', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().message).to.eql('OTP is required');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"email\":\"client@example.com\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/otp/verify"
+          }
+        },
+        {
+          "name": "Verify OTP - wrong code rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 for an invalid code', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().message).to.eql('OTP expired or not found');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"email\":\"unknown-otp@example.com\",\"otp\":\"000000\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/otp/verify"
+          }
+        },
+        {
+          "name": "Send OTP - optional email delivery check",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('otpEmail')) {",
+                  "  console.warn('Set otpEmail to run this live email-delivery check.');",
+                  "  pm.execution.skipRequest();",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('sends OTP successfully', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().message).to.eql('OTP sent to your email');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"email\":\"{{otpEmail}}\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/otp/send",
+            "description": "Optional: sends a real email and requires valid SMTP credentials."
+          }
+        },
+        {
+          "name": "Verify OTP - optional manual valid code",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('otpEmail') || !pm.variables.get('otpCode')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('accepts valid unexpired OTP', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().message).to.eql('Email verified successfully');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"{{otpEmail}}\",\"otp\":\"{{otpCode}}\"}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/api/v1/otp/verify",
+            "description": "Optional: enter the code from the OTP email into otpCode after running the send request."
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 - Authorization checks",
+      "item": [
+        {
+          "name": "Tampered access token rejected",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 401 for tampered JWT', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer eyJhbGciOiJub25lIn0.eyJ1c2VySWQiOiJub3QtYS11c2VyIn0.invalid-signature" }],
+            "url": "{{baseUrl}}/api/v1/booking/records"
+          }
+        },
+        {
+          "name": "Member create - regular user forbidden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 403 for non-admin user', () => {",
+                  "  pm.response.to.have.status(403);",
+                  "  pm.expect(pm.response.json().message).to.eql('Administrator access only');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"name\":\"Should Not Create\",\"role\":\"Test\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/members"
+          }
+        },
+        {
+          "name": "Gallery upload - regular user forbidden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 403 for non-admin user', () => {",
+                  "  pm.response.to.have.status(403);",
+                  "  pm.expect(pm.response.json().message).to.eql('Administrator access only');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/gallery"
+          }
+        },
+        {
+          "name": "Untrusted origin receives no CORS allow-origin header",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('does not allow untrusted origin', () => {",
+                  "  pm.expect(pm.response.headers.get('Access-Control-Allow-Origin')).to.be.undefined;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Origin", "value": "https://evil.example" }],
+            "url": "{{baseUrl}}/api/v1/gallery?page=1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 - Admin workflows (requires adminToken)",
+      "description": "Set adminToken to a valid access token for a user whose role is admin. Member create/update/delete uses JSON so no upload service is required.",
+      "item": [
+        {
+          "name": "List all bookings - administrator",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('adminToken')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('administrator receives booking array', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().success).to.eql(true);",
+                  "  pm.expect(pm.response.json().data).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": "{{baseUrl}}/api/v1/booking/all"
+          }
+        },
+        {
+          "name": "Create member",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.unset('memberId');",
+                  "if (!pm.variables.get('adminToken')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('creates and stores member id', () => {",
+                  "  pm.response.to.have.status(201);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data.name).to.eql('API Test Member');",
+                  "  pm.collectionVariables.set('memberId', body.data._id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"name\":\"API Test Member\",\"role\":\"Test Photographer\",\"photo\":\"\",\"instagram\":\"https://example.com/test\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/members"
+          }
+        },
+        {
+          "name": "Update member",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('adminToken') || !pm.collectionVariables.get('memberId')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('updates member fields', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data.role).to.eql('Updated Test Photographer');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"role\":\"Updated Test Photographer\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/members/{{memberId}}"
+          }
+        },
+        {
+          "name": "Delete member",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('adminToken') || !pm.collectionVariables.get('memberId')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('deletes member', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data._id).to.eql(pm.collectionVariables.get('memberId'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": "{{baseUrl}}/api/v1/members/{{memberId}}"
+          }
+        },
+        {
+          "name": "Update member - malformed id returns 404",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('adminToken')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 404 for malformed id', () => {",
+                  "  pm.response.to.have.status(404);",
+                  "  pm.expect(pm.response.json().success).to.eql(false);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"role\":\"Updated\"}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/members/not-an-object-id"
+          }
+        },
+        {
+          "name": "Upload gallery photo",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.unset('photoId');",
+                  "if (!pm.variables.get('adminToken') || !pm.variables.get('galleryImagePath')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('uploads photo and saves created id', () => {",
+                  "  pm.response.to.have.status(201);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.photos).to.be.an('array').that.is.not.empty;",
+                  "  pm.collectionVariables.set('photoId', body.photos[0]._id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "images", "type": "file", "src": "{{galleryImagePath}}" },
+                { "key": "category", "value": "api-test", "type": "text" },
+                { "key": "title", "value": "Postman API Test", "type": "text" },
+                { "key": "featured", "value": "false", "type": "text" }
+              ]
+            },
+            "url": "{{baseUrl}}/api/v1/gallery",
+            "description": "Requires adminToken, galleryImagePath, and working Cloudinary credentials."
+          }
+        },
+        {
+          "name": "Update gallery photo",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('adminToken') || !pm.collectionVariables.get('photoId')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('updates gallery photo metadata', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().title).to.eql('Updated Postman API Test');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"title\":\"Updated Postman API Test\",\"featured\":true}", "options": { "raw": { "language": "json" } } },
+            "url": "{{baseUrl}}/api/v1/gallery/{{photoId}}"
+          }
+        },
+        {
+          "name": "Delete gallery photo",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('adminToken') || !pm.collectionVariables.get('photoId')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('deletes gallery photo', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  pm.expect(pm.response.json().message).to.eql('Deleted');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": "{{baseUrl}}/api/v1/gallery/{{photoId}}"
+          }
+        },
+        {
+          "name": "Gallery upload - missing image rejected",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.variables.get('adminToken')) pm.execution.skipRequest();"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('returns 400 when no image is supplied', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().message).to.eql('No images uploaded');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [{ "key": "category", "value": "api-test", "type": "text" }]
+            },
+            "url": "{{baseUrl}}/api/v1/gallery"
+          }
+        },
+        {
+          "name": "Delete user - endpoint should remove the selected test user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('delete responds with a success JSON contract', () => {",
+                  "  pm.response.to.have.status(200);",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.success).to.eql(true);",
+                  "  pm.expect(body.data._id).to.eql(pm.collectionVariables.get('testUserId'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/api/v1/users/{{testUserId}}",
+            "description": "Runs last so that other authenticated API checks can use the generated account."
+          }
+        }
+      ]
+    }
+  ]
+}

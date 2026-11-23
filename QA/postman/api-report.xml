@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Cinematic Eye - Complete API Tests" tests="39" time="5.442">
+  <testsuite name="01 - Authentication / Sign up - valid unique account" id="70fd3224-2cbb-4b98-a633-2d1eab0e1f6c" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.522">
+    <testcase name="returns 201 with a user and access token" time="0.522" classname="01AuthenticationSignUpValidUniqueAccount"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign up - duplicate email rejected" id="762fdc12-679a-40a6-86c5-277ec5263b35" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.101">
+    <testcase name="returns 400 for duplicate email" time="0.101" classname="01AuthenticationSignUpDuplicateEmailRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign up - duplicate username rejected" id="76ffe60c-940b-4449-9a2a-f4751f03583e" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.357">
+    <testcase name="returns 400 for duplicate username" time="0.357" classname="01AuthenticationSignUpDuplicateUsernameRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign up - malformed email rejected" id="258ad8e0-3534-4004-a29c-1905284cd706" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.267">
+    <testcase name="returns 400 for malformed email" time="0.267" classname="01AuthenticationSignUpMalformedEmailRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign in - valid credentials" id="b050b63e-e53f-46d5-bc15-1792dea49580" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.265">
+    <testcase name="returns an access token and HttpOnly refresh cookie" time="0.265" classname="01AuthenticationSignInValidCredentials"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign in - wrong password rejected" id="becd42b0-ec5c-4611-9277-63ecd4685339" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.169">
+    <testcase name="returns 401 without auth data" time="0.169" classname="01AuthenticationSignInWrongPasswordRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign in - unknown email rejected" id="be8c45fb-ad86-4339-a831-c0ade6907c84" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.096">
+    <testcase name="returns 401 for unknown email" time="0.096" classname="01AuthenticationSignInUnknownEmailRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign in - operator-shaped email rejected" id="4a027fb5-1d93-407d-a087-aad31d106b86" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.168">
+    <testcase name="rejects object-shaped email without server error" time="0.168" classname="01AuthenticationSignInOperatorShapedEmailRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Refresh - valid refresh cookie" id="341ec86c-6e4f-40d0-b68a-a63ecd30b0ad" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.103">
+    <testcase name="restores access token for the same user" time="0.103" classname="01AuthenticationRefreshValidRefreshCookie"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Refresh - missing cookie rejected" id="f1c415b1-e0ec-45fd-8055-6786d397c057" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.003">
+    <testcase name="returns 401 when refresh cookie is missing" time="0.003" classname="01AuthenticationRefreshMissingCookieRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign out - revoke refresh token" id="c3adf225-c715-454a-9f91-294264dd5edd" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="1" errors="0" time="0.104">
+    <testcase name="returns success and clears refresh cookie" time="0.104" classname="01AuthenticationSignOutRevokeRefreshToken">
+      <failure type="AssertionFailure" message="expected 'refreshtoken=; path=/; expires=thu, 0…' to include 'httponly'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 5b3a8df0-b63c-462f-8aa3-94e045ee748a.]]>
+        <![CDATA[Collection name: Cinematic Eye - Complete API Tests.]]>
+        <![CDATA[Request name: 01 - Authentication / Sign out - revoke refresh token.]]>
+        <![CDATA[Test description: returns success and clears refresh cookie.]]>
+        <![CDATA[Error message: expected 'refreshtoken=; path=/; expires=thu, 0…' to include 'httponly'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 'refreshtoken=; path=/; expires=thu, 0…' to include 'httponly'
+   at Object.eval sandbox-script.js:1:11).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="01 - Authentication / Refresh - revoked cookie rejected" id="b00cfd1d-2c2a-4620-b918-35e0efc0cff7" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.098">
+    <testcase name="returns 403 after sign-out" time="0.098" classname="01AuthenticationRefreshRevokedCookieRejected"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Sign out - no session is idempotent" id="c24d64f9-f36d-45d5-a091-8394aeb281cd" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.002">
+    <testcase name="returns success without a refresh cookie" time="0.002" classname="01AuthenticationSignOutNoSessionIsIdempotent"/>
+  </testsuite>
+  <testsuite name="01 - Authentication / Google sign-in - invalid credential rejected" id="fa0d0a4a-4b97-45ce-88e3-daeebbbae57f" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="1" errors="0" time="0.003">
+    <testcase name="invalid credential is rejected as a client error" time="0.003" classname="01AuthenticationGoogleSignInInvalidCredentialRejected">
+      <failure type="AssertionFailure" message="expected 500 to be one of [ 400, 401 ]">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 5b3a8df0-b63c-462f-8aa3-94e045ee748a.]]>
+        <![CDATA[Collection name: Cinematic Eye - Complete API Tests.]]>
+        <![CDATA[Request name: 01 - Authentication / Google sign-in - invalid credential rejected.]]>
+        <![CDATA[Test description: invalid credential is rejected as a client error.]]>
+        <![CDATA[Error message: expected 500 to be one of [ 400, 401 ].]]>
+        <![CDATA[Stacktrace: AssertionError: expected 500 to be one of [ 400, 401 ]
+   at Object.eval sandbox-script.js:1:14).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="02 - Public API and user routes / List users" id="5172af24-3c2d-460b-9c4f-901eca9ab3d1" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="1" errors="0" time="0.102">
+    <testcase name="returns a success response with an array" time="0.102" classname="02PublicApiAndUserRoutesListUsers">
+      <failure type="AssertionFailure" message="expected { …(6) } to not have property 'password'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 5b3a8df0-b63c-462f-8aa3-94e045ee748a.]]>
+        <![CDATA[Collection name: Cinematic Eye - Complete API Tests.]]>
+        <![CDATA[Request name: 02 - Public API and user routes / List users.]]>
+        <![CDATA[Test description: returns a success response with an array.]]>
+        <![CDATA[Error message: expected { …(6) } to not have property 'password'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected { …(6) } to not have property 'password'
+   at Object.eval sandbox-script.js:1:16).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="02 - Public API and user routes / Get user - authenticated own profile" id="69f00bff-879b-4f50-99f8-e2eee2c8a90d" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.193">
+    <testcase name="returns profile without password or OTP fields" time="0.193" classname="02PublicApiAndUserRoutesGetUserAuthenticatedOwnProfile"/>
+  </testsuite>
+  <testsuite name="02 - Public API and user routes / Get user - no token rejected" id="839b61a4-4bbd-4f35-b343-3c9f26c4f48d" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.004">
+    <testcase name="returns 401 without a bearer token" time="0.004" classname="02PublicApiAndUserRoutesGetUserNoTokenRejected"/>
+  </testsuite>
+  <testsuite name="02 - Public API and user routes / Get user - malformed id returns controlled 404" id="382f908b-6a56-417c-b068-3ca4576ce3f5" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.101">
+    <testcase name="returns controlled 404 without stack details" time="0.101" classname="02PublicApiAndUserRoutesGetUserMalformedIdReturnsControlled404"/>
+  </testsuite>
+  <testsuite name="02 - Public API and user routes / List gallery - first page" id="8f68ccf8-6e0c-43c2-9c02-0ea202889401" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.103">
+    <testcase name="returns paginated gallery shape" time="0.103" classname="02PublicApiAndUserRoutesListGalleryFirstPage"/>
+  </testsuite>
+  <testsuite name="02 - Public API and user routes / List gallery - empty page and category filter" id="f72da2fb-8351-4b88-8d5f-20251e20ef0a" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.099">
+    <testcase name="returns empty results for a page beyond the end" time="0.099" classname="02PublicApiAndUserRoutesListGalleryEmptyPageAndCategoryFilter"/>
+  </testsuite>
+  <testsuite name="02 - Public API and user routes / List team members" id="769c6bce-681a-41e7-873d-145d69ea97b0" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.494">
+    <testcase name="returns public member data array" time="0.494" classname="02PublicApiAndUserRoutesListTeamMembers"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Create booking - valid" id="4f12a4d0-322e-48b6-9322-c6d524aac981" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.210">
+    <testcase name="creates booking and stores its id" time="0.210" classname="03BookingApiCreateBookingValid"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Create booking - missing required fields rejected" id="a3a0d3cb-ffc7-44fd-a4ac-7e198c437c30" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.102">
+    <testcase name="returns 400 for invalid booking" time="0.102" classname="03BookingApiCreateBookingMissingRequiredFieldsRejected"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Get own bookings" id="aca2fefb-9353-47fb-984f-490db0f01655" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.191">
+    <testcase name="returns own booking array including created record" time="0.191" classname="03BookingApiGetOwnBookings"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Get all bookings - regular user is forbidden" id="75f01537-ef82-40dc-b1ad-13afa9e1c7ed" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="1" errors="0" time="0.195">
+    <testcase name="regular user cannot list all bookings" time="0.195" classname="03BookingApiGetAllBookingsRegularUserIsForbidden">
+      <failure type="AssertionFailure" message="expected response to have status code 403 but got 200">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 5b3a8df0-b63c-462f-8aa3-94e045ee748a.]]>
+        <![CDATA[Collection name: Cinematic Eye - Complete API Tests.]]>
+        <![CDATA[Request name: 03 - Booking API / Get all bookings - regular user is forbidden.]]>
+        <![CDATA[Test description: regular user cannot list all bookings.]]>
+        <![CDATA[Error message: expected response to have status code 403 but got 200.]]>
+        <![CDATA[Stacktrace: AssertionError: expected response to have status code 403 but got 200
+   at Object.eval sandbox-script.js:1:26).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="03 - Booking API / Get booking records - no token rejected" id="899439ad-4845-4ca5-a58e-01d4ecdc4e8d" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.002">
+    <testcase name="returns 401 without bearer token" time="0.002" classname="03BookingApiGetBookingRecordsNoTokenRejected"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Update booking status - valid" id="1f8927ad-9f39-433c-b63b-d95c9d90b4fc" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.200">
+    <testcase name="updates booking to confirmed" time="0.200" classname="03BookingApiUpdateBookingStatusValid"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Update booking status - invalid status rejected" id="adff0b44-9fac-479d-bcbe-0505f801d333" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.102">
+    <testcase name="returns 400 for unsupported status" time="0.102" classname="03BookingApiUpdateBookingStatusInvalidStatusRejected"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Delete booking - valid" id="3e263218-d6d0-4777-95d0-4861300d51cd" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.196">
+    <testcase name="deletes booking and returns deleted record" time="0.196" classname="03BookingApiDeleteBookingValid"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Delete booking - unknown id returns 404" id="8ad8c88d-b77b-4bdd-8a6b-d4e1dfa880ca" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.191">
+    <testcase name="returns 404 for nonexistent booking" time="0.191" classname="03BookingApiDeleteBookingUnknownIdReturns404"/>
+  </testsuite>
+  <testsuite name="03 - Booking API / Update booking status - malformed id returns 404" id="c004a8bf-871f-4f9a-af1a-5c1dd3609a86" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.102">
+    <testcase name="returns controlled 404 for malformed id" time="0.102" classname="03BookingApiUpdateBookingStatusMalformedIdReturns404"/>
+  </testsuite>
+  <testsuite name="04 - OTP API / Send OTP - malformed email rejected" id="8cd812d4-45db-4f99-ad5f-a66fb0636533" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.008">
+    <testcase name="returns 400 with validation message" time="0.008" classname="04OtpApiSendOtpMalformedEmailRejected"/>
+  </testsuite>
+  <testsuite name="04 - OTP API / Verify OTP - missing code rejected" id="8584296a-6875-4ab2-b4e6-a95b7813fb21" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.002">
+    <testcase name="returns 400 when code is missing" time="0.002" classname="04OtpApiVerifyOtpMissingCodeRejected"/>
+  </testsuite>
+  <testsuite name="04 - OTP API / Verify OTP - wrong code rejected" id="eb2754d5-6e49-460b-a12b-b15a4126a731" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.097">
+    <testcase name="returns 400 for an invalid code" time="0.097" classname="04OtpApiVerifyOtpWrongCodeRejected"/>
+  </testsuite>
+  <testsuite name="05 - Authorization checks / Tampered access token rejected" id="3b1a017b-da98-4346-a244-e3843b17611f" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.002">
+    <testcase name="returns 401 for tampered JWT" time="0.002" classname="05AuthorizationChecksTamperedAccessTokenRejected"/>
+  </testsuite>
+  <testsuite name="05 - Authorization checks / Member create - regular user forbidden" id="ed4e80eb-17c8-402e-b412-067391dd684d" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.197">
+    <testcase name="returns 403 for non-admin user" time="0.197" classname="05AuthorizationChecksMemberCreateRegularUserForbidden"/>
+  </testsuite>
+  <testsuite name="05 - Authorization checks / Gallery upload - regular user forbidden" id="82de48c8-573f-40b0-bf3c-76282aedf03b" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="0" errors="0" time="0.191">
+    <testcase name="returns 403 for non-admin user" time="0.191" classname="05AuthorizationChecksGalleryUploadRegularUserForbidden"/>
+  </testsuite>
+  <testsuite name="05 - Authorization checks / Untrusted origin receives no CORS allow-origin header" id="6ac551ba-a69c-4fcf-89c1-a108dac5f2ec" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="1" errors="0" time="0.098">
+    <testcase name="does not allow untrusted origin" time="0.098" classname="05AuthorizationChecksUntrustedOriginReceivesNoCorsAllowOriginHeader">
+      <failure type="AssertionFailure" message="expected 'http://localhost:5173' to be undefined">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 5b3a8df0-b63c-462f-8aa3-94e045ee748a.]]>
+        <![CDATA[Collection name: Cinematic Eye - Complete API Tests.]]>
+        <![CDATA[Request name: 05 - Authorization checks / Untrusted origin receives no CORS allow-origin header.]]>
+        <![CDATA[Test description: does not allow untrusted origin.]]>
+        <![CDATA[Error message: expected 'http://localhost:5173' to be undefined.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 'http://localhost:5173' to be undefined
+   at Object.eval sandbox-script.js:1:41).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="06 - Admin workflows (requires adminToken) / Delete user - endpoint should remove the selected test user" id="341ad4a9-fe17-4fca-8546-babce2cc11d8" timestamp="2026-11-22T16:03:40.299Z" tests="1" failures="1" errors="0" time="0.002">
+    <testcase name="delete responds with a success JSON contract" time="0.002" classname="06AdminWorkflowsRequiresAdminTokenDeleteUserEndpointShouldRemoveTheSelectedTestUser">
+      <failure type="AssertionFailure" message="expected undefined to deeply equal true">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 5b3a8df0-b63c-462f-8aa3-94e045ee748a.]]>
+        <![CDATA[Collection name: Cinematic Eye - Complete API Tests.]]>
+        <![CDATA[Request name: 06 - Admin workflows (requires adminToken) / Delete user - endpoint should remove the selected test user.]]>
+        <![CDATA[Test description: delete responds with a success JSON contract.]]>
+        <![CDATA[Error message: expected undefined to deeply equal true.]]>
+        <![CDATA[Stacktrace: AssertionError: expected undefined to deeply equal true
+   at Object.eval sandbox-script.js:1:51).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>
