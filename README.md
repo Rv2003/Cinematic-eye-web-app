@@ -126,11 +126,21 @@ The app runs at `http://localhost:5173`.
 | `npm run lint`    | Run ESLint                     |
 | `npm run test:e2e` | Run Selenium browser smoke tests (start the dev server first) |
 
+### GitHub Actions CI
+
+The workflow in `.github/workflows/ci.yml` runs on pushes, pull requests, and
+manual dispatches. It installs the frontend and Cucumber dependencies, runs
+frontend lint and build checks, starts the Vite development server, and runs
+the Cucumber browser scenarios in headless Chrome. No backend credentials are
+required for these current scenarios. Check the repository's **Actions** tab
+for run results.
+
 ### Automated test coverage
 
 | Layer | Tests | Scope |
 |---|---|---|
 | Frontend | Selenium browser smoke tests (`frontend/tests/e2e.test.js`) | Eight checks for the home page/navigation, portfolio and About navigation, login carousel, registration form validation, booking session/OTP validation, and unauthenticated profile redirect. |
+| Browser acceptance | Cucumber (`QA/cucumber/features/`) | Homepage portfolio navigation and booking session/required-email validation, driven through Selenium and headless Chrome. |
 | API | Postman collection (`QA/postman/Cinematic-Eye-Complete-API.postman_collection.json`) | 51 requests across authentication, public/user routes, bookings, OTP, authorization, and admin workflows; includes success, validation, and access-control cases. |
 | Load | JMeter plans in `QA/jmeter/` | API request/load scenarios. `studio-load.jmx` models 50 users split across visitor, client, booking, and admin workloads. |
 
@@ -167,6 +177,28 @@ different running frontend URL, set `BASE_URL` before running the test command.
 To watch the tests in a visible Chrome window on Windows PowerShell, set
 `$env:HEADLESS = 'false'` before running `npm run test:e2e`. Remove the setting
 afterward with `Remove-Item Env:HEADLESS`; tests run headlessly by default.
+
+### Cucumber browser tests
+
+The Cucumber suite lives in `QA/cucumber/` and uses Selenium with headless
+Chrome. Start the frontend in one terminal:
+
+```bash
+cd frontend
+npm run dev
+```
+
+In another terminal, install and run the suite from the repository root:
+
+```bash
+cd QA/cucumber
+npm ci
+npm test
+```
+
+The tests default to `http://localhost:5173`. Set `BASE_URL` to use a different
+frontend URL. Cucumber feature files are in `QA/cucumber/features/`; matching
+step definitions are in `QA/cucumber/features/step_definitions/`.
 
 ### Postman API tests
 

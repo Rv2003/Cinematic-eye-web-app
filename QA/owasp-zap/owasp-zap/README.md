@@ -36,19 +36,19 @@ If the scan needs backend routes, start the backend too and use the frontend as 
 From the **repository root**:
 
 ```powershell
-.\QA\owasp-zap\run-zap-baseline.ps1
+.\QA\owasp-zap\owasp-zap\run-zap-baseline.ps1
 ```
 
 If the frontend uses a different port:
 
 ```powershell
-.\QA\owasp-zap\run-zap-baseline.ps1 -TargetUrl "http://host.docker.internal:3000"
+.\QA\owasp-zap\owasp-zap\run-zap-baseline.ps1 -TargetUrl "http://host.docker.internal:3000"
 ```
 
 To scan a backend API separately:
 
 ```powershell
-.\QA\owasp-zap\run-zap-baseline.ps1 -TargetUrl "http://host.docker.internal:4000"
+.\QA\owasp-zap\owasp-zap\run-zap-baseline.ps1 -TargetUrl "http://host.docker.internal:4000"
 ```
 
 Change the port to the actual port used by your project. Do not assume these example ports are correct.
@@ -60,9 +60,35 @@ The script writes these files into `QA/owasp-zap/reports/`:
 - `zap-report.html` — human-readable report.
 - `zap-report.json` — machine-readable report.
 
+## 4. Run from Ubuntu
+
+From the repository root, start the frontend in one terminal:
+
+```bash
+cd frontend
+npm run dev -- --host 0.0.0.0
+```
+
+In another terminal, from the repository root, run ZAP in Docker:
+
+```bash
+mkdir -p QA/owasp-zap/reports
+docker run --rm -t \
+  --add-host=host.docker.internal:host-gateway \
+  -v "$PWD:/zap/wrk/:rw" \
+  ghcr.io/zaproxy/zaproxy:stable \
+  zap-baseline.py \
+  -t http://host.docker.internal:5173 \
+  -r QA/owasp-zap/reports/zap-report.html \
+  -J QA/owasp-zap/reports/zap-report.json
+```
+
+This requires Docker to be installed and running. The `--add-host` option makes
+the host's Vite server reachable from the ZAP container on native Linux.
+
 Review every alert. Confirm whether it is a real issue, a false positive, or not applicable. Record confirmed defects in your team's issue tracker with sanitised evidence.
 
-## 4. Optional: run the Docker command directly
+## 5. Optional: run the Docker command directly
 
 ```powershell
 docker run --rm -t `
@@ -74,9 +100,12 @@ docker run --rm -t `
   -J QA/owasp-zap/reports/zap-report.json
 ```
 
-## 5. GitHub Actions
+## 6. GitHub Actions
 
-The workflow at `.github/workflows/owasp-zap-baseline.yml` runs the frontend and performs a baseline scan on pushes and pull requests. It assumes the frontend's `npm ci` works and that the app starts with `npm run dev`.
+The current `.github/workflows/ci.yml` runs frontend lint/build checks and
+Cucumber tests; it does not run ZAP. Run the baseline scan locally using the
+instructions above, or add a dedicated ZAP workflow if you want security scans
+on pushes and pull requests.
 
 If your project uses a different start command, port, or requires environment variables, update the workflow. Do not commit real secrets; use GitHub Actions secrets for sensitive configuration.
 
