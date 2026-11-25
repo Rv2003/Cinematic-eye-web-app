@@ -1,0 +1,14 @@
+{
+  "name": "cinematic-eye-cucumber-tests",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "cucumber-js --import features/support/hooks.js --import features/step_definitions/cinematic.steps.js features",
+    "test:report": "cucumber-js --import features/support/hooks.js --import features/step_definitions/cinematic.steps.js --format progress --format json:cucumber-report.json features"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "selenium-webdriver": "^4.51.0"
+  }
+}
