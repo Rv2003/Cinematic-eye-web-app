@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import './navbar.css';
 import axios from 'axios';
-import { User, LogOut, Sparkles, ChevronRight, Shield } from 'lucide-react';
+import { LogOut, Sparkles, ChevronRight, Shield } from 'lucide-react';
 
-export function Navbar({ user, setUser, token, setToken }) {
+export function Navbar({ user, setUser, setToken }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

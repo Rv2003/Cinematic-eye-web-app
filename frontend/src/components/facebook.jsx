@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, ThumbsUp, MessageCircle, Share2, Sparkles, ShieldCheck } from 'lucide-react';
+import { ExternalLink, ThumbsUp, MessageCircle, Share2, ShieldCheck } from 'lucide-react';
 import './facebook.css';
 
 const FacebookIcon = () => (

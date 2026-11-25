@@ -7,11 +7,7 @@ import {
   Film,
   Camera,
   Sparkles,
-  Compass,
   ArrowRight,
-  Award,
-  Clock,
-  MapPin,
   CheckCircle2,
   Video
 } from 'lucide-react';

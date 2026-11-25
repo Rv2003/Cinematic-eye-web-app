@@ -10,7 +10,7 @@ import { LoadingScreen } from "../components/loading";
 
 const slides = [slide1, slide2, slide3];
 
-export function Register({ user, setUser, token, setToken }) {
+export function Register({ setUser, setToken }) {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);

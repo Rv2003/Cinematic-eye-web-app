@@ -36,7 +36,7 @@ export function Profile({ token,setToken,setUser }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [bookings, setBookings] = useState([]);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [viewMode, setViewMode] = useState("table");                      
@@ -1238,7 +1238,7 @@ export function Profile({ token,setToken,setUser }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredBookings.map((booking) => {
+                  {filteredBookings.map((booking, index) => {
                     const badge = getStatusBadge(booking.status);
                     const StatusIcon = badge.icon;
                     const idShort = booking._id
@@ -1246,7 +1246,7 @@ export function Profile({ token,setToken,setUser }) {
                       : "REF-N/A";
 
                     return (
-                      <tr key={booking._id || Math.random()} className="lux-row">
+                      <tr key={booking._id || `booking-${index}`} className="lux-row">
                         <td>
                           <span
                             className="id-badge"
@@ -1319,7 +1319,7 @@ export function Profile({ token,setToken,setUser }) {
         ) : (
                                
           <div className="cards-grid">
-            {filteredBookings.map((booking) => {
+            {filteredBookings.map((booking, index) => {
               const badge = getStatusBadge(booking.status);
               const StatusIcon = badge.icon;
               const idShort = booking._id
@@ -1327,7 +1327,7 @@ export function Profile({ token,setToken,setUser }) {
                 : "REF-N/A";
 
               return (
-                <div key={booking._id || Math.random()} className="booking-card">
+                <div key={booking._id || `booking-${index}`} className="booking-card">
                   <div className="card-header-row">
                     <span
                       className="id-badge"

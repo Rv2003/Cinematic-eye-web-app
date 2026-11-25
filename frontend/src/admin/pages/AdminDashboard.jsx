@@ -128,10 +128,10 @@ export function AdminDashboard({ token }) {
                   </td>
                 </tr>
               ) : (
-                recent.map((b) => {
+                recent.map((b, index) => {
                   const statusKey = (b.status || 'pending').toLowerCase()
                   return (
-                    <tr key={b._id ?? b.id ?? Math.random()}>
+                    <tr key={b._id ?? b.id ?? index}>
                       <td className="text-primary">
                         {b.fullname || b.username || b.name || `${b.firstName || ''} ${b.lastName || ''}`.trim() || 'Client'}
                       </td>

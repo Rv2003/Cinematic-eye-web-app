@@ -106,7 +106,7 @@ export function AdminGallery({ token }) {
       setGalleryItems(sortItems(photos, sortBy));
 
       if (Array.isArray(data.categories)) {
-        setCategories((previous) => [
+        setCategories([
           ...new Set([...DEFAULT_CATEGORIES, ...data.categories]),
         ]);
       }

@@ -49,7 +49,7 @@ const SOCIAL = [
   { label: "WhatsApp", href: "https://wa.me/94771234567", Icon: WhatsAppIcon },
 ];
 
-export function Footer({ user, setUser, token, setToken, authLoading, setAuthLoading }) {
+export function Footer({ user }) {
   const footerRef = useRef(null);
   const headlineRef = useRef(null);
   const ctaBtnRef = useRef(null);

@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 import {
   Search,
-  Filter,
   Trash2,
   ChevronDown,
   ChevronUp,
@@ -11,12 +10,10 @@ import {
   Phone,
   Mail,
   Calendar,
-  Clock,
   MapPin,
   FileText,
   User,
   CheckCircle,
-  XCircle,
   MessageSquare
 } from 'lucide-react'
 
@@ -57,7 +54,7 @@ export function AdminBookings({ token }) {
         })
         const data = fallbackRes.data?.data?.bookings ?? fallbackRes.data?.data ?? []
         setBookings(Array.isArray(data) ? data : [data])
-      } catch (fallbackErr) {
+      } catch {
         setError(err?.response?.data?.message ?? 'Failed to load bookings.')
       }
     } finally {
@@ -81,7 +78,7 @@ export function AdminBookings({ token }) {
         prev.map((b) => ((b._id ?? b.id) === bookingId ? { ...b, status: newStatus } : b))
       )
       showMessage(`Status changed to ${newStatus}`)
-    } catch (err) {
+    } catch {
                                                                      
       setBookings((prev) =>
         prev.map((b) => ((b._id ?? b.id) === bookingId ? { ...b, status: newStatus } : b))
@@ -99,7 +96,7 @@ export function AdminBookings({ token }) {
       })
       setBookings((prev) => prev.filter((b) => (b._id ?? b.id) !== bookingId))
       showMessage('Booking removed successfully')
-    } catch (err) {
+    } catch {
                                                        
       setBookings((prev) => prev.filter((b) => (b._id ?? b.id) !== bookingId))
       showMessage('Booking removed')

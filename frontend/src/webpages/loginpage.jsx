@@ -13,7 +13,7 @@ const slides = [slide1, slide2, slide3];
 
 
 
-export function Login({user,setUser,token,setToken}) {
+export function Login({setUser,setToken}) {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);

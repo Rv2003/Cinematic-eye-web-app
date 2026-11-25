@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import {
-  Settings,
   Building,
   Mail,
   Phone,
@@ -10,16 +9,12 @@ import {
   Camera,
   ShieldAlert,
   LogOut,
-  CheckCircle2,
   Server,
-  KeyRound,
-  ExternalLink
 } from 'lucide-react'
 
-export function AdminSettings({ token, setUser, setToken }) {
+export function AdminSettings({ setUser, setToken }) {
   const navigate = useNavigate()
   const [loggingOut, setLoggingOut] = useState(false)
-  const [serverStatus, setServerStatus] = useState('online')
 
   async function handleSignOut() {
     setLoggingOut(true)
@@ -29,8 +24,8 @@ export function AdminSettings({ token, setUser, setToken }) {
         {},
         { withCredentials: true }
       )
-    } catch (e) {
-                       
+    } catch (error) {
+      console.error('Sign-out request failed:', error)
     } finally {
       if (setUser) setUser(null)
       if (setToken) setToken(null)

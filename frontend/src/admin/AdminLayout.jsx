@@ -48,8 +48,8 @@ export function AdminLayout({ setUser, setToken }) {
   async function handleSignOut() {
     try {
       await axios.post('http://localhost:5500/api/v1/auth/sign-out', {}, { withCredentials: true })
-    } catch {
-               
+    } catch (error) {
+      console.error('Sign-out request failed:', error)
     }
     if (setUser) setUser(null)
     if (setToken) setToken(null)
